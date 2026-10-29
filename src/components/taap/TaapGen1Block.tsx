@@ -11,12 +11,12 @@ export function TaapGen1Block() {
         className="w-full max-w-[620px] lg:max-w-full"
       />
 
-      <div className="w-full min-w-0 max-w-[620px] overflow-clip rounded-lg lg:max-w-full">
+      <div className="w-full min-w-0 max-w-[620px] lg:max-w-full">
         <Image
           src="/images/taap/gen1-table.webp"
           alt="Generation 1 Trips page redesigned as a sortable data table"
-          width={1280}
-          height={1013}
+          width={2000}
+          height={1288}
           className="block h-auto w-full"
           sizes="(min-width: 1140px) 980px, calc(100vw - 40px)"
           unoptimized

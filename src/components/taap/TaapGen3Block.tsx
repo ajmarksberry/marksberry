@@ -12,13 +12,13 @@ export function TaapGen3Block() {
         className="w-full max-w-[620px] lg:max-w-full"
       />
 
-      <div className="w-full min-w-0 max-w-[620px] overflow-clip rounded-lg lg:max-w-full">
+      <div className="w-full min-w-0 max-w-[620px] lg:max-w-full">
         <Image
           src="/images/taap/gen3-tray.webp"
           alt="Generation 3 Trips dashboard after post-launch refinements"
-          width={2560}
-          height={3032}
-          className="block h-auto w-full rounded-lg"
+          width={1185}
+          height={2000}
+          className="block h-auto w-full"
           sizes="(min-width: 1140px) 980px, calc(100vw - 40px)"
           unoptimized
         />

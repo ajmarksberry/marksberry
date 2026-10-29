@@ -4,24 +4,28 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useId, useRef, useState } from "react";
+import { ArrowRightIcon } from "@/components/Icons";
 import { ReachLogo } from "@/components/ReachLogo";
 import { TaapLogo } from "@/components/TaapLogo";
 import { caseStudies } from "@/lib/site";
 
 type Study = (typeof caseStudies)[number];
-type Treatment = "banner" | "circles";
+type Treatment = "banner" | "cards" | "circles";
 
 /**
- * The Circles treatment is built and working but not offered to visitors yet.
- * Flip this to true to show the Banner / Circles control; DEFAULT_TREATMENT is
- * what renders while it stays hidden. Same pattern as SHOW_ABOUT / SHOW_FOOTER.
+ * The homepage has concepts for how the case studies are shown, and a switch to
+ * move between them. Banner is the default; flip SHOW_LAYOUT_TOGGLE to false to
+ * hide the switch and show only DEFAULT_TREATMENT.
+ *
+ * Circles is built too but is not offered in the switch: add it to `treatments`
+ * to bring it back.
  */
-const SHOW_LAYOUT_TOGGLE = false;
+const SHOW_LAYOUT_TOGGLE = true;
 const DEFAULT_TREATMENT: Treatment = "banner";
 
 const treatments = [
-  { value: "banner", label: "Banner" },
-  { value: "circles", label: "Circles" },
+  { value: "banner", label: "Banners" },
+  { value: "cards", label: "Cards" },
 ] as const;
 
 /**
@@ -239,43 +243,132 @@ function CaseStudyCircle({
   );
 }
 
+/**
+ * Concept: each case study as a vertical card — a white surface lifted off the
+ * page by a soft layered shadow — in a row that scrolls sideways. Deliberately
+ * plain: a thumbnail on top, then the title and the description, ready to be
+ * restyled.
+ *
+ * The card is white in both themes, so its copy uses fixed dark colors rather
+ * than the theme-aware tokens.
+ */
+function CaseStudyCard({ study }: { study: Study }) {
+  return (
+    <Link
+      href={study.href}
+      draggable={false}
+      className="group flex h-full w-full flex-col overflow-clip rounded-2xl bg-white shadow-[0_1px_2px_rgba(16,24,40,0.06),0_8px_24px_rgba(16,24,40,0.08),0_24px_48px_-12px_rgba(16,24,40,0.14)] outline-none transition-[box-shadow,transform] duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_2px_4px_rgba(16,24,40,0.06),0_12px_32px_rgba(16,24,40,0.12),0_32px_64px_-12px_rgba(16,24,40,0.2)] focus-visible:ring-2 focus-visible:ring-accent motion-reduce:transition-none motion-reduce:hover:translate-y-0"
+    >
+      <span className="relative block aspect-[4/3] w-full shrink-0 overflow-clip">
+        <Image
+          src={study.hero ?? FALLBACK_BANNER}
+          alt=""
+          fill
+          className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03] motion-reduce:transition-none"
+          sizes="(min-width: 640px) 340px, 82vw"
+          unoptimized
+        />
+      </span>
+
+      <span className="flex min-w-0 flex-1 flex-col gap-3 p-6">
+        <span
+          className="font-extrabold text-2xl leading-8 tracking-[-0.4px] text-[#111827]"
+          style={{ fontFeatureSettings: '"liga" 0' }}
+        >
+          {study.title}
+        </span>
+        <span
+          className="text-base leading-7 text-[#374151]"
+          style={{ fontFeatureSettings: '"liga" 0' }}
+        >
+          {study.description}
+        </span>
+        <ArrowRightIcon className="mt-auto size-6 shrink-0 text-[#111827] transition-transform duration-200 ease-out group-hover:translate-x-1 motion-reduce:transition-none" />
+      </span>
+    </Link>
+  );
+}
+
 export function CaseStudyShowcase() {
   const pathname = usePathname();
   const groupId = useId();
   const [treatment, setTreatment] = useState<Treatment>(DEFAULT_TREATMENT);
   const bannerListRef = useSwipeGuard<HTMLUListElement>();
+  const cardRowRef = useRef<HTMLUListElement>(null);
   const listId = `${groupId}-list`;
+
+  /** One card's width, gap included, in the direction asked for. */
+  function scrollCards(direction: 1 | -1) {
+    const row = cardRowRef.current;
+    const first = row?.querySelector("li");
+    if (!row || !first) return;
+    const step = first.getBoundingClientRect().width + 24;
+    const reduced = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+    row.scrollBy({
+      left: direction * step,
+      behavior: reduced ? "auto" : "smooth",
+    });
+  }
 
   return (
     <section
       aria-label="Case studies"
-      className="flex w-full flex-col gap-8 sm:gap-10"
+      className="flex w-full flex-col gap-6 sm:gap-8"
     >
       {SHOW_LAYOUT_TOGGLE ? (
-        <div
-          role="group"
-          aria-label="Case study layout"
-          className="flex shrink-0 items-center gap-1 self-start border border-border p-1"
-        >
-          {treatments.map((option) => {
-            const active = treatment === option.value;
-            return (
-              <button
-                key={option.value}
-                type="button"
-                aria-pressed={active}
-                aria-controls={listId}
-                className={`flex h-9 items-center px-4 font-semibold text-xs uppercase tracking-[0.04em] transition-colors duration-200 ease-out motion-reduce:transition-none ${
-                  active
-                    ? "bg-surface text-heading"
-                    : "text-muted hover:text-ink"
-                }`}
-                onClick={() => setTreatment(option.value)}
-              >
-                {option.label}
-              </button>
-            );
-          })}
+        <div className="mt-6 flex items-center justify-between gap-4 sm:mt-8">
+          <div
+            role="group"
+            aria-label="Case study layout"
+            className="flex shrink-0 items-center gap-1 rounded-full border border-border bg-surface p-1"
+          >
+            {treatments.map((option) => {
+              const active = treatment === option.value;
+              return (
+                <button
+                  key={option.value}
+                  type="button"
+                  aria-pressed={active}
+                  aria-controls={listId}
+                  className={`flex h-9 items-center rounded-full px-4 font-semibold text-xs uppercase tracking-[0.04em] transition-colors duration-200 ease-out motion-reduce:transition-none ${
+                    active
+                      ? "bg-heading text-background"
+                      : "text-muted hover:text-ink"
+                  }`}
+                  onClick={() => setTreatment(option.value)}
+                >
+                  {option.label}
+                </button>
+              );
+            })}
+          </div>
+
+          {treatment === "cards" ? (
+            <div className="flex items-center gap-2">
+              {([-1, 1] as const).map((direction) => (
+                <button
+                  key={direction}
+                  type="button"
+                  aria-label={
+                    direction === 1
+                      ? "Next case studies"
+                      : "Previous case studies"
+                  }
+                  aria-controls={listId}
+                  className="flex size-10 items-center justify-center rounded-full border border-border bg-surface text-ink transition-opacity duration-200 ease-out hover:opacity-60 motion-reduce:transition-none"
+                  onClick={() => scrollCards(direction)}
+                >
+                  <ArrowRightIcon
+                    className={
+                      direction === -1 ? "size-5 rotate-180" : "size-5"
+                    }
+                  />
+                </button>
+              ))}
+            </div>
+          ) : null}
         </div>
       ) : null}
 
@@ -290,6 +383,23 @@ export function CaseStudyShowcase() {
                 study={study}
                 current={pathname === study.href}
               />
+            </li>
+          ))}
+        </ul>
+      ) : treatment === "cards" ? (
+        // The padding and matching negative margin leave room inside the scroll
+        // container for each card's shadow, which it would otherwise clip.
+        <ul
+          id={listId}
+          ref={cardRowRef}
+          className="-mx-4 flex snap-x snap-mandatory scroll-px-4 gap-6 overflow-x-auto px-4 pb-14 pt-4 [scrollbar-width:thin]"
+        >
+          {caseStudies.map((study) => (
+            <li
+              key={study.href}
+              className="w-[82%] max-w-[340px] shrink-0 snap-start sm:w-[340px]"
+            >
+              <CaseStudyCard study={study} />
             </li>
           ))}
         </ul>

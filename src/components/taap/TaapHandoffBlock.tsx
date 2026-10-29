@@ -15,8 +15,8 @@ export function TaapHandoffBlock() {
         <Image
           src="/images/taap/handoff-tray.webp"
           alt="Annotated Figma handoff of the three-panel Trips desktop and mobile screens"
-          width={2560}
-          height={732}
+          width={2000}
+          height={1241}
           className="block h-auto w-full rounded-lg"
           sizes="(min-width: 1140px) 980px, calc(100vw - 40px)"
           unoptimized

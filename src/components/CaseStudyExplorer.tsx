@@ -6,20 +6,10 @@ import {
   CaseStudyPreviewRow,
   type PreviewItem,
 } from "@/components/CaseStudyPreviewRow";
-import {
-  caseStudies,
-  expediaWorkLink,
-  SHOW_EXPEDIA_WORK,
-  SHOW_VISUAL_DESIGN,
-  visualDesignLink,
-} from "@/lib/site";
+import { caseStudies } from "@/lib/site";
 
-/** The case studies, then the Expedia work and Visual design pages. */
-const items: readonly PreviewItem[] = [
-  ...caseStudies,
-  ...(SHOW_EXPEDIA_WORK ? [expediaWorkLink] : []),
-  ...(SHOW_VISUAL_DESIGN ? [visualDesignLink] : []),
-];
+/** The Expedia work and Visual design pages live in the main navigation. */
+const items: readonly PreviewItem[] = caseStudies;
 
 /** Static export serves trailing-slash URLs; hrefs in site.ts have none. */
 function samePath(a: string, b: string) {
