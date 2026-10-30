@@ -15,8 +15,8 @@ export function TaapGen2Block() {
         <Image
           src="/images/taap/gen2-tray.webp"
           alt="Generation 2 three-panel Trips layout on desktop with the mobile list overlapping"
-          width={2000}
-          height={1873}
+          width={1194}
+          height={2000}
           className="block h-auto w-full"
           sizes="(min-width: 1140px) 980px, calc(100vw - 40px)"
           unoptimized
