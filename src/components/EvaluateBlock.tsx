@@ -39,20 +39,22 @@ export function EvaluateBlock() {
         className="w-full max-w-[620px] lg:max-w-full"
       />
 
-      <div className="flex w-full max-w-[620px] flex-col items-center gap-10 overflow-clip rounded-lg bg-mat px-6 pt-16 sm:px-10 lg:max-w-full lg:flex-row lg:items-start lg:justify-center lg:gap-10 lg:px-10 lg:pt-20">
-        <div className="w-full min-w-0 lg:max-w-[647px] lg:flex-1">
+      {/* Transparent screenshot straight on the page with the findings beside
+       * it; stacked below lg. */}
+      <div className="flex w-full min-w-0 max-w-[620px] flex-col gap-10 lg:max-w-full lg:flex-row lg:items-center">
+        <div className="w-full min-w-0 lg:w-[66.64%] lg:shrink-0">
           <Image
             src="/images/reach/evaluate-shot.webp"
             alt="Annotated REACH.ai dashboard with heuristic findings"
-            width={1294}
-            height={1200}
-            className="h-auto w-full"
-            sizes="(min-width: 1024px) 50vw, (min-width: 640px) 620px, calc(100vw - 40px)"
+            width={848}
+            height={810}
+            className="block h-auto w-full"
+            sizes="(min-width: 1140px) 653px, calc(100vw - 40px)"
             unoptimized
           />
         </div>
 
-        <div className="flex w-full flex-col items-start gap-3 pb-10 lg:w-[400px] lg:flex-none lg:pb-0">
+        <div className="flex w-full min-w-0 flex-col items-start gap-3 lg:flex-1">
           {findings.map((item, index) => (
             <NumberItem key={item} index={index + 1}>
               {item}
