@@ -306,10 +306,26 @@ body {
   transform: none;
 }
 
+/* The homepage cards fade in one after another, left to right. Each starts at
+ * zero opacity and stays put; no movement. --i is the card's place in the row. */
+.card-fade-in {
+  opacity: 0;
+  transition: opacity 0.8s ease-out
+    calc(var(--fade-delay, 0ms) + var(--i, 0) * 150ms);
+}
+
+[data-in="true"] > .card-fade-in {
+  opacity: 1;
+}
+
 @media (scripting: none) {
   .reveal {
     opacity: 1;
     transform: none;
+  }
+
+  .card-fade-in {
+    opacity: 1;
   }
 }
 
@@ -380,6 +396,11 @@ body {
   .reveal {
     opacity: 1;
     transform: none;
+    transition: none;
+  }
+
+  .card-fade-in {
+    opacity: 1;
     transition: none;
   }
 

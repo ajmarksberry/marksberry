@@ -3,7 +3,14 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useId, useRef, useState, type ReactNode } from "react";
+import {
+  useEffect,
+  useId,
+  useRef,
+  useState,
+  type CSSProperties,
+  type ReactNode,
+} from "react";
 import { ArrowRightIcon, LocationIcon } from "@/components/Icons";
 import { Divider } from "@/components/Divider";
 import { ReachLogo } from "@/components/ReachLogo";
@@ -278,6 +285,7 @@ function CaseStudyCard({ study }: { study: Study }) {
           fill
           className="object-cover"
           sizes="(min-width: 640px) 340px, 82vw"
+          loading="eager"
           unoptimized
         />
       </span>
@@ -325,22 +333,61 @@ function nearestCard(offsets: number[]) {
   );
 }
 
+/** The scroll animations in flight, so a new grab or click can cut one short. */
+const scrollAnimations = new WeakMap<HTMLElement, number>();
+
+/** Hands scrolling back to the browser, snapping included. */
+function stopScrollAnimation(row: HTMLElement) {
+  const frame = scrollAnimations.get(row);
+  if (frame === undefined) return;
+  cancelAnimationFrame(frame);
+  scrollAnimations.delete(row);
+  row.style.scrollSnapType = "";
+}
+
+/**
+ * Glides the row to a card: quick off the mark, then easing into place. Snap
+ * is held off for the glide (it would fight every frame) and switched back on
+ * once the row has landed on the snap point, so it has nothing left to correct.
+ */
 function scrollToCard(row: HTMLElement, index: number) {
+  stopScrollAnimation(row);
+  const from = row.scrollLeft;
+  const max = row.scrollWidth - row.clientWidth;
+  const to = Math.min(Math.max(from + cardOffsets(row)[index], 0), max);
+  const distance = Math.abs(to - from);
   const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  row.scrollTo({
-    left: row.scrollLeft + cardOffsets(row)[index],
-    behavior: reduced ? "auto" : "smooth",
-  });
+  if (reduced || distance < 1) {
+    row.scrollLeft = to;
+    return;
+  }
+
+  const duration = 420 + Math.min(distance, 800) * 0.35;
+  const start = performance.now();
+  row.style.scrollSnapType = "none";
+
+  function step(now: number) {
+    const progress = Math.min(1, (now - start) / duration);
+    row.scrollLeft = from + (to - from) * (1 - (1 - progress) ** 4);
+    if (progress < 1) {
+      scrollAnimations.set(row, requestAnimationFrame(step));
+    } else {
+      scrollAnimations.delete(row);
+      row.style.scrollSnapType = "";
+    }
+  }
+  scrollAnimations.set(row, requestAnimationFrame(step));
 }
 
 /**
  * The cards in a row you can drag, with a dot per card underneath.
  *
  * Touch scrolls the row natively. A mouse can't, so pointer events drive
- * scrollLeft while it's held down; snapping is switched off for the drag and
- * back on at release, where the row settles on a card (a quick flick goes to
- * the next one). A drag swallows the click that follows it, so letting go over a
- * card doesn't open it.
+ * scrollLeft while it's held down: the row eases after the pointer rather than
+ * jumping to it, and snapping is switched off for the drag. On release the row
+ * glides to a card (a quick flick goes to the next one) and snapping comes
+ * back once it has landed. A drag swallows the click that follows it, so
+ * letting go over a card doesn't open it.
  *
  * A spacer after the last card lets every card reach the left edge, so each dot
  * lines up with exactly one card.
@@ -369,9 +416,25 @@ function CardCarousel({ id }: { id: string }) {
     let velocity = 0;
     let dragging = false;
     let swallowClick = false;
+    let goal = 0;
+    let follow = 0;
+
+    // While held, the row chases the pointer a little behind it; that's what
+    // takes the stutter out of a drag.
+    function chase() {
+      if (!row) return;
+      const gap = goal - row.scrollLeft;
+      if (Math.abs(gap) < 0.5) {
+        row.scrollLeft = goal;
+      } else {
+        row.scrollLeft += gap * 0.3;
+      }
+      follow = requestAnimationFrame(chase);
+    }
 
     function onPointerDown(event: PointerEvent) {
       if (event.pointerType !== "mouse" || event.button !== 0) return;
+      stopScrollAnimation(row!);
       pointerId = event.pointerId;
       startX = lastX = event.clientX;
       startLeft = row!.scrollLeft;
@@ -392,12 +455,15 @@ function CardCarousel({ id }: { id: string }) {
         row.style.scrollSnapType = "none";
         row.style.cursor = "grabbing";
         row.style.userSelect = "none";
+        goal = row.scrollLeft;
+        follow = requestAnimationFrame(chase);
       }
       const now = performance.now();
-      velocity = (event.clientX - lastX) / Math.max(1, now - lastTime);
+      const instant = (event.clientX - lastX) / Math.max(1, now - lastTime);
+      velocity = velocity * 0.4 + instant * 0.6;
       lastX = event.clientX;
       lastTime = now;
-      row.scrollLeft = startLeft - dx;
+      goal = startLeft - dx;
     }
 
     function onPointerUp(event: PointerEvent) {
@@ -405,6 +471,9 @@ function CardCarousel({ id }: { id: string }) {
       pointerId = null;
       if (!dragging) return;
       dragging = false;
+      cancelAnimationFrame(follow);
+      // Held still before letting go: that's a drop, not a flick.
+      if (performance.now() - lastTime > 100) velocity = 0;
 
       const offsets = cardOffsets(row);
       let target = nearestCard(offsets);
@@ -416,10 +485,14 @@ function CardCarousel({ id }: { id: string }) {
         if (behind !== -1) target = Math.min(target, behind);
       }
 
-      row.style.scrollSnapType = "";
       row.style.cursor = "";
       row.style.userSelect = "";
       scrollToCard(row, target);
+    }
+
+    // A touch or wheel mid-glide takes over from it.
+    function onTakeOver() {
+      if (row) stopScrollAnimation(row);
     }
 
     function onClickCapture(event: MouseEvent) {
@@ -433,6 +506,8 @@ function CardCarousel({ id }: { id: string }) {
     row.addEventListener("scroll", syncActive, { passive: true });
     window.addEventListener("resize", syncActive);
     row.addEventListener("pointerdown", onPointerDown);
+    row.addEventListener("touchstart", onTakeOver, { passive: true });
+    row.addEventListener("wheel", onTakeOver, { passive: true });
     row.addEventListener("pointermove", onPointerMove);
     row.addEventListener("pointerup", onPointerUp);
     row.addEventListener("pointercancel", onPointerUp);
@@ -440,14 +515,42 @@ function CardCarousel({ id }: { id: string }) {
 
     return () => {
       cancelAnimationFrame(frame);
+      cancelAnimationFrame(follow);
+      stopScrollAnimation(row);
       row.removeEventListener("scroll", syncActive);
       window.removeEventListener("resize", syncActive);
       row.removeEventListener("pointerdown", onPointerDown);
+      row.removeEventListener("touchstart", onTakeOver);
+      row.removeEventListener("wheel", onTakeOver);
       row.removeEventListener("pointermove", onPointerMove);
       row.removeEventListener("pointerup", onPointerUp);
       row.removeEventListener("pointercancel", onPointerUp);
       row.removeEventListener("click", onClickCapture, true);
     };
+  }, []);
+
+  // The cards fade in from left to right, one after another, the first time the
+  // row scrolls into view. Like Reveal, a row already on screen at load waits
+  // for the headline to finish.
+  useEffect(() => {
+    const row = rowRef.current;
+    if (!row) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return;
+        const onLoad = performance.now() < LOAD_WINDOW_MS;
+        row.style.setProperty(
+          "--fade-delay",
+          `${120 + (onLoad ? AFTER_HEADLINE_MS : 0)}ms`,
+        );
+        row.dataset.in = "true";
+        observer.disconnect();
+      },
+      { rootMargin: "0px 0px -8% 0px" },
+    );
+    observer.observe(row);
+    return () => observer.disconnect();
   }, []);
 
   return (
@@ -460,11 +563,12 @@ function CardCarousel({ id }: { id: string }) {
         ref={rowRef}
         className={`${fullBleed} flex cursor-grab snap-x snap-mandatory scroll-pl-[calc(50vw-50cqw)] gap-6 overflow-x-auto px-[calc(50vw-50cqw)] pb-14 pt-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden`}
       >
-        {caseStudies.map((study) => (
+        {caseStudies.map((study, index) => (
           <li
             key={study.href}
             data-card
-            className="w-[82%] max-w-[340px] shrink-0 snap-start sm:w-[340px]"
+            className="card-fade-in w-[82%] max-w-[340px] shrink-0 snap-start sm:w-[340px]"
+            style={{ "--i": index } as CSSProperties}
           >
             <CaseStudyCard study={study} />
           </li>
@@ -661,9 +765,7 @@ export function CaseStudyShowcase() {
             ))}
           </ul>
         ) : treatment === "cards" ? (
-          <Reveal delay={120}>
-            <CardCarousel id={listId} />
-          </Reveal>
+          <CardCarousel id={listId} />
         ) : (
           // 2x2 below lg — four circles across a phone would be thumbnails.
           <ul
