@@ -3,8 +3,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useId, useRef, useState } from "react";
-import { ArrowRightIcon } from "@/components/Icons";
+import { useEffect, useId, useRef, useState, type ReactNode } from "react";
+import { ArrowRightIcon, LocationIcon } from "@/components/Icons";
 import { Divider } from "@/components/Divider";
 import { ReachLogo } from "@/components/ReachLogo";
 import { SectionHeader } from "@/components/SectionHeader";
@@ -32,6 +32,7 @@ const DEFAULT_TREATMENT: Treatment = "cards";
 const SHOW_WELCOME = true;
 const welcomeOverline = "AJ Marksberry";
 const welcomeHeadline = "Creative Product Designer";
+const welcomeLocation = "Minneapolis, MN";
 
 const treatments = [
   { value: "banner", label: "Banners" },
@@ -505,6 +506,55 @@ function CardCarousel({ id }: { id: string }) {
   );
 }
 
+/** Gap past page load within which a reveal counts as "on load" and waits for
+ * the headline to finish first. */
+const LOAD_WINDOW_MS = 1500;
+const AFTER_HEADLINE_MS = 450;
+
+/**
+ * Fades and rises its children in the first time they scroll into view. What's
+ * already on screen at load holds back until the headline has played; anything
+ * further down reveals as soon as you reach it. `delay` staggers neighbours.
+ */
+function Reveal({
+  children,
+  delay = 0,
+  className = "",
+}: {
+  children: ReactNode;
+  delay?: number;
+  className?: string;
+}) {
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const node = ref.current;
+    if (!node) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return;
+        const onLoad = performance.now() < LOAD_WINDOW_MS;
+        node.style.setProperty(
+          "--reveal-delay",
+          `${delay + (onLoad ? AFTER_HEADLINE_MS : 0)}ms`,
+        );
+        node.dataset.visible = "true";
+        observer.disconnect();
+      },
+      { rootMargin: "0px 0px -8% 0px" },
+    );
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, [delay]);
+
+  return (
+    <div ref={ref} className={`reveal ${className}`}>
+      {children}
+    </div>
+  );
+}
+
 export function CaseStudyShowcase() {
   const pathname = usePathname();
   const groupId = useId();
@@ -526,22 +576,45 @@ export function CaseStudyShowcase() {
             {welcomeOverline}
           </p>
           <h1
-            className="hero-reveal w-full font-extrabold text-[clamp(52px,11.5vw,148px)] leading-[0.95] tracking-[-0.045em] text-heading"
-            style={{ fontFeatureSettings: '"liga" 0', animationDelay: "140ms" }}
+            className="w-full font-extrabold text-[clamp(52px,11.5vw,148px)] leading-[0.95] tracking-[-0.045em] text-heading"
+            style={{ fontFeatureSettings: '"liga" 0' }}
           >
-            {welcomeHeadline}
+            {welcomeHeadline.split(" ").map((word, index) => (
+              <span key={index}>
+                {index > 0 ? " " : null}
+                <span
+                  className="word-in"
+                  style={{ "--i": index } as React.CSSProperties}
+                >
+                  {word}
+                </span>
+              </span>
+            ))}
           </h1>
+          <p
+            className="hero-reveal flex items-center gap-2 font-extrabold text-lg leading-none tracking-[-0.02em] text-heading sm:text-xl"
+            style={{ animationDelay: "560ms" }}
+          >
+            <LocationIcon className="size-6 shrink-0 text-accent sm:size-7" />
+            {welcomeLocation}
+          </p>
         </div>
       ) : null}
 
-      {SHOW_WELCOME ? <Divider /> : null}
+      {SHOW_WELCOME ? (
+        <Reveal>
+          <Divider />
+        </Reveal>
+      ) : null}
 
       <div className="flex flex-col gap-4">
-        <SectionHeader
-          overline="Selected work"
-          title="Case studies"
-          className="w-full max-w-[640px]"
-        />
+        <Reveal>
+          <SectionHeader
+            overline="Selected work"
+            title="Case studies"
+            className="w-full max-w-[640px]"
+          />
+        </Reveal>
 
         {SHOW_LAYOUT_TOGGLE ? (
           <div className="flex items-center justify-between gap-4">
@@ -588,7 +661,9 @@ export function CaseStudyShowcase() {
             ))}
           </ul>
         ) : treatment === "cards" ? (
-          <CardCarousel id={listId} />
+          <Reveal delay={120}>
+            <CardCarousel id={listId} />
+          </Reveal>
         ) : (
           // 2x2 below lg — four circles across a phone would be thumbnails.
           <ul
@@ -607,7 +682,9 @@ export function CaseStudyShowcase() {
         )}
       </div>
 
-      <Divider />
+      <Reveal>
+        <Divider />
+      </Reveal>
     </section>
   );
 }

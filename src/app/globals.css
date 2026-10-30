@@ -274,6 +274,45 @@ body {
   animation: fade-up 0.95s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
 }
 
+/* The homepage headline: each word rises in on its own, one after another.
+ * --i is the word's place in the line. Only a "from", so the word settles on its
+ * own styles once it lands. */
+@keyframes word-in {
+  from {
+    opacity: 0;
+    transform: translateY(0.35em);
+  }
+}
+
+.word-in {
+  display: inline-block;
+  animation: word-in 0.7s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+  animation-delay: calc(140ms + var(--i, 0) * 120ms);
+}
+
+/* Fades and rises into place the first time it scrolls into view (see Reveal).
+ * Hidden from the first paint, so content doesn't flash and then vanish; the
+ * scripting query keeps it visible if JavaScript never runs. */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay, 0ms),
+    transform 0.75s cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay, 0ms);
+}
+
+.reveal[data-visible="true"] {
+  opacity: 1;
+  transform: none;
+}
+
+@media (scripting: none) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
+
 /* The dropdown's contents rise in one after another when it opens. --i is the
  * item's place in the order; --after holds back the items that sit below others
  * that are only shown on a phone (the page links), so the stagger stays tight. */
@@ -333,8 +372,15 @@ body {
   .section-reveal,
   .menu-item-in,
   .card-media,
-  .card-rise {
+  .card-rise,
+  .word-in {
     animation: none;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
   }
 
   /* The forward/back states still apply; they just stop being animated. */
