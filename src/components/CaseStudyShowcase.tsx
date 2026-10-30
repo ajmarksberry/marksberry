@@ -30,6 +30,7 @@ const DEFAULT_TREATMENT: Treatment = "cards";
  * (and the rule under it).
  */
 const SHOW_WELCOME = true;
+const welcomeOverline = "AJ Marksberry";
 const welcomeHeadline = "Creative Product Designer";
 
 const treatments = [
@@ -514,89 +515,99 @@ export function CaseStudyShowcase() {
   return (
     <section
       aria-label="Case studies"
-      className={`flex w-full flex-col gap-6 sm:gap-8 ${SHOW_LAYOUT_TOGGLE ? "" : "pt-6 sm:pt-8"}`}
+      className="flex w-full flex-col gap-12 pt-12 lg:gap-16 lg:pt-16"
     >
       {SHOW_WELCOME ? (
-        <h1
-          className="hero-reveal w-full pt-6 font-extrabold text-[clamp(52px,11.5vw,148px)] leading-[0.95] tracking-[-0.045em] text-heading sm:pt-8"
-          style={{ fontFeatureSettings: '"liga" 0', animationDelay: "140ms" }}
-        >
-          {welcomeHeadline}
-        </h1>
-      ) : null}
-
-      {SHOW_WELCOME ? <Divider className="my-4 sm:my-6" /> : null}
-
-      <SectionHeader
-        overline="Selected work"
-        title="Case studies"
-        className="w-full max-w-[640px]"
-      />
-
-      {SHOW_LAYOUT_TOGGLE ? (
-        <div className="mt-6 flex items-center justify-between gap-4 sm:mt-8">
-          <div
-            role="group"
-            aria-label="Case study layout"
-            className="flex shrink-0 items-center gap-1 rounded-full border border-border bg-surface p-1"
+        <div className="flex w-full flex-col items-start gap-6">
+          <p
+            className="hero-reveal font-extrabold text-xs uppercase leading-none text-accent"
+            style={{ animationDelay: "40ms" }}
           >
-            {treatments.map((option) => {
-              const active = treatment === option.value;
-              return (
-                <button
-                  key={option.value}
-                  type="button"
-                  aria-pressed={active}
-                  aria-controls={listId}
-                  className={`flex h-9 items-center rounded-full px-4 font-semibold text-xs uppercase tracking-[0.04em] transition-colors duration-200 ease-out motion-reduce:transition-none ${
-                    active
-                      ? "bg-heading text-background"
-                      : "text-muted hover:text-ink"
-                  }`}
-                  onClick={() => setTreatment(option.value)}
-                >
-                  {option.label}
-                </button>
-              );
-            })}
-          </div>
+            {welcomeOverline}
+          </p>
+          <h1
+            className="hero-reveal w-full font-extrabold text-[clamp(52px,11.5vw,148px)] leading-[0.95] tracking-[-0.045em] text-heading"
+            style={{ fontFeatureSettings: '"liga" 0', animationDelay: "140ms" }}
+          >
+            {welcomeHeadline}
+          </h1>
         </div>
       ) : null}
 
-      {/* Cards sit one after another at full height — no overlap. The movement
-       * comes from globals.css: the photograph parallaxes against the scroll and
-       * the copy staggers in, both on scroll-driven timelines. */}
-      {treatment === "banner" ? (
-        <ul id={listId} ref={bannerListRef} className={fullBleed}>
-          {caseStudies.map((study) => (
-            <li key={study.href} className="h-[100svh] overflow-clip">
-              <CaseStudyBanner
-                study={study}
-                current={pathname === study.href}
-              />
-            </li>
-          ))}
-        </ul>
-      ) : treatment === "cards" ? (
-        <CardCarousel id={listId} />
-      ) : (
-        // 2x2 below lg — four circles across a phone would be thumbnails.
-        <ul
-          id={listId}
-          className="circle-row grid grid-cols-2 gap-8 py-4 sm:gap-10 lg:grid-cols-4"
-        >
-          {caseStudies.map((study) => (
-            <li key={study.href} className="w-full">
-              <CaseStudyCircle
-                study={study}
-                current={pathname === study.href}
-              />
-            </li>
-          ))}
-        </ul>
-      )}
+      {SHOW_WELCOME ? <Divider /> : null}
 
-      <Divider className="my-4 sm:my-6" />
+      <div className="flex flex-col gap-4">
+        <SectionHeader
+          overline="Selected work"
+          title="Case studies"
+          className="w-full max-w-[640px]"
+        />
+
+        {SHOW_LAYOUT_TOGGLE ? (
+          <div className="flex items-center justify-between gap-4">
+            <div
+              role="group"
+              aria-label="Case study layout"
+              className="flex shrink-0 items-center gap-1 rounded-full border border-border bg-surface p-1"
+            >
+              {treatments.map((option) => {
+                const active = treatment === option.value;
+                return (
+                  <button
+                    key={option.value}
+                    type="button"
+                    aria-pressed={active}
+                    aria-controls={listId}
+                    className={`flex h-9 items-center rounded-full px-4 font-semibold text-xs uppercase tracking-[0.04em] transition-colors duration-200 ease-out motion-reduce:transition-none ${
+                      active
+                        ? "bg-heading text-background"
+                        : "text-muted hover:text-ink"
+                    }`}
+                    onClick={() => setTreatment(option.value)}
+                  >
+                    {option.label}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        ) : null}
+
+        {/* Cards sit one after another at full height — no overlap. The movement
+         * comes from globals.css: the photograph parallaxes against the scroll and
+         * the copy staggers in, both on scroll-driven timelines. */}
+        {treatment === "banner" ? (
+          <ul id={listId} ref={bannerListRef} className={fullBleed}>
+            {caseStudies.map((study) => (
+              <li key={study.href} className="h-[100svh] overflow-clip">
+                <CaseStudyBanner
+                  study={study}
+                  current={pathname === study.href}
+                />
+              </li>
+            ))}
+          </ul>
+        ) : treatment === "cards" ? (
+          <CardCarousel id={listId} />
+        ) : (
+          // 2x2 below lg — four circles across a phone would be thumbnails.
+          <ul
+            id={listId}
+            className="circle-row grid grid-cols-2 gap-8 py-4 sm:gap-10 lg:grid-cols-4"
+          >
+            {caseStudies.map((study) => (
+              <li key={study.href} className="w-full">
+                <CaseStudyCircle
+                  study={study}
+                  current={pathname === study.href}
+                />
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
+
+      <Divider />
     </section>
   );
 }

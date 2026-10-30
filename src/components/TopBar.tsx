@@ -226,14 +226,16 @@ export function TopBar() {
               aria-current="page"
               className="shrink-0 whitespace-nowrap font-bold text-lg leading-none tracking-[-0.72px] text-accent sm:text-[22px] sm:tracking-[-0.88px]"
             >
-              AJ Marksberry
+              <span aria-hidden>AJM</span>
+              <span className="sr-only">AJ Marksberry</span>
             </span>
           ) : (
             <Link
               href="/"
               className={`shrink-0 whitespace-nowrap font-bold text-lg leading-none tracking-[-0.72px] text-chrome-fg sm:text-[22px] sm:tracking-[-0.88px] ${fade}`}
             >
-              AJ Marksberry
+              <span aria-hidden>AJM</span>
+              <span className="sr-only">AJ Marksberry</span>
             </Link>
           )}
           <div className="flex items-center gap-3 sm:gap-6">

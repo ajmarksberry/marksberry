@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import { ContactLinks } from "@/components/ContactLinks";
 import { MarketingPage } from "@/components/MarketingPage";
+import { OpenToWorkCard } from "@/components/OpenToWorkCard";
 
 export const metadata: Metadata = {
   title: "AJ Marksberry",
@@ -10,11 +10,12 @@ export const metadata: Metadata = {
 export default function HomePage() {
   return (
     <MarketingPage
+      overline="Contact"
       title="Let’s work together"
       caseStudyLayout="stack"
       caseStudiesFirst
     >
-      <ContactLinks />
+      <OpenToWorkCard />
     </MarketingPage>
   );
 }

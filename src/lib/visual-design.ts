@@ -86,16 +86,6 @@ export const visualDesign: readonly ExpediaWorkItem[] = [
         captionPull: 2.9,
         caption: "The Revolution Parts logo and its color variations.",
       },
-      {
-        src: "/images/visual-design/revolution-nissan.webp",
-        alt: "A branded Revolution Parts storefront for an official Nissan parts center, with a year, make, and model picker, vehicle types, and popular parts categories",
-        width: 1396,
-        height: 2000,
-        bare: true,
-        captionPull: 4.9,
-        caption:
-          "A branded storefront for an official Nissan parts center, with vehicle lookup and popular categories.",
-      },
     ],
   },
 ];

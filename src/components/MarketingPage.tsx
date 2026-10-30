@@ -40,7 +40,13 @@ export function MarketingPage({
     <main id="top">
       <div className="px-5 sm:px-10 lg:px-20">
         {caseStudiesFirst ? caseStudies : null}
-        <section className="flex w-full max-w-[640px] flex-col items-start gap-10 py-16 sm:py-20 lg:max-w-full lg:py-24">
+        <section
+          className={`flex w-full max-w-[640px] flex-col items-start gap-10 lg:max-w-full ${
+            caseStudiesFirst
+              ? "pb-16 pt-12 sm:pb-20 lg:pb-24 lg:pt-16"
+              : "py-16 sm:py-20 lg:py-24"
+          }`}
+        >
           <SectionHeader
             overline={overline}
             title={title}
