@@ -30,6 +30,15 @@ const visuals = [
       "The dashboard, bookings detail, and My Account screens, adapted for mobile.",
   },
   {
+    src: "/images/reach/design-account.webp",
+    alt: "REACH.ai Settings and My Account screens, overlapping, with business details, service intervals, plan, and billing history",
+    width: 1572,
+    height: 2000,
+    transparent: true,
+    caption:
+      "The Settings and My Account screens, where owners manage their business details, service intervals, plan, and billing.",
+  },
+  {
     src: "/images/reach/design-login.webp",
     alt: "REACH.ai welcome back login screen with portrait",
     width: 2040,
