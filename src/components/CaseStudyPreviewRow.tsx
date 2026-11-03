@@ -6,7 +6,10 @@ import { ArrowRightIcon } from "@/components/Icons";
 export type PreviewItem = {
   href: string;
   title: string;
-  description: string;
+  summary: string;
+  client: string;
+  audience: string;
+  years: string;
   hero: string | null;
 };
 
@@ -15,10 +18,10 @@ export type PreviewItem = {
 const FALLBACK_THUMB = "/images/home/case-study-backdrop.webp";
 
 /**
- * A smaller, horizontal echo of the homepage banners: thumbnail beside title
- * and (optionally) description, full width of whatever contains it. Used at
- * the bottom of each case study page and, in `compact` form, in the mobile
- * nav's case-study list.
+ * A smaller, horizontal echo of the homepage cards: thumbnail beside the title,
+ * the tag line (client, audience, years), and the summary, full width of
+ * whatever contains it. Used at the bottom of each case study page and, in
+ * `compact` form, in the nav's case-study list.
  */
 export function CaseStudyPreviewRow({
   study,
@@ -28,7 +31,8 @@ export function CaseStudyPreviewRow({
 }: {
   study: PreviewItem;
   current: boolean;
-  /** Tighter row, no description — the mobile nav has little room to spare. */
+  /** Tighter row for the phone menu, which has little room to spare: no summary
+   * until the desktop dropdown's width (md), where it has the whole panel. */
   compact?: boolean;
   /** The two call sites sit on different backgrounds, so the divider differs. */
   dividerClassName?: string;
@@ -37,9 +41,9 @@ export function CaseStudyPreviewRow({
     <Link
       href={study.href}
       aria-current={current ? "page" : undefined}
-      className={`group flex w-full items-center border-b py-3 outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-accent sm:gap-6 ${
-        compact ? "gap-3" : "gap-4"
-      } ${compact ? "sm:py-4" : "py-4 sm:py-5"} ${dividerClassName} ${
+      className={`group flex w-full items-center border-b outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-accent sm:gap-6 ${
+        compact ? "gap-3 py-3 sm:py-4 md:py-5" : "gap-4 py-4 sm:py-5"
+      } ${dividerClassName} ${
         current
           ? "opacity-60"
           : "transition-opacity duration-200 ease-out hover:opacity-80"
@@ -48,8 +52,8 @@ export function CaseStudyPreviewRow({
       <span
         className={`relative block shrink-0 overflow-clip rounded-md bg-panel-dark ${
           compact
-            ? "h-[40px] w-[64px] sm:h-[60px] sm:w-[96px]"
-            : "h-[64px] w-[104px] sm:h-[88px] sm:w-[148px] lg:h-[100px] lg:w-[168px]"
+            ? "h-10 w-16 sm:h-16 sm:w-24 md:h-24 md:w-40 lg:h-28 lg:w-48"
+            : "h-16 w-28 sm:h-24 sm:w-40 lg:h-28 lg:w-48"
         }`}
       >
         <Image
@@ -57,30 +61,51 @@ export function CaseStudyPreviewRow({
           alt=""
           fill
           className="object-cover transition-[filter] duration-300 ease-out group-hover:brightness-110 motion-reduce:transition-none"
-          sizes={compact ? "96px" : "168px"}
+          sizes="192px"
           unoptimized
         />
       </span>
 
-      <span className="flex min-w-0 flex-1 flex-col gap-1">
+      <span className="flex min-w-0 flex-1 flex-col gap-1 sm:gap-2">
         <span
           className={`font-extrabold leading-6 text-heading ${
             compact
-              ? "truncate text-[clamp(10px,3.3vw,14px)] sm:text-base"
-              : "truncate text-base sm:text-lg"
+              ? "truncate text-[clamp(10px,3.3vw,14px)] sm:text-base md:text-lg"
+              : "line-clamp-2 text-base sm:text-lg"
           }`}
           style={{ fontFeatureSettings: '"liga" 0' }}
         >
           {study.title}
         </span>
-        {!compact ? (
-          <span className="line-clamp-1 text-sm leading-6 text-ink sm:line-clamp-2">
-            {study.description}
-          </span>
-        ) : null}
+        <span className="font-semibold text-[11px] uppercase leading-4 tracking-[1.2px] text-muted">
+          {/* Each part stays whole, so a narrow screen wraps between them and
+           * never inside the years. */}
+          {[study.client, study.audience, study.years].map((part, i, parts) => (
+            <span key={part} className="whitespace-nowrap">
+              {part}
+              {i < parts.length - 1 ? " ·" : ""}{" "}
+            </span>
+          ))}
+        </span>
+        <span
+          className={`text-sm leading-6 text-ink ${
+            compact ? "hidden md:line-clamp-2" : "hidden sm:line-clamp-2"
+          }`}
+        >
+          {study.summary}
+        </span>
       </span>
 
-      <ArrowRightIcon className="size-5 shrink-0 text-ink transition-transform duration-200 ease-out group-hover:translate-x-1 motion-reduce:transition-none" />
+      {current ? (
+        <span className="hidden shrink-0 font-semibold text-[11px] uppercase leading-4 tracking-[1.2px] text-muted sm:block">
+          Viewing
+        </span>
+      ) : null}
+      <ArrowRightIcon
+        className={`size-5 shrink-0 text-ink transition-transform duration-200 ease-out group-hover:translate-x-1 motion-reduce:transition-none ${
+          current ? "sm:hidden" : ""
+        }`}
+      />
     </Link>
   );
 }

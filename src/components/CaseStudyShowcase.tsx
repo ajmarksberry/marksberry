@@ -16,7 +16,7 @@ import { Divider } from "@/components/Divider";
 import { ReachLogo } from "@/components/ReachLogo";
 import { SectionHeader } from "@/components/SectionHeader";
 import { TaapLogo } from "@/components/TaapLogo";
-import { caseStudies } from "@/lib/site";
+import { caseStudies, caseStudyTag } from "@/lib/site";
 
 type Study = (typeof caseStudies)[number];
 type Treatment = "banner" | "cards" | "circles";
@@ -38,7 +38,7 @@ const DEFAULT_TREATMENT: Treatment = "cards";
  */
 const SHOW_WELCOME = true;
 const welcomeOverline = "AJ Marksberry";
-const welcomeHeadline = "Creative Product Designer";
+const welcomeHeadline = "Senior Product Designer";
 const welcomeLocation = "Minneapolis, MN";
 
 const treatments = [
@@ -303,7 +303,7 @@ function CaseStudyCard({ study }: { study: Study }) {
           {study.title}
         </span>
         <span className="font-semibold text-[11px] uppercase leading-4 tracking-[1.2px] text-[#6B7280]">
-          {[study.client, study.audience, study.years].join(" · ")}
+          {caseStudyTag(study)}
         </span>
         <span
           className="text-base leading-6 text-[#374151]"

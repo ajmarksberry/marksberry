@@ -27,7 +27,7 @@ export function ResultsBlock() {
         overline="Design"
         title="Results"
         subtitle="Project success metrics."
-        description="High-fidelity UI brought breathing room, confident typography, and a design system that made charts, status, and AI moments feel like one product family."
+        description="The redesigned dashboard doubled weekly engagement and cut support requests by 40%, and most clients on the previous UI chose to upgrade."
         className="w-full max-w-[620px] lg:max-w-full"
       />
 

@@ -15,7 +15,7 @@ export function BookingIdentifyBlock() {
       <SectionHeader
         overline="Identify"
         title="Our audience"
-        description="High-fidelity UI brought breathing room, confident typography, and a design system that made charts, status, and AI moments feel like one product family."
+        description="These customers want booking to be easy, on a regular cadence, and with the provider they already know. Their frustrations shaped the booking experience."
         className="w-full max-w-[620px] lg:max-w-full"
       />
 

@@ -118,3 +118,12 @@ export const caseStudies = [
 ] as const;
 
 export type CaseStudyHref = (typeof caseStudies)[number]["href"];
+
+/** The tag line under a case study's title: client, audience, and years. */
+export function caseStudyTag(study: {
+  client: string;
+  audience: string;
+  years: string;
+}) {
+  return [study.client, study.audience, study.years].join(" · ");
+}

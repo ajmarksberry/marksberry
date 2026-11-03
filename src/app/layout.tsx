@@ -12,8 +12,14 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "AJ Marksberry",
-  description: "Product design portfolio",
+  metadataBase: new URL("https://ajmarksberry.com"),
+  title: "AJ Marksberry | Senior Product Designer",
+  description:
+    "Senior Product Designer with deep experience in enterprise and consumer products. Case studies from Expedia TAAP and REACH.ai.",
+  // Title and description are left to each page, so a shared link to a case
+  // study previews with its own. The image comes from opengraph-image.png.
+  openGraph: { type: "website", siteName: "AJ Marksberry", locale: "en_US" },
+  twitter: { card: "summary_large_image" },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
