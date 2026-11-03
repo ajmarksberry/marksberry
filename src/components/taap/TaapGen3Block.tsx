@@ -16,8 +16,8 @@ export function TaapGen3Block() {
         <Image
           src="/images/taap/gen3-tray.webp"
           alt="Generation 3 Trips dashboard after post-launch refinements"
-          width={1185}
-          height={2000}
+          width={2576}
+          height={4348}
           className="block h-auto w-full"
           sizes="(min-width: 1140px) 980px, calc(100vw - 40px)"
           unoptimized
