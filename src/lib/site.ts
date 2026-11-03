@@ -86,7 +86,7 @@ export const caseStudies = [
     description:
       "A new tool that turns scattered bookings into one itinerary agents can share",
     summary:
-      "A desktop and mobile tool for travel agents to build and share branded itineraries with their clients.",
+      "A tool for travel agents to build and share branded itineraries with their clients.",
     thumb: "/images/itinerary/hero-tray.webp",
     hero: null,
   },

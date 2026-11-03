@@ -33,7 +33,7 @@ export default function AboutPage() {
     <MarketingPage
       overline="About"
       title="AJ Marksberry"
-      description="I'm a Senior Product Designer with 27+ years of experience helping organizations transform complex business challenges into intuitive, human-centered digital products."
+      description="I'm a Senior Product Designer with deep experience in enterprise product design, consumer-facing applications, and end-to-end platform design. I've led design across B2B and B2C products, from discovery and research through design sprints, wireframing, visual design, accessibility, and dev handoff."
       showFooter={false}
       afterTitle={
         <Image
@@ -50,13 +50,6 @@ export default function AboutPage() {
     >
       <div className="flex w-full max-w-[640px] flex-col gap-10 lg:max-w-full">
         <div className="flex w-full max-w-[640px] flex-col gap-6 text-base leading-7 text-ink">
-          <p>
-            Over the years, I&rsquo;ve worked across travel, healthcare,
-            insurance, communications, hospitality, ecommerce, and emerging
-            technology industries, partnering closely with Product, Engineering,
-            Research, Content Design, and business stakeholders to bring ideas
-            from discovery through delivery.
-          </p>
           <p>
             Most recently, I was a contract product designer at Expedia, working
             on the Travel Agent Affiliate Program (TAAP), which supports over
