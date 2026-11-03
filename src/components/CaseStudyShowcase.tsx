@@ -302,11 +302,14 @@ function CaseStudyCard({ study }: { study: Study }) {
         >
           {study.title}
         </span>
+        <span className="font-semibold text-[11px] uppercase leading-4 tracking-[1.2px] text-[#6B7280]">
+          {[study.client, study.audience, study.years].join(" · ")}
+        </span>
         <span
           className="text-base leading-6 text-[#374151]"
           style={{ fontFeatureSettings: '"liga" 0' }}
         >
-          {study.description}
+          {study.summary}
         </span>
         <span className="mt-auto flex flex-col pt-4">
           <dl className="flex flex-col gap-2 border-t border-[#E5E7EB] pt-4">
