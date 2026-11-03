@@ -1,5 +1,6 @@
 export const EMAIL = "ajmarksberry@gmail.com";
 export const MAILTO = `mailto:${EMAIL}`;
+export const LINKEDIN_URL = "https://www.linkedin.com/in/marksberry";
 
 export const RESUME_PATH = "/AJ_Marksberry_Resume_2026.pdf";
 /** Name the file lands under on the visitor's machine. */
@@ -53,10 +54,16 @@ export const navLinks = [
  * `hero` is the photograph that represents a case study on the homepage — the
  * banner backdrop and the circle thumbnail both read it. null means "no image of
  * its own yet"; the showcase falls back to a shared placeholder.
+ *
+ * `client` and `years` are the facts each homepage card lists under its
+ * description, laid out like the meta strip at the top of a case study. Both
+ * repeat each case study's hero block.
  */
 export const caseStudies = [
   {
     href: "/projects/taap",
+    client: "Expedia",
+    years: "2023-2026",
     title: "Expedia TAAP Trips",
     description:
       "From chaos to clarity: three generations that turned a consumer list into a professional agent workspace",
@@ -65,6 +72,8 @@ export const caseStudies = [
   },
   {
     href: "/projects/taap-itinerary",
+    client: "Expedia",
+    years: "2025-2026",
     title: "Expedia TAAP Itinerary Builder",
     description:
       "A new tool that turns scattered bookings into one itinerary agents can share",
@@ -73,6 +82,8 @@ export const caseStudies = [
   },
   {
     href: "/projects/reach-ai",
+    client: "REACH.ai",
+    years: "2020-2022",
     title: "REACH.ai Booking Dashboard",
     description: "Bringing an outdated experience back to life again",
     thumb: "/images/reach/hero-tray.webp",
@@ -80,6 +91,8 @@ export const caseStudies = [
   },
   {
     href: "/projects/reach-booking",
+    client: "REACH.ai",
+    years: "2020-2022",
     title: "REACH.ai booking experience",
     description:
       "Filling last-minute appointments to capture lost revenue for service providers, built from the ground up",

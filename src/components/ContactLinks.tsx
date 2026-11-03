@@ -1,10 +1,11 @@
 import { DownloadIcon } from "@/components/Icons";
+import { LinkedInLink } from "@/components/LinkedInLink";
 import { EMAIL, MAILTO, RESUME_FILENAME, RESUME_PATH } from "@/lib/site";
 
 const linkClass =
   "font-semibold text-base leading-7 text-ink transition-opacity duration-200 ease-out hover:opacity-60";
 
-/** The email and résumé links under "Let's work together", on the homepage and
+/** The email, LinkedIn and résumé links under "Let's work together", on the homepage and
  * in the Contact dropdown. */
 export function ContactLinks() {
   return (
@@ -12,6 +13,9 @@ export function ContactLinks() {
       <a href={MAILTO} className={`${linkClass} underline underline-offset-4`}>
         {EMAIL}
       </a>
+      <LinkedInLink className={`${linkClass} underline underline-offset-4`}>
+        LinkedIn
+      </LinkedInLink>
       <a
         href={RESUME_PATH}
         download={RESUME_FILENAME}

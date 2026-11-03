@@ -3,7 +3,7 @@ import { Divider } from "@/components/Divider";
 import { TaapLogo } from "@/components/TaapLogo";
 
 const meta = [
-  { label: "Client", value: "Expedia TAAP" },
+  { label: "Client", value: "Expedia" },
   { label: "Role", value: "Lead product designer" },
   { label: "Duration", value: "2023-2026" },
   { label: "Tools", value: "Figma · Miro · Zoom" },

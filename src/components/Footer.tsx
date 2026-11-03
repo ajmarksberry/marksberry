@@ -1,8 +1,8 @@
 import Link from "next/link";
+import { LinkedInLink } from "@/components/LinkedInLink";
 import { MAILTO } from "@/lib/site";
 
-const fade =
-  "transition-opacity duration-200 ease-out hover:opacity-60";
+const fade = "transition-opacity duration-200 ease-out hover:opacity-60";
 
 /** Flip to true to show the site footer again. */
 const SHOW_FOOTER = false;
@@ -33,6 +33,11 @@ export function Footer() {
             >
               EMAIL ME
             </a>
+            <LinkedInLink
+              className={`font-semibold text-sm leading-none text-footer-muted ${fade}`}
+            >
+              LINKEDIN
+            </LinkedInLink>
           </div>
         </div>
         <div className="flex w-full border-t border-footer-border pt-8 text-sm leading-none">

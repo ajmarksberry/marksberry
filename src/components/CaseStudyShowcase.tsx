@@ -271,6 +271,11 @@ function CaseStudyCircle({
  * than the theme-aware tokens.
  */
 function CaseStudyCard({ study }: { study: Study }) {
+  const facts = [
+    ["Client", study.client],
+    ["Year", study.years],
+  ] as const;
+
   return (
     <Link
       href={study.href}
@@ -290,7 +295,7 @@ function CaseStudyCard({ study }: { study: Study }) {
         />
       </span>
 
-      <span className="flex min-w-0 flex-1 flex-col gap-3 p-6">
+      <span className="flex min-w-0 flex-1 flex-col gap-2 p-6">
         <span
           className="font-extrabold text-2xl leading-8 tracking-[-0.4px] text-[#111827]"
           style={{ fontFeatureSettings: '"liga" 0' }}
@@ -298,13 +303,28 @@ function CaseStudyCard({ study }: { study: Study }) {
           {study.title}
         </span>
         <span
-          className="text-base leading-7 text-[#374151]"
+          className="text-base leading-6 text-[#374151]"
           style={{ fontFeatureSettings: '"liga" 0' }}
         >
           {study.description}
         </span>
-        <ArrowRightIcon className="mt-auto size-6 shrink-0 text-[#111827] transition-transform duration-200 ease-out group-hover:translate-x-1 motion-reduce:transition-none" />
+        <span className="mt-auto flex flex-col pt-4">
+          <dl className="flex flex-col gap-2 border-t border-[#E5E7EB] pt-4">
+            {facts.map(([label, value]) => (
+              <div key={label} className="flex min-w-0 flex-col pr-10">
+                <dt className="font-semibold text-[11px] uppercase leading-4 tracking-[0.48px] text-[#6B7280]">
+                  {label}
+                </dt>
+                <dd className="font-semibold text-sm leading-6 text-[#111827]">
+                  {value}
+                </dd>
+              </div>
+            ))}
+          </dl>
+        </span>
       </span>
+
+      <ArrowRightIcon className="absolute bottom-6 right-6 size-6 shrink-0 text-[#111827] transition-transform duration-200 ease-out group-hover:translate-x-1 motion-reduce:transition-none" />
 
       {/* Drawn over the photograph, inside the card, so the card keeps its size. */}
       <span
