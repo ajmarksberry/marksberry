@@ -13,17 +13,20 @@ export const metadata: Metadata = {
 
 const expertise = [
   "Product Design",
-  "UX Strategy",
-  "User Research & Validation",
-  "Information Architecture",
-  "Interaction Design",
   "AI-Assisted Design Exploration",
-  "Accessibility",
-  "Design Systems",
+  "UX Design & Strategy",
+  "UI & Visual Design",
+  "Interaction Design",
+  "User Research & Validation",
+  "AI-Ready Design Systems",
+  "Wireframing & Prototyping",
+  "Information Architecture",
+  "Accessibility (WCAG)",
   "Enterprise SaaS Platforms",
-  "Journey Mapping",
-  "Stakeholder Facilitation",
-  "Visual Design",
+  "Cross-Functional Collaboration",
+  "Figma",
+  "Claude",
+  "Cursor",
 ] as const;
 
 export default function AboutPage() {

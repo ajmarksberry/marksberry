@@ -31,10 +31,13 @@ export function ItineraryIntroBlock() {
               className="w-full text-base leading-7"
               style={{ fontFeatureSettings: '"liga" 0' }}
             >
-              Expedia TAAP is a free platform by Expedia Group that offers travel
-              advisors access to over 900,000 properties, flights, activities,
-              and car rentals. Agents book for clients and earn commissions on
-              each booking, with real-time availability and dedicated support.
+              Expedia TAAP is a free platform by Expedia Group where travel
+              advisors book properties, flights, activities, and car rentals
+              for their clients and earn commissions on each booking, with
+              real-time availability. It supports over 200,000 travel advisors
+              across 35 countries and is part of Expedia&rsquo;s fast-growing
+              B2B business, where revenue was growing around 25% year over
+              year.
             </p>
           </div>
           <div className="flex w-full flex-col items-start gap-4">
