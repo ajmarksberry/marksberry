@@ -1,0 +1,237 @@
+{
+  "summary": {
+    "overline": "Summary",
+    "title": "At a glance",
+    "blocks": [
+      {
+        "type": "p",
+        "text": "Expedia TAAP is Expedia Group’s booking platform for travel advisors: 110,000+ advisors at 38,000+ agencies across 85+ markets, in a fast-growing B2B business."
+      },
+      {
+        "type": "p",
+        "text": "The Trips page was still the consumer “My Trips” list, with no traveler names, no search, and no filters. I led design across three generations, from 2023 to 2026, to turn it into a professional advisor workspace, working with Product, Engineering, Research, and Content."
+      },
+      {
+        "type": "p",
+        "text": "The Gen 2 three-panel view decreased call volume to the customer center by 10%, and support tickets fell. Gen 3 is in progress."
+      },
+      {
+        "type": "h",
+        "text": "What I owned"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Led design across all three generations",
+          "Mapped the live experience as a user flow and annotated every friction point",
+          "Ran user testing, surveys, and questionnaires with Research",
+          "Delivered specs, tokenized styles, and accessibility annotations at every handoff"
+        ]
+      },
+      {
+        "type": "stats",
+        "items": [
+          {
+            "value": "10%",
+            "label": "fewer calls to the customer center after the 3-panel redesign"
+          },
+          {
+            "value": "110,000+",
+            "label": "travel advisors on TAAP"
+          },
+          {
+            "value": "20+",
+            "label": "post-launch changes prioritized"
+          }
+        ]
+      }
+    ]
+  },
+  "problem": {
+    "overline": "The problem",
+    "title": "The challenge",
+    "blocks": [
+      {
+        "type": "p",
+        "text": "The original My Trips page was built for consumers. Advisors manage hundreds of client bookings at once and need to find one quickly, but the page gave them two tabs and a flat list of links."
+      },
+      {
+        "type": "split",
+        "image": {
+          "src": "/images/taap/origins-table.webp",
+          "alt": "Original My Trips page with a flat list of hyperlinks",
+          "width": 1702,
+          "height": 1608
+        },
+        "items": [
+          "Two tabs only: Upcoming and Past and Canceled",
+          "Flat list of links: destination, date, itinerary number",
+          "No traveler name",
+          "No search, filters, or booking type indicators",
+          "No earnings, refund status, or advisor actions"
+        ]
+      },
+      {
+        "type": "p",
+        "text": "The goal: a professional tool that helps advisors find a booking fast, see its status at a glance, and act on it."
+      }
+    ]
+  },
+  "gen1": {
+    "overline": "Generation 1",
+    "title": "From consumer list to data table",
+    "blocks": [
+      {
+        "type": "p",
+        "text": "I replaced the consumer pattern with a professional data table and renamed “My Trips” to “Trips,” reframing the page as an advisor workspace."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Four status tabs",
+          "Sortable columns",
+          "Line-of-business icons showing booking type",
+          "Paginated results",
+          "Universal search with typeahead and full search states"
+        ]
+      },
+      {
+        "type": "image",
+        "image": {
+          "src": "/images/taap/gen1-table.webp",
+          "alt": "Generation 1 Trips page redesigned as a sortable data table",
+          "width": 1280,
+          "height": 1134
+        }
+      },
+      {
+        "type": "p",
+        "text": "Gen 1 shipped and set the B2B table foundation. Research on it, plus a change in product direction, led to Gen 2."
+      }
+    ]
+  },
+  "gen2": {
+    "overline": "Generation 2",
+    "title": "A three-panel workspace",
+    "blocks": [
+      {
+        "type": "p",
+        "text": "Post-launch research and a product direction change called for a full redesign. Before designing, I mapped the live experience as a detailed user flow and annotated every friction point."
+      },
+      {
+        "type": "p",
+        "text": "The Outlook-style, three-column layout gave advisors:"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "A persistent list on the left",
+          "Contextual actions in the center",
+          "An itinerary preview on the right"
+        ]
+      },
+      {
+        "type": "image",
+        "image": {
+          "src": "/images/taap/gen2-tray.webp",
+          "alt": "Generation 2 three-panel Trips layout on desktop with the mobile list overlapping",
+          "width": 2576,
+          "height": 3762
+        }
+      },
+      {
+        "type": "h",
+        "text": "Dev handoff"
+      },
+      {
+        "type": "p",
+        "text": "Annotated specs, tokenized styles, and component documentation, with accessibility annotations, for desktop and mobile."
+      },
+      {
+        "type": "image",
+        "rounded": true,
+        "image": {
+          "src": "/images/taap/handoff-tray.webp",
+          "alt": "Annotated Figma handoff of the three-panel Trips desktop and mobile screens",
+          "width": 2000,
+          "height": 1241
+        }
+      }
+    ]
+  },
+  "gen3": {
+    "overline": "Generation 3",
+    "title": "Refining after launch",
+    "subtitle": "2025–2026",
+    "blocks": [
+      {
+        "type": "p",
+        "text": "User testing, surveys, and feedback questionnaires, run with the Research team, surfaced specific refinements. I organized 20+ changes into four categories for engineering prioritization."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "A status sidebar with booking counts",
+          "Search by traveler name, with all agency bookings on request",
+          "Earnings, cancel waiver status, and share, modify, and export actions in the detail panel"
+        ]
+      },
+      {
+        "type": "image",
+        "image": {
+          "src": "/images/taap/gen3-tray.webp",
+          "alt": "Generation 3 Trips dashboard after post-launch refinements",
+          "width": 2576,
+          "height": 4348
+        }
+      },
+      {
+        "type": "p",
+        "text": "Gen 3 is in progress, with post-launch metrics to follow."
+      }
+    ]
+  },
+  "results": {
+    "overline": "Retrospective",
+    "title": "Results",
+    "blocks": [
+      {
+        "type": "p",
+        "text": "Three generations took the Trips page from a consumer list to a professional, accessible advisor workspace."
+      },
+      {
+        "type": "metrics",
+        "items": [
+          {
+            "value": "10%",
+            "label": "Fewer calls",
+            "description": "The Gen 2 three-panel view decreased call volume to the customer center by 10%."
+          },
+          {
+            "value": "2",
+            "label": "Generations shipped",
+            "description": "Gen 1 and Gen 2 are in production. Gen 3 is in progress."
+          },
+          {
+            "value": "20+",
+            "label": "Changes prioritized",
+            "description": "Gen 3 refinements from post-launch research, organized for engineering."
+          }
+        ]
+      },
+      {
+        "type": "h",
+        "text": "Other results"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Support tickets fell",
+          "Map removal was validated across two separate research studies, informing a platform-wide content decision",
+          "Accessibility annotations at every dev handoff",
+          "Gen 3 in progress, with post-launch metrics to follow"
+        ]
+      }
+    ]
+  }
+}

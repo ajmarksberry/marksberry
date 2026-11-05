@@ -2,7 +2,9 @@
 
 import { useSyncExternalStore, type ReactNode } from "react";
 
-export type TaapVersion = "optimized" | "original";
+/** "legacy" is the page before the hiring-manager rewrite. It has no button; it
+ * is only reachable at ?version=legacy. */
+export type TaapVersion = "optimized" | "original" | "legacy";
 
 const EVENT = "taap-version-change";
 
@@ -17,7 +19,7 @@ function subscribe(onChange: () => void) {
 
 function readVersion(): TaapVersion | null {
   const v = new URLSearchParams(window.location.search).get("version");
-  return v === "original" || v === "optimized" ? v : null;
+  return v === "original" || v === "optimized" || v === "legacy" ? v : null;
 }
 
 const options: { value: TaapVersion; label: string }[] = [
@@ -34,11 +36,13 @@ const options: { value: TaapVersion; label: string }[] = [
 export function TaapVersionSwitch({
   original,
   optimized,
+  legacy,
   defaultVersion,
   showToggle,
 }: {
   original: ReactNode;
   optimized: ReactNode;
+  legacy: ReactNode;
   defaultVersion: TaapVersion;
   showToggle: boolean;
 }) {
@@ -56,6 +60,7 @@ export function TaapVersionSwitch({
     <>
       <div hidden={version !== "optimized"}>{optimized}</div>
       <div hidden={version !== "original"}>{original}</div>
+      <div hidden={version !== "legacy"}>{legacy}</div>
 
       {showToggle ? (
         <div

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Fragment } from "react";
 import { CaseStudyExplorer } from "@/components/CaseStudyExplorer";
 import { Divider } from "@/components/Divider";
 import { Footer } from "@/components/Footer";
@@ -16,7 +17,12 @@ import { TaapGenerationBlock } from "@/components/taap/optimized/TaapGenerationB
 import { TaapJourneyBlock } from "@/components/taap/optimized/TaapJourneyBlock";
 import { TaapRoleBlock } from "@/components/taap/optimized/TaapRoleBlock";
 import { TaapSummaryBlock } from "@/components/taap/optimized/TaapSummaryBlock";
-import { SHOW_TAAP_VERSION_TOGGLE, TAAP_DEFAULT_VERSION } from "@/lib/site";
+import copy from "@/components/taap/sixSection/copy.json";
+import {
+  TaapStorySection,
+  type StorySectionData,
+} from "@/components/taap/sixSection/TaapStorySection";
+import { SHOW_TAAP_VERSION_TOGGLE, TAAP_LIVE_VERSION } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Expedia TAAP Trips | AJ Marksberry",
@@ -24,8 +30,9 @@ export const metadata: Metadata = {
     "From chaos to clarity: three generations that turned a consumer list into a professional advisor workspace",
 };
 
-/** The page as it was before the hiring-manager rewrite. Untouched. */
-function OriginalVersion() {
+/** The page as it was before the hiring-manager rewrite. Untouched. Reach it at
+ * ?version=legacy. */
+function LegacyVersion() {
   return (
     <>
       <TaapHeroBlock />
@@ -53,8 +60,10 @@ const heroMeta = [
   { label: "Duration", value: "2023-2026" },
 ] as const;
 
-/** Summary and role up front, then the problem, then each generation. */
-function OptimizedVersion() {
+/** The first rewrite: summary and role up front, then the problem, then each
+ * generation. This is the version that is live, so it is the "original" the
+ * six-section version is compared against. */
+function OriginalVersion() {
   return (
     <>
       <TaapHeroBlock meta={heroMeta} />
@@ -152,6 +161,30 @@ function OptimizedVersion() {
   );
 }
 
+const sixSections = [
+  copy.summary,
+  copy.problem,
+  copy.gen1,
+  copy.gen2,
+  copy.gen3,
+  copy.results,
+] as StorySectionData[];
+
+/** The short form: a hero, then six sections of roughly 300 words each. */
+function OptimizedVersion() {
+  return (
+    <>
+      <TaapHeroBlock meta={heroMeta} />
+      {sixSections.map((section, i) => (
+        <Fragment key={section.title}>
+          {i === 0 ? <div className="h-16" aria-hidden /> : <Divider padded />}
+          <TaapStorySection data={section} />
+        </Fragment>
+      ))}
+    </>
+  );
+}
+
 export default function TaapTripsCaseStudyPage() {
   return (
     <main id="top">
@@ -159,7 +192,10 @@ export default function TaapTripsCaseStudyPage() {
         <TaapVersionSwitch
           original={<OriginalVersion />}
           optimized={<OptimizedVersion />}
-          defaultVersion={TAAP_DEFAULT_VERSION}
+          legacy={<LegacyVersion />}
+          defaultVersion={
+            SHOW_TAAP_VERSION_TOGGLE ? "optimized" : TAAP_LIVE_VERSION
+          }
           showToggle={SHOW_TAAP_VERSION_TOGGLE}
         />
         <Divider padded />

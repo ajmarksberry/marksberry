@@ -14,10 +14,13 @@ export const SHOW_VISUAL_DESIGN = true;
 
 /** Shows the Original / Optimized switch on the TAAP Trips case study. It is
  * on in `next dev` and off in any production build, so the live site never shows
- * it. With it off, every visitor gets TAAP_DEFAULT_VERSION and the other version
- * stays in the code, unseen. */
+ * it. With it off, every visitor gets TAAP_LIVE_VERSION and the other versions
+ * stay in the code, unseen. */
 export const SHOW_TAAP_VERSION_TOGGLE = process.env.NODE_ENV !== "production";
-export const TAAP_DEFAULT_VERSION: "optimized" | "original" = "optimized";
+/** Which TAAP Trips version visitors get on the live site: "optimized" is the
+ * six-section version, "original" is the longer rewrite it replaced. In `next
+ * dev` the page opens on "optimized" and the switch flips between them. */
+export const TAAP_LIVE_VERSION: "optimized" | "original" = "optimized";
 
 /** Show the light/dark switch in the corner. While it is off, every visitor gets
  * DEFAULT_THEME and any choice saved by an earlier visit is ignored. */
