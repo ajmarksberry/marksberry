@@ -8,18 +8,23 @@ const shipped = [
   "Accessibility annotations delivered at every dev handoff across all three generations",
 ] as const;
 
-export function TaapResultsBlock() {
+export function TaapResultsBlock({
+  leadItems = [],
+}: {
+  /** Extra shipped outcomes, listed ahead of the standard ones. */
+  leadItems?: readonly string[];
+}) {
   return (
     <section className="section-reveal flex w-full flex-col items-center gap-8 lg:items-start">
       <SectionHeader
         overline="Retrospective"
         title="Results"
-        description="Three design generations spanning three years, each grounded in research and each replacing the last. The original consumer UI became a professional, accessible, research-informed agent workspace."
+        description="Three design generations spanning three years, each grounded in research and each replacing the last. The original consumer UI became a professional, accessible, research-informed advisor workspace."
         className="w-full max-w-[620px] lg:max-w-full"
       />
 
       <div className="flex w-full max-w-[620px] flex-col items-start gap-3 lg:max-w-[564px] lg:mr-auto">
-        {shipped.map((item) => (
+        {[...leadItems, ...shipped].map((item) => (
           <TaapCheckItem key={item}>{item}</TaapCheckItem>
         ))}
         <TaapClockItem>

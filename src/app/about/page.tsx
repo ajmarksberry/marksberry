@@ -55,8 +55,8 @@ export default function AboutPage() {
         <div className="flex w-full max-w-[640px] flex-col gap-6 text-base leading-7 text-ink">
           <p>
             Most recently, I was a contract product designer at Expedia, working
-            on the Travel Agent Affiliate Program (TAAP), which supports over
-            200,000 travel advisors across 35 countries. It was exciting to be
+            on the Travel Agent Affiliate Program (TAAP), which serves
+            110,000+ travel advisors at 38,000+ agencies across 85+ markets. It was exciting to be
             part of Expedia&rsquo;s fast-growing B2B business, where revenue was
             growing around 25% year-over-year. My work focused on improving
             itinerary management, booking workflows, and post-booking

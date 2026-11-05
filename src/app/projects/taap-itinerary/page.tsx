@@ -16,7 +16,7 @@ import { ItineraryWireframesBlock } from "@/components/itinerary/ItineraryWirefr
 export const metadata: Metadata = {
   title: "Expedia TAAP Itinerary Builder | AJ Marksberry",
   description:
-    "A new tool that turns scattered bookings into one itinerary agents can share",
+    "Designed and validated a new itinerary creation workflow that gives travel advisors a simpler, more flexible way to create client-ready itineraries.",
 };
 
 export default function TaapItineraryCaseStudyPage() {

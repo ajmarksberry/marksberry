@@ -2,14 +2,20 @@ import Image from "next/image";
 import { Divider } from "@/components/Divider";
 import { TaapLogo } from "@/components/TaapLogo";
 
-const meta = [
+type MetaItem = { label: string; value: string };
+
+const defaultMeta: readonly MetaItem[] = [
   { label: "Client", value: "Expedia" },
   { label: "Role", value: "Lead product designer" },
   { label: "Duration", value: "2023-2026" },
   { label: "Tools", value: "Figma · Miro · Zoom" },
-] as const;
+];
 
-export function TaapHeroBlock() {
+export function TaapHeroBlock({
+  meta = defaultMeta,
+}: {
+  meta?: readonly MetaItem[];
+}) {
   return (
     <section className="flex w-full flex-col items-start pt-10">
       <div className="flex w-full max-w-[620px] flex-col items-start gap-6 pb-6">
@@ -33,7 +39,7 @@ export function TaapHeroBlock() {
           style={{ fontFeatureSettings: '"liga" 0', animationDelay: "240ms" }}
         >
           From chaos to clarity: three generations that turned a consumer list
-          into a professional agent workspace
+          into a professional advisor workspace
         </p>
       </div>
 

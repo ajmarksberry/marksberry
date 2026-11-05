@@ -31,13 +31,14 @@ export function ItineraryIntroBlock() {
               className="w-full text-base leading-7"
               style={{ fontFeatureSettings: '"liga" 0' }}
             >
-              Expedia TAAP is a free platform by Expedia Group where travel
-              advisors book properties, flights, activities, and car rentals
-              for their clients and earn commissions on each booking, with
-              real-time availability. It supports over 200,000 travel advisors
-              across 35 countries and is part of Expedia&rsquo;s fast-growing
-              B2B business, where revenue was growing around 25% year over
-              year.
+              Expedia TAAP is Expedia Group&rsquo;s end-to-end booking
+              platform built for travel advisors. Advisors book
+              accommodations, flights, activities, ground transportation, and
+              car rentals for their clients and earn commissions on every
+              booking. It serves 110,000+ advisors at 38,000+ agencies across
+              85+ markets, with 10M+ searches a month across 3M+
+              accommodations. It is part of Expedia&rsquo;s fast-growing B2B
+              business, where revenue was growing around 25% year over year.
             </p>
           </div>
           <div className="flex w-full flex-col items-start gap-4">
@@ -51,13 +52,22 @@ export function ItineraryIntroBlock() {
               className="w-full text-base leading-7"
               style={{ fontFeatureSettings: '"liga" 0' }}
             >
-              TAAP agents had powerful booking tools but no way to curate or
+              TAAP advisors had powerful booking tools but no way to curate or
               share what they’d booked with their travelers. I led end-to-end
-              design of a new itinerary builder, from discovery through a 2-day
-              design sprint, AI-assisted prototyping with Figma Make, and
-              moderated research with 6 travel agents, to a fully accessible
-              dev handoff across both desktop and mobile platforms.
+              design of a new itinerary builder to close that gap.
             </p>
+            <ul
+              className="w-full list-disc ps-6 text-base leading-7"
+              style={{ fontFeatureSettings: '"liga" 0' }}
+            >
+              <li>Discovery and a 2-day design sprint</li>
+              <li>AI-assisted prototyping with Figma Make</li>
+              <li>Moderated research with 6 travel advisors</li>
+              <li>
+                Fully accessible dev handoff across desktop and mobile
+                platforms
+              </li>
+            </ul>
           </div>
         </div>
       </div>

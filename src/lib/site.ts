@@ -12,6 +12,13 @@ export const SHOW_EXPEDIA_WORK = true;
 /** Gates the Visual design page and its rows in the menu and More work list. */
 export const SHOW_VISUAL_DESIGN = true;
 
+/** Shows the Original / Optimized switch on the TAAP Trips case study. It is
+ * on in `next dev` and off in any production build, so the live site never shows
+ * it. With it off, every visitor gets TAAP_DEFAULT_VERSION and the other version
+ * stays in the code, unseen. */
+export const SHOW_TAAP_VERSION_TOGGLE = process.env.NODE_ENV !== "production";
+export const TAAP_DEFAULT_VERSION: "optimized" | "original" = "optimized";
+
 /** Show the light/dark switch in the corner. While it is off, every visitor gets
  * DEFAULT_THEME and any choice saved by an earlier visit is ignored. */
 export const SHOW_THEME_TOGGLE = false;
@@ -71,9 +78,9 @@ export const caseStudies = [
     years: "2023-2026",
     title: "Expedia TAAP Trips",
     description:
-      "From chaos to clarity: three generations that turned a consumer list into a professional agent workspace",
+      "From chaos to clarity: three generations that turned a consumer list into a professional advisor workspace",
     summary:
-      "Three generations transforming a consumer-borrowed flat list into a professional, accessible agent workspace.",
+      "Three generations transforming a consumer-borrowed flat list into a professional, accessible advisor workspace.",
     thumb: "/images/taap/hero-tray.webp",
     hero: "/images/taap/trips-hero.webp",
   },
@@ -84,9 +91,9 @@ export const caseStudies = [
     years: "2025-2026",
     title: "Expedia TAAP Itinerary Builder",
     description:
-      "A new tool that turns scattered bookings into one itinerary agents can share",
+      "Designed and validated a new itinerary creation workflow that gives travel advisors a simpler, more flexible way to create client-ready itineraries.",
     summary:
-      "A tool for travel agents to build and share branded itineraries with their clients.",
+      "Designed and validated a new itinerary creation workflow that gives travel advisors a simpler, more flexible way to create client-ready itineraries.",
     thumb: "/images/itinerary/hero-tray.webp",
     hero: null,
   },

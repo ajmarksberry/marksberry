@@ -7,7 +7,7 @@ export function TaapGen2Block() {
       <SectionHeader
         overline="Generation 2"
         title="3-panel design"
-        description="Post-launch research and a product direction change drove a full redesign. Before designing, I mapped the live experience as a detailed user flow, annotating every friction point. The new 3-column Outlook-style layout gave agents a persistent list on the left, contextual actions in the center, and itinerary preview on the right."
+        description="Post-launch research and a product direction change drove a full redesign. Before designing, I mapped the live experience as a detailed user flow, annotating every friction point. The new 3-column Outlook-style layout gave advisors a persistent list on the left, contextual actions in the center, and itinerary preview on the right."
         className="w-full max-w-[620px] lg:max-w-full"
       />
 

@@ -14,7 +14,7 @@ export function ItineraryResultsBlock() {
       <SectionHeader
         overline="Retrospective"
         title="Results"
-        description="The moderated research study validated the core interaction model. Agents consistently discovered and used the primary share flow without assistance. Layout was rated clean and professional. Show/hide controls were highlighted as particularly valuable. Quantitative adoption metrics to follow post-launch."
+        description="The moderated research study validated the core interaction model. Advisors consistently discovered and used the primary share flow without assistance. Layout was rated clean and professional. Show/hide controls were highlighted as particularly valuable. Quantitative adoption metrics to follow post-launch."
         className="w-full max-w-[620px] lg:max-w-full"
       />
 
@@ -23,7 +23,7 @@ export function ItineraryResultsBlock() {
           <TaapCheckItem key={item}>{item}</TaapCheckItem>
         ))}
         <TaapClockItem>
-          Agent adoption and share-rate metrics — to follow post-launch
+          Advisor adoption and share-rate metrics — to follow post-launch
         </TaapClockItem>
       </div>
     </section>

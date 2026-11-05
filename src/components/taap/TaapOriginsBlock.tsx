@@ -5,9 +5,9 @@ import { TaapXItem } from "@/components/taap/TaapListItems";
 const gaps = [
   "Two tabs only: Upcoming and Past and Canceled",
   "A flat list of hyperlinks showing destination, date, and itinerary number only",
-  "No traveler name visible, which is critical for multi-client agents",
+  "No traveler name visible, which is critical for multi-client advisors",
   "No search, no filter, no booking type indicators",
-  "No earnings, no refund status, no agent-specific actions",
+  "No earnings, no refund status, no advisor-specific actions",
 ] as const;
 
 export function TaapOriginsBlock() {
@@ -16,7 +16,7 @@ export function TaapOriginsBlock() {
       <SectionHeader
         overline="History"
         title="The challenge"
-        description={`The original "My Trips" page was built for consumers, not professional travel agents. For agents managing hundreds of client bookings at once, it was completely inadequate.`}
+        description={`The original "My Trips" page was built for consumers, not professional travel advisors. For advisors managing hundreds of client bookings at once, it was completely inadequate.`}
         className="w-full max-w-[620px] pb-6 lg:max-w-full"
       />
 

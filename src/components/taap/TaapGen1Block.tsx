@@ -7,7 +7,7 @@ export function TaapGen1Block() {
       <SectionHeader
         overline="Generation 1"
         title="Table format redesign"
-        description={`Replaced the consumer pattern with a professional data table. Renamed "My Trips" to "Trips," reframing the page as an agent workspace. Designed 4 status tabs, sortable columns, LOB icons, paginated results, and universal search with typeahead and full search states.`}
+        description={`Replaced the consumer pattern with a professional data table. Renamed "My Trips" to "Trips," reframing the page as an advisor workspace. Designed 4 status tabs, sortable columns, LOB icons, paginated results, and universal search with typeahead and full search states.`}
         className="w-full max-w-[620px] lg:max-w-full"
       />
 

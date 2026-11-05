@@ -32,7 +32,9 @@ export function ItineraryHeroBlock() {
           className="hero-reveal w-full text-lg leading-7 text-ink sm:text-xl"
           style={{ fontFeatureSettings: '"liga" 0', animationDelay: "240ms" }}
         >
-          From a confusing experience, to a professional-grade agent tool
+          Designed and validated a new itinerary creation workflow that gives
+          travel advisors a simpler, more flexible way to create client-ready
+          itineraries.
         </p>
       </div>
 
@@ -41,8 +43,8 @@ export function ItineraryHeroBlock() {
         <Image
           src="/images/itinerary/hero-tray.png"
           alt="TAAP Share itinerary page in a browser, with the older itinerary detail screen behind it"
-          width={1280}
-          height={770}
+          width={2000}
+          height={1203}
           className="block h-auto w-full"
           priority
           unoptimized

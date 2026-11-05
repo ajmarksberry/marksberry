@@ -7,7 +7,7 @@ const stats = [
 ] as const;
 
 const findings = [
-  "Agents found and used the primary share flow, Preview and Share with Traveler, without assistance.",
+  "Advisors found and used the primary share flow, Preview and Share with Traveler, without assistance.",
   "All 6 participants rated the layout clean and professional.",
   "Show/hide section controls stood out as highly valuable for customizing what travelers see.",
   "A working Figma Make prototype felt realistic to participants, which led to richer feedback than a click-through.",

@@ -31,13 +31,14 @@ export function TaapIntroBlock() {
               className="w-full text-base leading-7"
               style={{ fontFeatureSettings: '"liga" 0' }}
             >
-              Expedia TAAP is a free platform by Expedia Group where travel
-              advisors book properties, flights, activities, and car rentals
-              for their clients and earn commissions on each booking, with
-              real-time availability. It supports over 200,000 travel advisors
-              across 35 countries and is part of Expedia&rsquo;s fast-growing
-              B2B business, where revenue was growing around 25% year over
-              year.
+              Expedia TAAP is Expedia Group&rsquo;s end-to-end booking
+              platform built for travel advisors. Advisors book
+              accommodations, flights, activities, ground transportation, and
+              car rentals for their clients and earn commissions on every
+              booking. It serves 110,000+ advisors at 38,000+ agencies across
+              85+ markets, with 10M+ searches a month across 3M+
+              accommodations. It is part of Expedia&rsquo;s fast-growing B2B
+              business, where revenue was growing around 25% year over year.
             </p>
           </div>
           <div className="flex w-full flex-col items-start gap-4">
@@ -52,12 +53,12 @@ export function TaapIntroBlock() {
               style={{ fontFeatureSettings: '"liga" 0' }}
             >
               The TAAP Trips page started as a consumer-borrowed flat list, with
-              no search, no agent-specific data, and no professional tooling.
+              no search, no advisor-specific data, and no professional tooling.
               Over three
               years, I led three successive design generations that transformed
-              it into a research-informed professional workspace. Each version
-              shipped to production and informed the next through user testing,
-              and direct collaboration with the Development team.
+              it into a research-informed professional workspace. The first two
+              versions shipped to production, and each informed the next through
+              user testing and direct collaboration with the Development team.
             </p>
           </div>
         </div>
