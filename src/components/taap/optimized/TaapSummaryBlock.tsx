@@ -11,13 +11,16 @@ const points = [
   },
   {
     label: "The outcome",
-    body: "Gen 1 and Gen 2 shipped to production, reducing support tickets and calls to the call center. Removing the map was validated across two research studies and informed a platform-wide content decision. Gen 3 is in progress.",
+    body: "Gen 1 and Gen 2 shipped to production. The Gen 2 3-panel view decreased call volume to the customer center by 10%, and support tickets fell. Removing the map was validated across two research studies and informed a platform-wide content decision. Gen 3 is in progress.",
   },
 ] as const;
 
 const stats = [
+  {
+    value: "10%",
+    label: "fewer calls to the customer center after the 3-panel redesign",
+  },
   { value: "110,000+", label: "travel advisors on TAAP" },
-  { value: "3", label: "design generations, 2023-2026" },
   { value: "20+", label: "post-launch changes prioritized" },
 ] as const;
 
@@ -57,7 +60,7 @@ export function TaapSummaryBlock() {
               {s.label}
             </dt>
             <dd
-              className="order-1 font-extrabold text-[36px] leading-[44px] tracking-[-0.9px] text-heading sm:text-[48px] sm:leading-[58px] sm:tracking-[-1.2px]"
+              className="order-1 font-extrabold text-[36px] leading-[44px] tracking-[-0.9px] text-accent sm:text-[48px] sm:leading-[58px] sm:tracking-[-1.2px]"
               style={{ fontFeatureSettings: '"liga" 0' }}
             >
               {s.value}

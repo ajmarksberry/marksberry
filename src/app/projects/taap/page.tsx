@@ -143,7 +143,10 @@ function OptimizedVersion() {
       />
       <Divider padded />
       <TaapResultsBlock
-        leadItems={["Reduced support tickets and calls to the call center"]}
+        leadItems={[
+          "The Gen 2 3-panel view decreased call volume to the customer center by 10%",
+          "Reduced support tickets",
+        ]}
       />
     </>
   );
