@@ -12,15 +12,15 @@ export const SHOW_EXPEDIA_WORK = true;
 /** Gates the Visual design page and its rows in the menu and More work list. */
 export const SHOW_VISUAL_DESIGN = true;
 
-/** Shows the Original / Optimized switch on the TAAP Trips case study. It is
- * on in `next dev` and off in any production build, so the live site never shows
- * it. With it off, every visitor gets TAAP_LIVE_VERSION and the other versions
+/** Shows the Original / Optimized switch on the case studies. It is on in
+ * `next dev` and off in any production build, so the live site never shows it.
+ * With it off, every visitor gets CASE_STUDY_LIVE_VERSION and the other versions
  * stay in the code, unseen. */
-export const SHOW_TAAP_VERSION_TOGGLE = process.env.NODE_ENV !== "production";
-/** Which TAAP Trips version visitors get on the live site: "optimized" is the
- * six-section version, "original" is the longer rewrite it replaced. In `next
- * dev` the page opens on "optimized" and the switch flips between them. */
-export const TAAP_LIVE_VERSION: "optimized" | "original" = "optimized";
+export const SHOW_VERSION_TOGGLE = process.env.NODE_ENV !== "production";
+/** Which version of each case study visitors get on the live site: "optimized"
+ * is the six-section version, "original" is the longer page it replaced. In
+ * `next dev` the pages open on "optimized" and the switch flips between them. */
+export const CASE_STUDY_LIVE_VERSION: "optimized" | "original" = "optimized";
 
 /** Show the light/dark switch in the corner. While it is off, every visitor gets
  * DEFAULT_THEME and any choice saved by an earlier visit is ignored. */

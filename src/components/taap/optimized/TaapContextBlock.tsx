@@ -34,11 +34,10 @@ export function TaapContextBlock() {
             Expedia TAAP is Expedia Group&rsquo;s end-to-end booking platform
             built for travel advisors. Advisors book accommodations, flights,
             activities, ground transportation, and car rentals for their clients
-            and earn commissions on every booking. It serves 110,000+ advisors
+            and earn commissions on every booking. It serves 200,000+ advisors
             at 38,000+ agencies across 85+ markets, with 10M+ searches a month
             across 3M+ accommodations. It is part of Expedia&rsquo;s
-            fast-growing B2B business, where revenue was growing around 25% year
-            over year.
+            fast-growing B2B business, where revenue grew 25% year over year in Q1 2026 and travel agency bookings passed $3 billion in 2025.
           </p>
         </div>
       </div>

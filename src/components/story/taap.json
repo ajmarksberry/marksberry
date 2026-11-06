@@ -5,7 +5,7 @@
     "blocks": [
       {
         "type": "p",
-        "text": "Expedia TAAP is Expedia Group’s booking platform for travel advisors: 110,000+ advisors at 38,000+ agencies across 85+ markets, in a fast-growing B2B business."
+        "text": "Expedia TAAP is Expedia Group’s booking platform for travel advisors: 200,000+ advisors at 38,000+ agencies across 85+ markets, in a business that passed $3 billion in bookings in 2025."
       },
       {
         "type": "p",
@@ -24,7 +24,7 @@
         "items": [
           "Led design across all three generations",
           "Mapped the live experience as a user flow and annotated every friction point",
-          "Ran user testing, surveys, and questionnaires with Research",
+          "Ran qualitative user testing, surveys, and questionnaires with Research",
           "Delivered specs, tokenized styles, and accessibility annotations at every handoff"
         ]
       },
@@ -36,7 +36,7 @@
             "label": "fewer calls to the customer center after the 3-panel redesign"
           },
           {
-            "value": "110,000+",
+            "value": "200,000+",
             "label": "travel advisors on TAAP"
           },
           {
@@ -48,8 +48,8 @@
     ]
   },
   "problem": {
-    "overline": "The problem",
-    "title": "The challenge",
+    "overline": "Context",
+    "title": "The problem",
     "blocks": [
       {
         "type": "p",
@@ -166,7 +166,7 @@
     "blocks": [
       {
         "type": "p",
-        "text": "User testing, surveys, and feedback questionnaires, run with the Research team, surfaced specific refinements. I organized 20+ changes into four categories for engineering prioritization."
+        "text": "Qualitative user testing, surveys, and feedback questionnaires, run with the Research team, surfaced specific refinements. I organized 20+ changes into four categories for engineering prioritization."
       },
       {
         "type": "ul",
@@ -174,6 +174,18 @@
           "A status sidebar with booking counts",
           "Search by traveler name, with all agency bookings on request",
           "Earnings, cancel waiver status, and share, modify, and export actions in the detail panel"
+        ]
+      },
+      {
+        "type": "h",
+        "text": "Design challenges"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Consumer pattern, professional need: advisors manage hundreds of bookings, so I replaced a flat list with a data table, then a three-panel workspace.",
+          "Change in direction: Gen 1 shipped, then a product shift called for a full redesign, so I mapped the live flow and annotated every friction point first.",
+          "Accessibility at scale: accessibility annotations at every handoff, for desktop and mobile."
         ]
       },
       {

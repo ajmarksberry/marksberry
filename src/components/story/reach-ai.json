@@ -1,0 +1,247 @@
+{
+  "summary": {
+    "overline": "Summary",
+    "title": "At a glance",
+    "blocks": [
+      {
+        "type": "p",
+        "text": "REACH.ai scans a salon’s live appointment book for last-minute openings and cancellations, then contacts the customers most likely to fill them, using machine learning."
+      },
+      {
+        "type": "p",
+        "text": "The merchant dashboard was noisy and hard to trust during peak hours. As lead product designer, I redesigned it, from discovery to a design system."
+      },
+      {
+        "type": "p",
+        "text": "The new dashboard doubled weekly engagement and cut support requests by 40%. Most clients on the old UI chose to upgrade."
+      },
+      {
+        "type": "h",
+        "text": "What I owned"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Planned and led a 3-day onsite workshop in Phoenix, Arizona",
+          "Ran a heuristic evaluation of the existing dashboard",
+          "Gathered mixed-methods research from 52 customers through customer success calls",
+          "Designed the wireframes, the UI, and a design system"
+        ]
+      },
+      {
+        "type": "stats",
+        "items": [
+          {
+            "value": "2x",
+            "label": "weekly engagement with the dashboard"
+          },
+          {
+            "value": "-40%",
+            "label": "support requests"
+          },
+          {
+            "value": "52",
+            "label": "customers gave feedback"
+          }
+        ]
+      }
+    ]
+  },
+  "problem": {
+    "overline": "Context",
+    "title": "The problem",
+    "blocks": [
+      {
+        "type": "p",
+        "text": "Owners needed a command center that made demand, staffing, and client conversations obvious at a glance. Instead, they juggled several tools in the middle of a packed Saturday."
+      },
+      {
+        "type": "persona",
+        "image": {
+          "src": "/images/reach/persona-emily.webp",
+          "alt": "Emily, merchant persona",
+          "width": 690,
+          "height": 690
+        },
+        "quote": "“I need an easy-to-use interface to gain quick, high-level insights into our client’s booking habits and how it affects our stylist’s schedule.”",
+        "groups": [
+          {
+            "heading": "Frustrations",
+            "items": [
+              "Several complex communication tools",
+              "A noisy dashboard at peak hours",
+              "Appointment details spread across systems"
+            ]
+          },
+          {
+            "heading": "Goals",
+            "items": [
+              "Surface information to the owner on request",
+              "Fewer inbound calls and emails about bookings",
+              "Fewer front-desk interruptions"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "discovery": {
+    "overline": "Discovery",
+    "title": "What we learned",
+    "blocks": [
+      {
+        "type": "p",
+        "text": "We couldn’t afford formal user testing, so customer success ran a mixed-methods study with 52 customers, asking the same three questions during sales and support calls. I then reviewed the existing designs against usability heuristics."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "“There is a lot of information on the dashboard.”",
+          "“I can’t find what I’m looking for.”",
+          "“It’s difficult to change locations.”"
+        ]
+      },
+      {
+        "type": "h",
+        "text": "Heuristic findings"
+      },
+      {
+        "type": "split",
+        "bullets": true,
+        "image": {
+          "src": "/images/reach/evaluate-shot.webp",
+          "alt": "Annotated REACH.ai dashboard with heuristic findings",
+          "width": 848,
+          "height": 810
+        },
+        "items": [
+          "Simplify the color palette",
+          "Collapse redundant navigation into a calm primary rail",
+          "Optimize for mobile",
+          "Remove unnecessary and legacy features",
+          "Reduce the amount of content on the page",
+          "Establish consistent status color, type, and confirmation patterns"
+        ]
+      }
+    ]
+  },
+  "workshop": {
+    "overline": "Discovery",
+    "title": "Workshop and wireframes",
+    "blocks": [
+      {
+        "type": "p",
+        "text": "I planned and led a 3-day onsite workshop in Phoenix, Arizona to review the experience and find where to improve it. Activities included stakeholder alignment, research synthesis, dot voting, sketching, crazy-eights, critique, and a retro."
+      },
+      {
+        "type": "image",
+        "rounded": true,
+        "image": {
+          "src": "/images/reach/sprint-workshop.webp",
+          "alt": "Workshop participants reviewing sticky notes on a wall",
+          "width": 1296,
+          "height": 728
+        }
+      },
+      {
+        "type": "image",
+        "caption": "Wireframes: structure before polish.",
+        "image": {
+          "src": "/images/reach/wireframes-tray.webp",
+          "alt": "Overlapping dashboard wireframes showing revenue overview and location selector",
+          "width": 2000,
+          "height": 1466
+        }
+      }
+    ]
+  },
+  "design": {
+    "overline": "Design",
+    "title": "Polishing the pixels",
+    "blocks": [
+      {
+        "type": "p",
+        "text": "High-fidelity UI brought breathing room, confident typography, and a design system that made charts, status, and AI moments feel like one product."
+      },
+      {
+        "type": "h",
+        "text": "Design challenges"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Research without a budget: no formal user testing, so customer success asked 52 customers three questions and I added a heuristic evaluation.",
+          "Too much information: I simplified the palette, collapsed navigation, and removed legacy features.",
+          "Existing customers: the new dashboard had to be worth the switch, and most chose to upgrade."
+        ]
+      },
+      {
+        "type": "image",
+        "caption": "The Results Dashboard: revenue, bookings, and email and SMS campaign results in one clear view.",
+        "image": {
+          "src": "/images/reach/design-desktops.webp",
+          "alt": "Overlapping REACH.ai desktop screens showing bookings and results dashboards",
+          "width": 2000,
+          "height": 1182
+        }
+      },
+      {
+        "type": "image",
+        "caption": "The dashboard, bookings detail, and My Account screens, adapted for mobile.",
+        "image": {
+          "src": "/images/reach/design-mobiles.webp",
+          "alt": "REACH.ai mobile screens showing results, account, and password",
+          "width": 1831,
+          "height": 2000
+        }
+      },
+      {
+        "type": "image",
+        "rounded": true,
+        "caption": "The design system sheets for forms, buttons, elevations, and typography.",
+        "image": {
+          "src": "/images/reach/design-system.webp",
+          "alt": "REACH.ai design system sheets with colors, buttons, and typography",
+          "width": 2316,
+          "height": 1536
+        }
+      }
+    ]
+  },
+  "results": {
+    "overline": "Retrospective",
+    "title": "Results",
+    "blocks": [
+      {
+        "type": "p",
+        "text": "The redesigned dashboard doubled weekly engagement and cut support requests by 40%."
+      },
+      {
+        "type": "metrics",
+        "items": [
+          {
+            "value": "2x",
+            "label": "Engagement surge",
+            "description": "Customers spent twice as much time in the dashboard over a week, compared with the previous version."
+          },
+          {
+            "value": "-40%",
+            "label": "Support decline",
+            "description": "Fewer “where do I…?” tickets as hierarchy, labels, and empty states did the teaching."
+          }
+        ]
+      },
+      {
+        "type": "h",
+        "text": "Other results"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Positive feedback from current customers and from prospects during sales demos",
+          "Most clients on the previous UI chose to upgrade to the new dashboard"
+        ]
+      }
+    ]
+  }
+}

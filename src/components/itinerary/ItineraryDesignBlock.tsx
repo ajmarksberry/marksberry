@@ -7,7 +7,7 @@ export function ItineraryDesignBlock() {
       <SectionHeader
         overline="Make"
         title="Design"
-        subtitle="Final designs for desktop and mobile"
+        subtitle="Final designs"
         description="Production-ready UI with full accessibility annotations, conditional logic, and edge case coverage delivered at dev handoff."
         className="w-full max-w-[620px] lg:max-w-full"
       />

@@ -20,7 +20,7 @@ const stats = [
     value: "10%",
     label: "fewer calls to the customer center after the 3-panel redesign",
   },
-  { value: "110,000+", label: "travel advisors on TAAP" },
+  { value: "200,000+", label: "travel advisors on TAAP" },
   { value: "20+", label: "post-launch changes prioritized" },
 ] as const;
 

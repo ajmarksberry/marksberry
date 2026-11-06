@@ -8,7 +8,7 @@ export function ItineraryFoundationsBlock() {
         overline="Discovery"
         title="Foundations"
         subtitle="Discovery & competitive audit"
-        description="Reviewed how other platforms handle itinerary sharing across desktop and mobile to identify patterns and inspiration before any design work began."
+        description="Reviewed how other platforms handle itinerary sharing to identify patterns and inspiration before any design work began."
         className="w-full max-w-[620px] lg:max-w-full"
       />
 

@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { Fragment } from "react";
 import { CaseStudyExplorer } from "@/components/CaseStudyExplorer";
 import { Divider } from "@/components/Divider";
 import { Footer } from "@/components/Footer";
@@ -11,18 +10,18 @@ import { TaapHeroBlock } from "@/components/taap/TaapHeroBlock";
 import { TaapIntroBlock } from "@/components/taap/TaapIntroBlock";
 import { TaapOriginsBlock } from "@/components/taap/TaapOriginsBlock";
 import { TaapResultsBlock } from "@/components/taap/TaapResultsBlock";
-import { TaapVersionSwitch } from "@/components/taap/TaapVersionSwitch";
+import { CaseStudyVersionSwitch } from "@/components/CaseStudyVersionSwitch";
 import { TaapContextBlock } from "@/components/taap/optimized/TaapContextBlock";
 import { TaapGenerationBlock } from "@/components/taap/optimized/TaapGenerationBlock";
 import { TaapJourneyBlock } from "@/components/taap/optimized/TaapJourneyBlock";
 import { TaapRoleBlock } from "@/components/taap/optimized/TaapRoleBlock";
 import { TaapSummaryBlock } from "@/components/taap/optimized/TaapSummaryBlock";
-import copy from "@/components/taap/sixSection/copy.json";
+import copy from "@/components/story/taap.json";
 import {
-  TaapStorySection,
+  StorySections,
   type StorySectionData,
-} from "@/components/taap/sixSection/TaapStorySection";
-import { SHOW_TAAP_VERSION_TOGGLE, TAAP_LIVE_VERSION } from "@/lib/site";
+} from "@/components/story/StorySection";
+import { SHOW_VERSION_TOGGLE, CASE_STUDY_LIVE_VERSION } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Expedia TAAP Trips | AJ Marksberry",
@@ -175,12 +174,7 @@ function OptimizedVersion() {
   return (
     <>
       <TaapHeroBlock meta={heroMeta} />
-      {sixSections.map((section, i) => (
-        <Fragment key={section.title}>
-          {i === 0 ? <div className="h-16" aria-hidden /> : <Divider padded />}
-          <TaapStorySection data={section} />
-        </Fragment>
-      ))}
+      <StorySections sections={sixSections} />
     </>
   );
 }
@@ -189,14 +183,14 @@ export default function TaapTripsCaseStudyPage() {
   return (
     <main id="top">
       <div className="mx-auto w-full max-w-[1140px] px-5 sm:px-10 lg:px-20">
-        <TaapVersionSwitch
+        <CaseStudyVersionSwitch
           original={<OriginalVersion />}
           optimized={<OptimizedVersion />}
           legacy={<LegacyVersion />}
           defaultVersion={
-            SHOW_TAAP_VERSION_TOGGLE ? "optimized" : TAAP_LIVE_VERSION
+            SHOW_VERSION_TOGGLE ? "optimized" : CASE_STUDY_LIVE_VERSION
           }
-          showToggle={SHOW_TAAP_VERSION_TOGGLE}
+          showToggle={SHOW_VERSION_TOGGLE}
         />
         <Divider padded />
         <CaseStudyExplorer />

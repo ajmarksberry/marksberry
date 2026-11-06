@@ -1,0 +1,237 @@
+{
+  "summary": {
+    "overline": "Summary",
+    "title": "At a glance",
+    "blocks": [
+      {
+        "type": "p",
+        "text": "Expedia TAAP is Expedia Group’s booking platform for travel advisors: 200,000+ advisors at 38,000+ agencies across 85+ markets, in a business that passed $3 billion in bookings in 2025."
+      },
+      {
+        "type": "p",
+        "text": "Advisors had powerful booking tools but no way to curate or share what they booked with travelers. I led end-to-end design of a new itinerary builder to close that gap."
+      },
+      {
+        "type": "p",
+        "text": "In moderated research, every advisor rated the layout clean and professional, and Preview and Share with traveler worked without help. Adoption metrics will follow post-launch."
+      },
+      {
+        "type": "h",
+        "text": "What I owned"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Led design end to end",
+          "Facilitated a 2-day design sprint with UX, Research, and Content",
+          "Built an interactive Figma Make prototype and ran moderated research with 6 advisors",
+          "Delivered a fully accessible dev handoff with WCAG annotations"
+        ]
+      },
+      {
+        "type": "stats",
+        "items": [
+          {
+            "value": "6/6",
+            "label": "advisors rated the layout clean and professional"
+          },
+          {
+            "value": "3",
+            "label": "concepts explored in a 2-day design sprint"
+          },
+          {
+            "value": "8",
+            "label": "tasks tested in each research session"
+          }
+        ]
+      }
+    ]
+  },
+  "problem": {
+    "overline": "Context",
+    "title": "The problem",
+    "blocks": [
+      {
+        "type": "p",
+        "text": "Advisors could book flights, hotels, and experiences in TAAP, but afterward there was no unified view for the advisor or the traveler. They compiled trip details by hand outside the platform, which added work and made the client experience inconsistent."
+      },
+      {
+        "type": "split",
+        "image": {
+          "src": "/images/itinerary/challenge-shot.png",
+          "alt": "Original TAAP itinerary detail and booked itineraries list",
+          "width": 820,
+          "height": 813
+        },
+        "items": [
+          "Messy, unorganized list of itineraries",
+          "Limited ability to adjust content",
+          "Outdated UI",
+          "Limited preview functionality",
+          "Inconsistent content hierarchy"
+        ]
+      }
+    ]
+  },
+  "discovery": {
+    "overline": "Discovery",
+    "title": "Sprint and concepts",
+    "blocks": [
+      {
+        "type": "p",
+        "text": "I reviewed how other platforms share itineraries, then facilitated a 2-day design sprint with UX, Research, and Content."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Day 1: reviewed the current experience and presented 3 interaction concepts",
+          "Day 2: dot voting, discussion, and takeaways"
+        ]
+      },
+      {
+        "type": "image",
+        "rounded": true,
+        "image": {
+          "src": "/images/itinerary/sprint-board.webp",
+          "alt": "Miro board from the itinerary builder design sprint: booked itineraries, the single-page itinerary view, export options, and the team's sticky-note feedback",
+          "width": 2000,
+          "height": 1118
+        }
+      },
+      {
+        "type": "image",
+        "rounded": true,
+        "image": {
+          "src": "/images/itinerary/wireframes-tray.webp",
+          "alt": "Three wireframe concepts for the itinerary share flow, including edit mode and the confirmed reservation view",
+          "width": 1280,
+          "height": 1123
+        }
+      }
+    ]
+  },
+  "research": {
+    "overline": "Research",
+    "title": "Moderated research",
+    "blocks": [
+      {
+        "type": "p",
+        "text": "I used Figma Make, AI-assisted prototyping, to build a working prototype, so advisors got a realistic experience instead of a click-through. That led to richer qualitative feedback in moderated, 8-task, think-aloud sessions over Zoom with 6 advisors."
+      },
+      {
+        "type": "stats",
+        "items": [
+          {
+            "value": "6",
+            "label": "travel advisors"
+          },
+          {
+            "value": "8",
+            "label": "tasks per session"
+          },
+          {
+            "value": "8+",
+            "label": "hours of sessions"
+          }
+        ]
+      },
+      {
+        "type": "groups",
+        "groups": [
+          {
+            "heading": "What worked",
+            "items": [
+              "Preview and Share with traveler used correctly, without help",
+              "Show/hide sections valued for customizing what travelers see"
+            ]
+          },
+          {
+            "heading": "What to improve",
+            "items": [
+              "Replace the map with a clickable link",
+              "Add more imagery and editable text fields",
+              "Pre-populate agency logos, with customization"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "design": {
+    "overline": "Design",
+    "title": "Final designs",
+    "blocks": [
+      {
+        "type": "p",
+        "text": "The findings shaped the final design iterations before handoff. Dev received production-ready UI."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Full accessibility annotations",
+          "Conditional logic documented",
+          "Edge cases covered"
+        ]
+      },
+      {
+        "type": "h",
+        "text": "Design challenges"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Choosing a direction: three concepts in a 2-day sprint, aligned through dot voting and discussion.",
+          "Flexibility without clutter: advisors value visual flexibility but also wanted a cleaner layout, so I explored show/hide sections, editable text, and pre-populated logos.",
+          "Ideal versus feasible: richer imagery and logo management need a feasibility check with Tech."
+        ]
+      },
+      {
+        "type": "image",
+        "image": {
+          "src": "/images/itinerary/design-tray.webp",
+          "alt": "Final TAAP Share itinerary design",
+          "width": 934,
+          "height": 2000
+        }
+      }
+    ]
+  },
+  "results": {
+    "overline": "Retrospective",
+    "title": "Results",
+    "blocks": [
+      {
+        "type": "p",
+        "text": "The moderated study validated the core interaction model. Adoption metrics will follow post-launch."
+      },
+      {
+        "type": "metrics",
+        "items": [
+          {
+            "value": "6/6",
+            "label": "Clean and professional",
+            "description": "Every participant rated the new layout clean and professional."
+          },
+          {
+            "value": "6",
+            "label": "Improvements identified",
+            "description": "Specific opportunities from the sessions, from replacing the map with a link to pre-filled logos."
+          }
+        ]
+      },
+      {
+        "type": "h",
+        "text": "Other results"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Preview and Share with traveler discovered and used correctly, without assistance",
+          "Show/hide section controls rated highly valuable",
+          "Fully accessible dev handoff delivered with WCAG annotations",
+          "Advisor adoption and share-rate metrics to follow post-launch"
+        ]
+      }
+    ]
+  }
+}

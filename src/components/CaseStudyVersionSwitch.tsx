@@ -4,9 +4,9 @@ import { useSyncExternalStore, type ReactNode } from "react";
 
 /** "legacy" is the page before the hiring-manager rewrite. It has no button; it
  * is only reachable at ?version=legacy. */
-export type TaapVersion = "optimized" | "original" | "legacy";
+export type CaseStudyVersion = "optimized" | "original" | "legacy";
 
-const EVENT = "taap-version-change";
+const EVENT = "case-study-version-change";
 
 function subscribe(onChange: () => void) {
   window.addEventListener("popstate", onChange);
@@ -17,23 +17,23 @@ function subscribe(onChange: () => void) {
   };
 }
 
-function readVersion(): TaapVersion | null {
+function readVersion(): CaseStudyVersion | null {
   const v = new URLSearchParams(window.location.search).get("version");
   return v === "original" || v === "optimized" || v === "legacy" ? v : null;
 }
 
-const options: { value: TaapVersion; label: string }[] = [
+const options: { value: CaseStudyVersion; label: string }[] = [
   { value: "optimized", label: "Optimized" },
   { value: "original", label: "Original" },
 ];
 
 /**
- * Shows one of two complete versions of the TAAP Trips case study. Both are
+ * Shows one of two complete versions of a case study. Both are
  * rendered on the server; this only decides which one is visible, from
  * ?version=original (or optimized) in the URL, so a version can be linked to.
  * With showToggle off, visitors get defaultVersion and no switch.
  */
-export function TaapVersionSwitch({
+export function CaseStudyVersionSwitch({
   original,
   optimized,
   legacy,
@@ -42,14 +42,14 @@ export function TaapVersionSwitch({
 }: {
   original: ReactNode;
   optimized: ReactNode;
-  legacy: ReactNode;
-  defaultVersion: TaapVersion;
+  legacy?: ReactNode;
+  defaultVersion: CaseStudyVersion;
   showToggle: boolean;
 }) {
   const fromUrl = useSyncExternalStore(subscribe, readVersion, () => null);
   const version = showToggle ? (fromUrl ?? defaultVersion) : defaultVersion;
 
-  function choose(next: TaapVersion) {
+  function choose(next: CaseStudyVersion) {
     const url = new URL(window.location.href);
     url.searchParams.set("version", next);
     window.history.replaceState(null, "", url);
@@ -60,7 +60,7 @@ export function TaapVersionSwitch({
     <>
       <div hidden={version !== "optimized"}>{optimized}</div>
       <div hidden={version !== "original"}>{original}</div>
-      <div hidden={version !== "legacy"}>{legacy}</div>
+      {legacy ? <div hidden={version !== "legacy"}>{legacy}</div> : null}
 
       {showToggle ? (
         <div

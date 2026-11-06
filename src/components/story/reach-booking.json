@@ -1,0 +1,236 @@
+{
+  "summary": {
+    "overline": "Summary",
+    "title": "At a glance",
+    "blocks": [
+      {
+        "type": "p",
+        "text": "REACH.ai scans a salon’s live appointment book for last-minute openings and cancellations, then contacts customers by email or SMS to fill them."
+      },
+      {
+        "type": "p",
+        "text": "Customers needed a brand new way to book those openings with the providers they know. As lead product designer, I built the booking experience from the ground up, aiming for a simple, enjoyable flow with less drop-off."
+      },
+      {
+        "type": "p",
+        "text": "Users confirmed it was a success, and a 1-step SSO sign-in significantly reduced drop-off."
+      },
+      {
+        "type": "h",
+        "text": "What I owned"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Researched users and competitor booking flows",
+          "Mapped the information architecture, from sitemaps to navigation",
+          "Designed the UI and an atomic design system",
+          "Tested flows and iterated, including removing the waitlist"
+        ]
+      },
+      {
+        "type": "stats",
+        "items": [
+          {
+            "value": "0-to-1",
+            "label": "a new booking experience, built from the ground up"
+          },
+          {
+            "value": "3",
+            "label": "steps to book a last-minute appointment"
+          },
+          {
+            "value": "1",
+            "label": "step to sign in with SSO"
+          }
+        ]
+      }
+    ]
+  },
+  "problem": {
+    "overline": "Context",
+    "title": "The problem",
+    "blocks": [
+      {
+        "type": "p",
+        "text": "These customers want booking to be easy, on a regular cadence, and with the provider they already know. The experience had to handle every situation, whether they arrive by email or SMS, while keeping booking simple and cutting drop-off."
+      },
+      {
+        "type": "persona",
+        "image": {
+          "src": "/images/booking/persona.webp",
+          "alt": "Customer persona for the REACH.ai booking experience",
+          "width": 550,
+          "height": 550
+        },
+        "groups": [
+          {
+            "heading": "Frustrations",
+            "items": [
+              "Booking appointments far into the future",
+              "“I don’t want to think about booking”",
+              "Being placed with a different provider, with no rapport"
+            ]
+          },
+          {
+            "heading": "Goals",
+            "items": ["Easy booking", "Book on a cadence", "No hassle"]
+          }
+        ]
+      }
+    ]
+  },
+  "discovery": {
+    "overline": "Discovery",
+    "title": "Mapping the experience",
+    "blocks": [
+      {
+        "type": "p",
+        "text": "I studied existing booking flows and UX patterns for last-minute reservations. Then I built sitemaps, content hierarchies, and navigation models so customers could find what they needed without friction."
+      },
+      {
+        "type": "h",
+        "text": "Design challenges"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Starting from zero: a brand new experience, so I mapped the information architecture before designing screens.",
+          "Every situation: customers arrive by email or SMS depending on their status, and one flow had to handle each case.",
+          "No metrics: real-time feedback and user testing guided each iteration."
+        ]
+      },
+      {
+        "type": "image",
+        "rounded": true,
+        "image": {
+          "src": "/images/booking/wireframes-tray.webp",
+          "alt": "Booking experience sitemap and information architecture diagrams",
+          "width": 2560,
+          "height": 768
+        }
+      }
+    ]
+  },
+  "design": {
+    "overline": "Design",
+    "title": "Search and book",
+    "blocks": [
+      {
+        "type": "h",
+        "text": "Welcome screen"
+      },
+      {
+        "type": "p",
+        "text": "Customers search by service or provider, so finding the right opening is quick."
+      },
+      {
+        "type": "image",
+        "rounded": true,
+        "image": {
+          "src": "/images/booking/design-welcome-tray.webp",
+          "alt": "Three mobile screens for searching by service or provider",
+          "width": 2560,
+          "height": 1861
+        }
+      },
+      {
+        "type": "h",
+        "text": "Book an appointment"
+      },
+      {
+        "type": "p",
+        "text": "A simple 3-step flow (find, review, confirm) keeps last-minute booking pleasant."
+      },
+      {
+        "type": "image",
+        "rounded": true,
+        "image": {
+          "src": "/images/booking/design-book-tray.webp",
+          "alt": "Find, review, and confirm appointment screens",
+          "width": 2560,
+          "height": 1648
+        }
+      }
+    ]
+  },
+  "iteration": {
+    "overline": "Iteration",
+    "title": "Testing and refining",
+    "blocks": [
+      {
+        "type": "h",
+        "text": "Join a waitlist"
+      },
+      {
+        "type": "p",
+        "text": "Users wanted to see a provider at a specific time, so we added a waitlist. After testing, it didn’t significantly impact bookings and was removed."
+      },
+      {
+        "type": "image",
+        "rounded": true,
+        "image": {
+          "src": "/images/booking/design-waitlist-tray.webp",
+          "alt": "Waitlist join, phone number, and confirmation screens",
+          "width": 2560,
+          "height": 1252
+        }
+      },
+      {
+        "type": "h",
+        "text": "1-step SSO sign in"
+      },
+      {
+        "type": "p",
+        "text": "Simplifying sign-in to a single SSO step significantly reduced drop-off."
+      },
+      {
+        "type": "image",
+        "rounded": true,
+        "image": {
+          "src": "/images/booking/design-sso-tray.webp",
+          "alt": "One-time email link sign-in, error, and success states",
+          "width": 2560,
+          "height": 1256
+        }
+      }
+    ]
+  },
+  "results": {
+    "overline": "Retrospective",
+    "title": "Results",
+    "blocks": [
+      {
+        "type": "p",
+        "text": "Users confirmed the new booking platform was a success. Without metrics, we relied on real-time feedback and user testing to iterate and refine the design."
+      },
+      {
+        "type": "metrics",
+        "items": [
+          {
+            "value": "1",
+            "label": "Step to sign in",
+            "description": "A single SSO step significantly reduced drop-off."
+          },
+          {
+            "value": "3",
+            "label": "Steps to book",
+            "description": "Find, review, and confirm: a quick, pleasant last-minute booking."
+          }
+        ]
+      },
+      {
+        "type": "h",
+        "text": "Other results"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Confirmed as a success by users",
+          "Waitlist tested, found not to move bookings significantly, and removed",
+          "Built from the ground up, with an atomic design system"
+        ]
+      }
+    ]
+  }
+}

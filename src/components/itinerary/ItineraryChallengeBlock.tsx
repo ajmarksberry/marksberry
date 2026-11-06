@@ -16,7 +16,7 @@ export function ItineraryChallengeBlock() {
       <SectionHeader
         overline="History"
         title="The challenge"
-        description="Travel advisors using TAAP could book flights, hotels, and experiences, but once bookings were made, there was no unified view for the advisor or the traveler. Advisors were forced to manually compile trip details outside the platform, creating extra work and an inconsistent client experience on both desktop and mobile."
+        description="Travel advisors using TAAP could book flights, hotels, and experiences, but once bookings were made, there was no unified view for the advisor or the traveler. Advisors were forced to manually compile trip details outside the platform, creating extra work and an inconsistent client experience."
         className="w-full max-w-[620px] pb-10 lg:max-w-full"
       />
 
