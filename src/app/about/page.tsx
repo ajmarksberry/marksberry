@@ -58,12 +58,15 @@ export default function AboutPage() {
             on the Travel Agent Affiliate Program (TAAP), which serves 200,000+
             travel advisors at 38,000+ agencies across 85+ markets. It was
             exciting to be part of Expedia&rsquo;s fast-growing B2B business,
-            where revenue grew 25% year over year in Q1 2026 and travel agency
-            bookings passed $3 billion in 2025, after 17 straight quarters of
-            double-digit growth. My work focused on improving itinerary
-            management, booking workflows, and post-booking experiences, working
-            closely with Product, Engineering, Research, and Content teams along
-            the way.
+            where revenue grew 23% year over year in Q3 2026 and travel agency
+            bookings passed $3 billion in 2025. My work focused on improving
+            itinerary management, booking workflows, and post-booking
+            experiences, working closely with Product, Engineering, Research,
+            and Content teams along the way.
+          </p>
+          <p>
+            I use AI to move faster on prototypes, and I rely on research with
+            real users to decide what ships.
           </p>
         </div>
 

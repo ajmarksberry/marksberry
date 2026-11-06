@@ -22,6 +22,15 @@ export const SHOW_VERSION_TOGGLE = process.env.NODE_ENV !== "production";
  * `next dev` the pages open on "optimized" and the switch flips between them. */
 export const CASE_STUDY_LIVE_VERSION: "optimized" | "original" = "optimized";
 
+/** Which versions get built into each case study page. The live site ships only
+ * CASE_STUDY_LIVE_VERSION, so the other versions never reach visitors, even in
+ * the page source. `next dev` builds them all so the switch can flip between them. */
+export const INCLUDE_OPTIMIZED =
+  SHOW_VERSION_TOGGLE || CASE_STUDY_LIVE_VERSION === "optimized";
+export const INCLUDE_ORIGINAL =
+  SHOW_VERSION_TOGGLE || (CASE_STUDY_LIVE_VERSION as string) === "original";
+export const INCLUDE_LEGACY = SHOW_VERSION_TOGGLE;
+
 /** Show the light/dark switch in the corner. While it is off, every visitor gets
  * DEFAULT_THEME and any choice saved by an earlier visit is ignored. */
 export const SHOW_THEME_TOGGLE = false;

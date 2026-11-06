@@ -18,7 +18,12 @@ import {
   StorySections,
   type StorySectionData,
 } from "@/components/story/StorySection";
-import { CASE_STUDY_LIVE_VERSION, SHOW_VERSION_TOGGLE } from "@/lib/site";
+import {
+  CASE_STUDY_LIVE_VERSION,
+  SHOW_VERSION_TOGGLE,
+  INCLUDE_ORIGINAL,
+  INCLUDE_OPTIMIZED,
+} from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "REACH.ai Booking Dashboard | AJ Marksberry",
@@ -75,8 +80,8 @@ export default function ReachAiCaseStudyPage() {
     <main id="top">
       <div className="mx-auto w-full max-w-[1140px] px-5 sm:px-10 lg:px-20">
         <CaseStudyVersionSwitch
-          original={<OriginalVersion />}
-          optimized={<OptimizedVersion />}
+          original={INCLUDE_ORIGINAL ? <OriginalVersion /> : null}
+          optimized={INCLUDE_OPTIMIZED ? <OptimizedVersion /> : null}
           defaultVersion={
             SHOW_VERSION_TOGGLE ? "optimized" : CASE_STUDY_LIVE_VERSION
           }

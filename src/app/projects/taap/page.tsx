@@ -21,7 +21,13 @@ import {
   StorySections,
   type StorySectionData,
 } from "@/components/story/StorySection";
-import { SHOW_VERSION_TOGGLE, CASE_STUDY_LIVE_VERSION } from "@/lib/site";
+import {
+  SHOW_VERSION_TOGGLE,
+  CASE_STUDY_LIVE_VERSION,
+  INCLUDE_ORIGINAL,
+  INCLUDE_OPTIMIZED,
+  INCLUDE_LEGACY,
+} from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Expedia TAAP Trips | AJ Marksberry",
@@ -184,9 +190,9 @@ export default function TaapTripsCaseStudyPage() {
     <main id="top">
       <div className="mx-auto w-full max-w-[1140px] px-5 sm:px-10 lg:px-20">
         <CaseStudyVersionSwitch
-          original={<OriginalVersion />}
-          optimized={<OptimizedVersion />}
-          legacy={<LegacyVersion />}
+          original={INCLUDE_ORIGINAL ? <OriginalVersion /> : null}
+          optimized={INCLUDE_OPTIMIZED ? <OptimizedVersion /> : null}
+          legacy={INCLUDE_LEGACY ? <LegacyVersion /> : null}
           defaultVersion={
             SHOW_VERSION_TOGGLE ? "optimized" : CASE_STUDY_LIVE_VERSION
           }

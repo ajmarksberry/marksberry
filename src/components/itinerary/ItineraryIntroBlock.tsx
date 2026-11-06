@@ -38,7 +38,7 @@ export function ItineraryIntroBlock() {
               booking. It serves 200,000+ advisors at 38,000+ agencies across
               85+ markets, with 10M+ searches a month across 3M+
               accommodations. It is part of Expedia&rsquo;s fast-growing B2B
-              business, where revenue grew 25% year over year in Q1 2026 and travel agency bookings passed $3 billion in 2025.
+              business, where revenue grew 23% year over year in Q3 2026 and travel agency bookings passed $3 billion in 2025.
             </p>
           </div>
           <div className="flex w-full flex-col items-start gap-4">
