@@ -32,9 +32,9 @@ export function ItineraryHeroBlock() {
           className="hero-reveal w-full text-lg leading-7 text-ink sm:text-xl"
           style={{ fontFeatureSettings: '"liga" 0', animationDelay: "240ms" }}
         >
-          Designed and validated a new itinerary creation workflow that gives
-          travel advisors a simpler, more flexible way to create client-ready
-          itineraries.
+          Designed and validated a new itinerary workflow that gives travel
+          advisors a simpler, more flexible way to curate client-ready
+          itineraries and share them with travelers.
         </p>
       </div>
 

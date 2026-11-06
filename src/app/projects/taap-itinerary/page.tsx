@@ -28,7 +28,7 @@ import {
 export const metadata: Metadata = {
   title: "Expedia TAAP Itinerary Builder | AJ Marksberry",
   description:
-    "Designed and validated a new itinerary creation workflow that gives travel advisors a simpler, more flexible way to create client-ready itineraries.",
+    "Designed and validated a new itinerary workflow that gives travel advisors a simpler, more flexible way to curate client-ready itineraries and share them with travelers.",
 };
 
 /** The page as it was before the six-section rewrite. Reachable from the

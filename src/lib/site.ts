@@ -103,9 +103,9 @@ export const caseStudies = [
     years: "2025-2026",
     title: "Expedia TAAP Itinerary Builder",
     description:
-      "Designed and validated a new itinerary creation workflow that gives travel advisors a simpler, more flexible way to create client-ready itineraries.",
+      "Designed and validated a new itinerary workflow that gives travel advisors a simpler, more flexible way to curate client-ready itineraries and share them with travelers.",
     summary:
-      "Designed and validated a new itinerary creation workflow that gives travel advisors a simpler, more flexible way to create client-ready itineraries.",
+      "Designed and validated a new itinerary workflow that gives travel advisors a simpler, more flexible way to curate client-ready itineraries and share them with travelers.",
     thumb: "/images/itinerary/hero-tray.webp",
     hero: null,
   },
