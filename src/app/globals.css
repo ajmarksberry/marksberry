@@ -451,6 +451,80 @@ body {
   animation-delay: 0.95s;
 }
 
+/* The waves keep moving once they are in: each sways side to side, the top and
+ * bottom ones left to right and the middle one right to left, so they pass one
+ * another like swell. Each has its own length and start, and a slow bob up and
+ * down inside the sway, so the three never line up. Small distances: about 12px
+ * either way at full size. */
+@keyframes wave-sway-right {
+  from {
+    transform: translateX(-18px);
+  }
+  to {
+    transform: translateX(18px);
+  }
+}
+
+@keyframes wave-sway-left {
+  from {
+    transform: translateX(18px);
+  }
+  to {
+    transform: translateX(-18px);
+  }
+}
+
+@keyframes wave-bob {
+  from {
+    transform: translateY(-3px);
+  }
+  to {
+    transform: translateY(3px);
+  }
+}
+
+.hero-wave,
+.hero-wave path {
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-fill-mode: both;
+}
+
+.hero-wave-1 {
+  animation-name: wave-sway-right;
+  animation-duration: 6.5s;
+  animation-delay: 1s;
+}
+
+.hero-wave-2 {
+  animation-name: wave-sway-left;
+  animation-duration: 7.5s;
+  animation-delay: 1.4s;
+}
+
+.hero-wave-3 {
+  animation-name: wave-sway-right;
+  animation-duration: 6s;
+  animation-delay: 1.8s;
+}
+
+.hero-wave path {
+  animation-name: wave-bob;
+}
+
+.hero-wave-1 path {
+  animation-duration: 3.4s;
+}
+
+.hero-wave-2 path {
+  animation-duration: 4.1s;
+}
+
+.hero-wave-3 path {
+  animation-duration: 3.7s;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -467,7 +541,9 @@ body {
   .hero-art-title,
   .hero-art-tagline,
   .hero-art-waves,
-  .hero-art-fish {
+  .hero-art-fish,
+  .hero-wave,
+  .hero-wave path {
     animation: none;
   }
 
