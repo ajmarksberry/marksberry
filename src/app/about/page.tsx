@@ -65,8 +65,11 @@ export default function AboutPage() {
             and Content teams along the way.
           </p>
           <p>
-            I use AI to move faster on prototypes, and I rely on research with
-            real users to decide what ships.
+            Away from the screen, you&rsquo;ll usually find me on the water. I
+            love fishing, and I&rsquo;m grateful for the time it gives me to
+            slow down and think. It has made me a more patient, more observant
+            designer, and it&rsquo;s also the reason my portfolio has a fish in
+            it.
           </p>
         </div>
 

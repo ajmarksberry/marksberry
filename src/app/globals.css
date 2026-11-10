@@ -408,9 +408,10 @@ body {
     opacity: 0;
     transform: translateY(90px);
   }
-  15% {
+  20% {
     opacity: 1;
   }
+  /* A little past its resting place, then back down onto it. */
   70% {
     transform: translateY(-12px);
   }
@@ -433,7 +434,7 @@ body {
 }
 
 .hero-art-fish {
-  animation: hero-leap 0.75s cubic-bezier(0.22, 0.8, 0.3, 1) 1.1s both;
+  animation: hero-leap 0.45s ease-in-out 1.1s both;
 }
 
 .hero-art-name {
@@ -454,7 +455,7 @@ body {
 /* The waves keep moving once they are in: each sways side to side, the top and
  * bottom ones left to right and the middle one right to left, so they pass one
  * another like swell. Each has its own length and start, and a slow bob up and
- * down inside the sway, so the three never line up. Small distances: about 12px
+ * down inside the sway (on the group's children), so the three never line up. Small distances: about 12px
  * either way at full size. */
 @keyframes wave-sway-right {
   from {
@@ -484,7 +485,7 @@ body {
 }
 
 .hero-wave,
-.hero-wave path {
+.hero-wave > * {
   animation-timing-function: ease-in-out;
   animation-iteration-count: infinite;
   animation-direction: alternate;
@@ -509,19 +510,19 @@ body {
   animation-delay: 1.8s;
 }
 
-.hero-wave path {
+.hero-wave > * {
   animation-name: wave-bob;
 }
 
-.hero-wave-1 path {
+.hero-wave-1 > * {
   animation-duration: 3.4s;
 }
 
-.hero-wave-2 path {
+.hero-wave-2 > * {
   animation-duration: 4.1s;
 }
 
-.hero-wave-3 path {
+.hero-wave-3 > * {
   animation-duration: 3.7s;
 }
 
@@ -543,7 +544,7 @@ body {
   .hero-art-waves,
   .hero-art-fish,
   .hero-wave,
-  .hero-wave path {
+  .hero-wave > * {
     animation: none;
   }
 
