@@ -78,14 +78,18 @@ export const navLinks = [
  * description, laid out like the meta strip at the top of a case study. Both
  * repeat each case study's hero block.
  *
- * `audience` and `summary` are only for the homepage cards: the tag line under
- * the title (client · audience · years) and the sentence beneath it. The other
+ * `platform`, `audience` and `summary` are only for the homepage cards.
+ * `platform` names what the work was built for, in words a recruiter would
+ * search, instead of the company: the card shows it as a badge. `audience` and
+ * `years` make the small line under the title, and `summary` is the sentence
+ * beneath it. The other
  * places that list the case studies keep using `description`.
  */
 export const caseStudies = [
   {
     href: "/projects/taap",
     client: "Expedia",
+    platform: "Enterprise travel platform",
     audience: "B2B",
     years: "2023-2026",
     title: "Expedia TAAP Trips",
@@ -99,6 +103,7 @@ export const caseStudies = [
   {
     href: "/projects/taap-itinerary",
     client: "Expedia",
+    platform: "Enterprise travel platform",
     audience: "B2B",
     years: "2025-2026",
     title: "Expedia TAAP Itinerary Builder",
@@ -112,6 +117,7 @@ export const caseStudies = [
   {
     href: "/projects/reach-ai",
     client: "REACH.ai",
+    platform: "AI SaaS platform",
     audience: "B2B",
     years: "2020-2022",
     title: "REACH.ai Booking Dashboard",
@@ -124,6 +130,7 @@ export const caseStudies = [
   {
     href: "/projects/reach-booking",
     client: "REACH.ai",
+    platform: "AI booking platform",
     audience: "B2C",
     years: "2020-2022",
     title: "REACH.ai booking experience",
@@ -138,11 +145,8 @@ export const caseStudies = [
 
 export type CaseStudyHref = (typeof caseStudies)[number]["href"];
 
-/** The tag line under a case study's title: client, audience, and years. */
-export function caseStudyTag(study: {
-  client: string;
-  audience: string;
-  years: string;
-}) {
-  return [study.client, study.audience, study.years].join(" · ");
+/** The tag line under a homepage card's title: audience and years. The project
+ * type has its own row in the card, so it is not repeated here. */
+export function caseStudyTag(study: { audience: string; years: string }) {
+  return [study.audience, study.years].join(" · ");
 }

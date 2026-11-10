@@ -11,6 +11,7 @@ import {
   type CSSProperties,
   type ReactNode,
 } from "react";
+import { HeroArtwork } from "@/components/HeroArtwork";
 import { ArrowRightIcon, LocationIcon } from "@/components/Icons";
 import { Divider } from "@/components/Divider";
 import { ReachLogo } from "@/components/ReachLogo";
@@ -139,6 +140,33 @@ const logoFor: Record<string, "taap" | "reach"> = {
   "/projects/taap-itinerary": "taap",
   "/projects/reach-ai": "reach",
   "/projects/reach-booking": "reach",
+};
+
+/**
+ * The logo on a homepage card. The card is white in both themes, so these are
+ * the dark-text logos, never the theme-aware ones. All share one height; the
+ * width follows each logo's proportions. `name` is also what comes out of the
+ * title.
+ */
+const CARD_LOGO_HEIGHT = 20;
+const expediaCardBrand = {
+  name: "Expedia",
+  logo: "/images/taap/expedia-logo.svg",
+  width: 110,
+} as const;
+const reachCardBrand = {
+  name: "REACH.ai",
+  logo: "/images/reach/logo-shape.svg",
+  width: 94,
+} as const;
+const cardBrandFor: Record<
+  string,
+  typeof expediaCardBrand | typeof reachCardBrand
+> = {
+  "/projects/taap": expediaCardBrand,
+  "/projects/taap-itinerary": expediaCardBrand,
+  "/projects/reach-ai": reachCardBrand,
+  "/projects/reach-booking": reachCardBrand,
 };
 
 /** The banner logos run a little smaller than on the case study pages. */
@@ -271,10 +299,15 @@ function CaseStudyCircle({
  * than the theme-aware tokens.
  */
 function CaseStudyCard({ study }: { study: Study }) {
-  const facts = [
-    ["Client", study.client],
-    ["Year", study.years],
-  ] as const;
+  // The client's logo above the title already says who the client is, so the
+  // name comes out of the title.
+  const brand = cardBrandFor[study.href];
+  const title = brand
+    ? study.title
+        .replace(brand.name, "")
+        .trim()
+        .replace(/^./, (c) => c.toUpperCase())
+    : study.title;
 
   return (
     <Link
@@ -296,11 +329,21 @@ function CaseStudyCard({ study }: { study: Study }) {
       </span>
 
       <span className="flex min-w-0 flex-1 flex-col gap-2 p-6">
+        {brand ? (
+          <Image
+            src={brand.logo}
+            alt={brand.name}
+            width={brand.width}
+            height={CARD_LOGO_HEIGHT}
+            className="mb-1 block shrink-0"
+            unoptimized
+          />
+        ) : null}
         <span
           className="font-extrabold text-2xl leading-8 tracking-[-0.4px] text-[#111827]"
           style={{ fontFeatureSettings: '"liga" 0' }}
         >
-          {study.title}
+          {title}
         </span>
         <span className="font-semibold text-[11px] uppercase leading-4 tracking-[1.2px] text-[#6B7280]">
           {caseStudyTag(study)}
@@ -311,19 +354,12 @@ function CaseStudyCard({ study }: { study: Study }) {
         >
           {study.summary}
         </span>
-        <span className="mt-auto flex flex-col pt-4">
-          <dl className="flex flex-col gap-2 border-t border-[#E5E7EB] pt-4">
-            {facts.map(([label, value]) => (
-              <div key={label} className="flex min-w-0 flex-col pr-10">
-                <dt className="font-semibold text-[11px] uppercase leading-4 tracking-[0.48px] text-[#6B7280]">
-                  {label}
-                </dt>
-                <dd className="font-semibold text-sm leading-6 text-[#111827]">
-                  {value}
-                </dd>
-              </div>
-            ))}
-          </dl>
+        {/* The footer row: the badge on the left, level with the arrow, which sits
+         * in the corner. */}
+        <span className="mt-auto flex h-6 items-center pr-10 box-content pt-4">
+          <span className="bg-[color-mix(in_oklab,var(--figma-highlights)_80%,black)] px-2 py-1 font-semibold text-xs leading-4 text-white">
+            {study.platform}
+          </span>
         </span>
       </span>
 
@@ -695,32 +731,16 @@ export function CaseStudyShowcase() {
       className="flex w-full flex-col gap-12 pt-12 lg:gap-16 lg:pt-16"
     >
       {SHOW_WELCOME ? (
-        <div className="flex w-full flex-col items-start gap-6">
-          <p
-            className="hero-reveal font-extrabold text-xs uppercase leading-none text-accent"
-            style={{ animationDelay: "40ms" }}
-          >
-            {welcomeOverline}
-          </p>
-          <h1
-            className="w-full font-extrabold text-[clamp(52px,11.5vw,148px)] leading-[0.95] tracking-[-0.045em] text-heading"
-            style={{ fontFeatureSettings: '"liga" 0' }}
-          >
-            {welcomeHeadline.split(" ").map((word, index) => (
-              <span key={index}>
-                {index > 0 ? " " : null}
-                <span
-                  className="word-in"
-                  style={{ "--i": index } as React.CSSProperties}
-                >
-                  {word}
-                </span>
-              </span>
-            ))}
+        <div className="flex w-full flex-col items-center gap-6">
+          {/* The artwork carries the name and title as drawn letters, so the
+           * real heading is here for screen readers and search. */}
+          <h1 className="sr-only">
+            {welcomeOverline}, {welcomeHeadline}
           </h1>
+          <HeroArtwork className="h-auto w-full max-w-[960px]" />
           <p
             className="hero-reveal flex items-center gap-2 font-extrabold text-lg leading-none tracking-[-0.02em] text-heading sm:text-xl"
-            style={{ animationDelay: "560ms" }}
+            style={{ animationDelay: "1600ms" }}
           >
             <LocationIcon className="size-6 shrink-0 text-accent sm:size-7" />
             {welcomeLocation}
