@@ -142,8 +142,12 @@ export function MoonIcon({ className }: IconProps) {
   );
 }
 
-/** A solid map pin, heavy enough to sit beside extra-bold type. */
-export function LocationIcon({ className }: IconProps) {
+/**
+ * The state of Minnesota as a solid silhouette, for the homepage location line.
+ * The outline is the Census boundary (us-atlas, 10m) in an Albers projection,
+ * simplified to about 100 points, fitted to a 24 x 24 box (19.5 wide, 22 tall).
+ */
+export function MinnesotaIcon({ className }: IconProps) {
   return (
     <svg
       width="24"
@@ -154,9 +158,7 @@ export function LocationIcon({ className }: IconProps) {
       className={className}
     >
       <path
-        fillRule="evenodd"
-        clipRule="evenodd"
-        d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7Zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5Z"
+        d="M2.3 2.4L7.4 2.4L7.4 1.0L7.7 1.1L7.9 1.0L8.2 1.3L8.6 2.8L8.6 3.2L8.7 3.4L9.2 3.5L9.7 3.5L9.8 3.7L10.7 3.8L10.9 4.2L11.7 4.0L11.7 3.9L12.0 3.7L12.9 3.7L13.5 4.0L13.8 4.0L13.8 4.1L13.6 4.2L13.6 4.3L13.7 4.4L14.1 4.3L14.5 5.1L14.7 5.1L14.6 4.8L14.7 4.6L15.2 4.6L15.5 5.1L16.1 5.2L16.1 5.5L16.5 5.5L16.5 5.7L17.3 5.5L17.7 5.2L18.2 4.9L18.3 4.9L18.3 5.1L18.5 5.2L18.5 5.4L20.1 5.3L20.4 5.3L20.5 5.6L20.8 5.7L21.1 5.5L21.6 5.6L21.8 5.5L20.6 6.3L19.2 6.9L18.7 7.2L17.8 8.1L16.9 9.1L15.4 10.5L15.6 10.8L15.4 10.6L15.1 10.8L15.2 10.8L15.1 11.0L14.9 10.9L15.0 13.1L14.8 13.4L14.6 13.4L14.5 13.5L14.4 13.5L13.9 13.9L13.7 14.3L13.5 14.5L13.5 15.1L13.9 15.2L14.1 15.5L13.9 16.1L13.9 16.8L13.8 17.0L13.9 17.4L13.9 18.2L14.5 18.8L15.1 18.9L15.4 19.2L16.1 19.5L16.2 19.6L16.4 20.1L17.2 20.7L17.6 20.8L18.1 21.7L18.1 22.0L18.3 22.7L10.8 22.9L4.1 23.0L4.1 16.2L4.0 16.0L3.5 15.8L3.1 15.1L3.8 14.3L3.9 13.4L3.8 12.4L3.5 12.0L3.3 11.2L3.3 10.5L3.4 10.1L3.2 10.0L3.1 7.6L2.5 5.6L2.4 4.1L2.6 3.6Z"
         fill="currentColor"
       />
     </svg>

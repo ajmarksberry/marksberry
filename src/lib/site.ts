@@ -7,10 +7,13 @@ export const RESUME_PATH = "/AJ_Marksberry_Resume_2026.pdf";
 export const RESUME_FILENAME = "AJ-Marksberry-Resume-2026.pdf";
 
 export const SHOW_ABOUT = true;
-/** Gates both the nav link and the page itself, like SHOW_ABOUT. */
+/** The two groups on the Projects page (/work): the other Expedia work, and the
+ * visual design projects. Turning one off hides that group. */
 export const SHOW_EXPEDIA_WORK = true;
-/** Gates the Visual design page and its rows in the menu and More work list. */
 export const SHOW_VISUAL_DESIGN = true;
+/** Gates both the nav link and the Projects page itself, like SHOW_ABOUT: on
+ * while either group is. */
+export const SHOW_PROJECTS = SHOW_EXPEDIA_WORK || SHOW_VISUAL_DESIGN;
 
 /** Shows the Original / Optimized switch on the case studies. It is on in
  * `next dev` and off in any production build, so the live site never shows it.
@@ -37,34 +40,9 @@ export const SHOW_THEME_TOGGLE = false;
 /** The theme a visitor starts on (and always gets, while the switch is hidden). */
 export const DEFAULT_THEME: "light" | "dark" = "light";
 
-/**
- * The Expedia work page as a list row, for the mobile menu. `hero` is the
- * Expedia wordmark on a dark tile, cropped from the page's own screenshots.
- */
-export const expediaWorkLink = {
-  href: "/expedia-work",
-  title: "Other Expedia work",
-  description: "More of the work I've done at Expedia Group.",
-  hero: "/images/expedia-work/expedia-thumb.webp",
-} as const;
-
-/** The Visual design page as a list row. `hero` is cropped from the Cowtown
- * homepage. */
-export const visualDesignLink = {
-  href: "/visual-design",
-  title: "Visual design",
-  description: "A selection of websites and interfaces I've designed.",
-  hero: "/images/visual-design/thumb.webp",
-} as const;
-
 export const navLinks = [
   { href: "/projects", label: "Case studies" },
-  ...(SHOW_EXPEDIA_WORK
-    ? [{ href: "/expedia-work", label: "Expedia work" }]
-    : []),
-  ...(SHOW_VISUAL_DESIGN
-    ? [{ href: "/visual-design", label: "Visual design" }]
-    : []),
+  ...(SHOW_PROJECTS ? [{ href: "/work", label: "Projects" }] : []),
   ...(SHOW_ABOUT ? [{ href: "/about", label: "About" }] : []),
   { href: "/contact", label: "Contact" },
 ];
@@ -78,12 +56,12 @@ export const navLinks = [
  * description, laid out like the meta strip at the top of a case study. Both
  * repeat each case study's hero block.
  *
- * `platform`, `audience` and `summary` are only for the homepage cards.
+ * `platform`, `audience` and `summary` are only for the case study lists.
  * `platform` names what the work was built for, in words a recruiter would
- * search, instead of the company: the card shows it as a badge. `audience` and
- * `years` make the small line under the title, and `summary` is the sentence
- * beneath it. The other
- * places that list the case studies keep using `description`.
+ * search, instead of the company. The homepage card shows it as a badge, and the
+ * other case study lists use it in their tag line (platform · audience · years).
+ * `summary` is the sentence beneath the card title. The other places that list
+ * the case studies keep using `description`.
  */
 export const caseStudies = [
   {

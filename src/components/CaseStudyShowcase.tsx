@@ -12,7 +12,7 @@ import {
   type ReactNode,
 } from "react";
 import { HeroArtwork } from "@/components/HeroArtwork";
-import { ArrowRightIcon, LocationIcon } from "@/components/Icons";
+import { ArrowRightIcon, MinnesotaIcon } from "@/components/Icons";
 import { Divider } from "@/components/Divider";
 import { ReachLogo } from "@/components/ReachLogo";
 import { SectionHeader } from "@/components/SectionHeader";
@@ -588,28 +588,15 @@ function CardCarousel({ id }: { id: string }) {
     };
   }, []);
 
-  // The cards fade in from left to right, one after another, the first time the
-  // row scrolls into view. Like Reveal, a row already on screen at load waits
-  // for the headline to finish.
+  // The cards fade in from left to right, one after another, as soon as the hero
+  // artwork has finished. They do not wait to be scrolled to: they are part of
+  // the page from the start, so they are there (and have already played) by the
+  // time anyone scrolls down to them.
   useEffect(() => {
     const row = rowRef.current;
     if (!row) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (!entry.isIntersecting) return;
-        const onLoad = performance.now() < LOAD_WINDOW_MS;
-        row.style.setProperty(
-          "--fade-delay",
-          `${120 + (onLoad ? AFTER_HEADLINE_MS : 0)}ms`,
-        );
-        row.dataset.in = "true";
-        observer.disconnect();
-      },
-      { rootMargin: "0px 0px -8% 0px" },
-    );
-    observer.observe(row);
-    return () => observer.disconnect();
+    row.style.setProperty("--fade-delay", `${120 + holdForHero()}ms`);
+    row.dataset.in = "true";
   }, []);
 
   return (
@@ -669,24 +656,41 @@ function CardCarousel({ id }: { id: string }) {
   );
 }
 
-/** Gap past page load within which a reveal counts as "on load" and waits for
- * the headline to finish first. */
-const LOAD_WINDOW_MS = 1500;
-const AFTER_HEADLINE_MS = 450;
+/**
+ * When the hero has finished playing, in ms from the page load. The artwork's
+ * last pieces land by about 1.9s (the back wave 1.75s, the fish 1.66s, the lure
+ * 1.9s), and the "Minneapolis, MN" line, which comes in last, starts at 1.9s
+ * (LOCATION_DELAY_MS) and takes 0.75s to fade up: 2.65s. The case studies, which
+ * are already on screen at load, wait until then. The hold is measured from the
+ * page load, so a reveal that fires late (a slow start, or a page that was
+ * scrolled down) waits less, or not at all.
+ */
+const LOCATION_DELAY_MS = 1900;
+const LOCATION_FADE_MS = 750;
+const HERO_INTRO_MS = LOCATION_DELAY_MS + LOCATION_FADE_MS;
+
+/** Milliseconds still to wait, from now, for the hero artwork to finish. */
+function holdForHero() {
+  return Math.max(0, HERO_INTRO_MS - performance.now());
+}
 
 /**
  * Fades and rises its children in the first time they scroll into view. What's
- * already on screen at load holds back until the headline has played; anything
- * further down reveals as soon as you reach it. `delay` staggers neighbours.
+ * already on screen at load holds back until the hero artwork has played;
+ * anything further down reveals as soon as you reach it. `eager` ones do not
+ * wait to be scrolled to: they play when the hero artwork has finished. `delay` staggers neighbours.
  */
 function Reveal({
   children,
   delay = 0,
   className = "",
+  eager = false,
 }: {
   children: ReactNode;
   delay?: number;
   className?: string;
+  /** Play as soon as the hero has finished, without waiting to be scrolled to. */
+  eager?: boolean;
 }) {
   const ref = useRef<HTMLDivElement>(null);
 
@@ -694,14 +698,16 @@ function Reveal({
     const node = ref.current;
     if (!node) return;
 
+    if (eager) {
+      node.style.setProperty("--reveal-delay", `${delay + holdForHero()}ms`);
+      node.dataset.visible = "true";
+      return;
+    }
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (!entry.isIntersecting) return;
-        const onLoad = performance.now() < LOAD_WINDOW_MS;
-        node.style.setProperty(
-          "--reveal-delay",
-          `${delay + (onLoad ? AFTER_HEADLINE_MS : 0)}ms`,
-        );
+        node.style.setProperty("--reveal-delay", `${delay + holdForHero()}ms`);
         node.dataset.visible = "true";
         observer.disconnect();
       },
@@ -709,7 +715,7 @@ function Reveal({
     );
     observer.observe(node);
     return () => observer.disconnect();
-  }, [delay]);
+  }, [delay, eager]);
 
   return (
     <div ref={ref} className={`reveal ${className}`}>
@@ -739,25 +745,21 @@ export function CaseStudyShowcase() {
           </h1>
           <HeroArtwork className="h-auto w-full max-w-[960px]" />
           <p
-            className="hero-reveal flex items-center gap-2 font-extrabold text-lg leading-none tracking-[-0.02em] text-heading sm:text-xl"
-            style={{ animationDelay: "1600ms" }}
+            className="hero-reveal flex items-center gap-2 font-extrabold text-xs uppercase leading-none text-accent"
+            style={{ animationDelay: `${LOCATION_DELAY_MS}ms` }}
           >
-            <LocationIcon className="size-6 shrink-0 text-accent sm:size-7" />
+            <MinnesotaIcon className="size-4 shrink-0" />
             {welcomeLocation}
           </p>
         </div>
       ) : null}
 
-      {SHOW_WELCOME ? (
-        <Reveal>
-          <Divider />
-        </Reveal>
-      ) : null}
-
-      <div className="flex flex-col gap-4">
-        <Reveal>
+      {/* No rule between the hero and the case studies, and the gap there is
+       * halved (the section's own gap is 48-64px), so the location line sits
+       * close to the "Case studies" heading. */}
+      <div className="-mt-6 flex flex-col gap-4 lg:-mt-8">
+        <Reveal eager>
           <SectionHeader
-            overline="Selected work"
             title="Case studies"
             className="w-full max-w-[640px]"
           />

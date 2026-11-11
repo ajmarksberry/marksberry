@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useId, useRef, useState } from "react";
+import { AjMark } from "@/components/AjMark";
 import { CaseStudyPreviewRow } from "@/components/CaseStudyPreviewRow";
 import { CloseIcon, MenuIcon } from "@/components/Icons";
 import { caseStudies, navLinks } from "@/lib/site";
@@ -226,7 +227,7 @@ export function TopBar() {
               aria-current="page"
               className="shrink-0 whitespace-nowrap font-bold text-lg leading-none tracking-[-0.72px] text-accent sm:text-[22px] sm:tracking-[-0.88px]"
             >
-              <span aria-hidden>AJM</span>
+              <AjMark className="size-10 sm:size-12" />
               <span className="sr-only">AJ Marksberry</span>
             </span>
           ) : (
@@ -234,7 +235,7 @@ export function TopBar() {
               href="/"
               className={`shrink-0 whitespace-nowrap font-bold text-lg leading-none tracking-[-0.72px] text-chrome-fg sm:text-[22px] sm:tracking-[-0.88px] ${fade}`}
             >
-              <span aria-hidden>AJM</span>
+              <AjMark className="size-10 sm:size-12" />
               <span className="sr-only">AJ Marksberry</span>
             </Link>
           )}

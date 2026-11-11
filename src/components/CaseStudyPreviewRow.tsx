@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRightIcon } from "@/components/Icons";
@@ -7,7 +8,7 @@ export type PreviewItem = {
   href: string;
   title: string;
   summary: string;
-  client: string;
+  platform: string;
   audience: string;
   years: string;
   hero: string | null;
@@ -19,7 +20,7 @@ const FALLBACK_THUMB = "/images/home/case-study-backdrop.webp";
 
 /**
  * A smaller, horizontal echo of the homepage cards: thumbnail beside the title,
- * the tag line (client, audience, years), and the summary, full width of
+ * the tag line (platform, audience, years), and the summary, full width of
  * whatever contains it. Used at the bottom of each case study page and, in
  * `compact` form, in the nav's case-study list.
  */
@@ -79,13 +80,19 @@ export function CaseStudyPreviewRow({
         </span>
         <span className="font-semibold text-[11px] uppercase leading-4 tracking-[1.2px] text-muted">
           {/* Each part stays whole, so a narrow screen wraps between them and
-           * never inside the years. */}
-          {[study.client, study.audience, study.years].map((part, i, parts) => (
-            <span key={part} className="whitespace-nowrap">
-              {part}
-              {i < parts.length - 1 ? " ·" : ""}{" "}
-            </span>
-          ))}
+           * never inside the years. The space between parts sits outside the
+           * no-wrap span: inside it, there would be nowhere to break, and a long
+           * part such as "Enterprise travel platform" would run off the edge. */}
+          {[study.platform, study.audience, study.years].map(
+            (part, i, parts) => (
+              <Fragment key={part}>
+                <span className="whitespace-nowrap">
+                  {part}
+                  {i < parts.length - 1 ? " ·" : ""}
+                </span>{" "}
+              </Fragment>
+            ),
+          )}
         </span>
         <span
           className={`text-sm leading-6 text-ink ${

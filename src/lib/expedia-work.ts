@@ -60,6 +60,22 @@ export type ExpediaWorkItem = {
 
 export const expediaWork: readonly ExpediaWorkItem[] = [
   {
+    id: "checkout",
+    title: "Checkout",
+    stacked: true,
+    images: [
+      {
+        src: "/images/expedia-work/checkout.webp",
+        alt: "The Expedia TAAP checkout, Finish booking your trip: three desktop screens stepping through traveler information, payment, and review, with a price summary on the right",
+        width: 1800,
+        height: 2506,
+        bare: true,
+        captionPull: 2,
+        caption: "Sprint explorations.",
+      },
+    ],
+  },
+  {
     id: "placeholder-one",
     title: "Expedia itinerary redesign",
     description:
@@ -100,16 +116,6 @@ export const expediaWork: readonly ExpediaWorkItem[] = [
     stacked: true,
     images: [
       {
-        heading: "Merge itineraries",
-        src: "/images/expedia-work/trips-redesign.webp",
-        alt: "The redesigned Expedia TAAP Trips page: a status sidebar, a list of upcoming trips, and the selected itineraries shown in detail beside it",
-        width: 1756,
-        height: 1164,
-        bare: true,
-        captionPull: 2.8,
-        caption: "Merging multiple itineraries from the Trips page.",
-      },
-      {
         heading: "Change your stay",
         src: "/images/expedia-work/reservation-changes.webp",
         alt: "Mobile screens for changing a hotel reservation: the booking details for a Las Vegas stay, then the change-your-stay, change-your-date, and change-your-room steps",
@@ -129,16 +135,6 @@ export const expediaWork: readonly ExpediaWorkItem[] = [
         captionPull: 2.5,
         caption:
           "Quote flights, hotels, cars, transfers, and activities together in one quote.",
-      },
-      {
-        heading: "Checkout",
-        src: "/images/expedia-work/checkout.webp",
-        alt: "The Expedia TAAP checkout, Finish booking your trip: three desktop screens stepping through traveler information, payment, and review, with a price summary on the right",
-        width: 1800,
-        height: 2506,
-        bare: true,
-        captionPull: 2,
-        caption: "Sprint explorations.",
       },
     ],
   },

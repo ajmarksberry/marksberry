@@ -64,13 +64,6 @@ export default function AboutPage() {
             experiences, working closely with Product, Engineering, Research,
             and Content teams along the way.
           </p>
-          <p>
-            Away from the screen, you&rsquo;ll usually find me on the water. I
-            love fishing, and I&rsquo;m grateful for the time it gives me to
-            slow down and think. It has made me a more patient, more observant
-            designer, and it&rsquo;s also the reason my portfolio has a fish in
-            it.
-          </p>
         </div>
 
         <section

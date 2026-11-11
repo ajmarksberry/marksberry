@@ -383,6 +383,14 @@ body {
  * roll in and the fish leaps. Handwriting is a left-to-right wipe; the title
  * rises in; the fish jumps up out of the water. Each piece waits at its starting
  * state (animation-fill-mode: both) until its turn. */
+/* The copy of the front wave that hides the lower part of the rising fish goes
+ * away once the fish is up. */
+@keyframes hero-cover-out {
+  to {
+    opacity: 0;
+  }
+}
+
 @keyframes hero-write {
   from {
     clip-path: inset(-5% 102% -5% -2%) fill-box;
@@ -404,26 +412,54 @@ body {
 }
 
 @keyframes hero-leap {
+  /* Starts fully behind the front wave and below the bottom edge of the artwork
+   * (800 units down), and invisible until its turn: the copy of the front wave
+   * that hides it has not rolled across yet before then. The wave's copy over
+   * the fish (see HeroArtwork) hides everything below its line, so the fish is
+   * not seen until it rises past it. It starts small and tilted nose-up
+   * (counterclockwise, about its middle), and turns upright and grows to full
+   * size as it rises. */
   0% {
     opacity: 0;
-    transform: translateY(90px);
+    transform: translateY(800px) rotate(-35deg) scale(0.55);
   }
-  20% {
+  1% {
     opacity: 1;
   }
-  /* A little past its resting place, then back down onto it. */
+  /* A little past its resting place, upright and full size, then back down. */
   70% {
-    transform: translateY(-12px);
+    transform: translateY(-12px) rotate(0deg) scale(1);
   }
   100% {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) rotate(0deg) scale(1);
+  }
+}
+
+/* The lure comes in from the left, sliding right into place, with a quick fade. */
+@keyframes hero-lure-slide {
+  from {
+    transform: translateX(-90px);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes hero-lure-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
 
 .hero-art-name,
 .hero-art-tagline,
-.hero-art-waves {
+.hero-art-wave-1,
+.hero-art-wave-2,
+.hero-art-wave-3 {
   animation-name: hero-write;
   animation-fill-mode: both;
   animation-timing-function: cubic-bezier(0.45, 0, 0.25, 1);
@@ -433,8 +469,22 @@ body {
   animation: hero-rise 0.55s cubic-bezier(0.16, 1, 0.3, 1) 0.45s both;
 }
 
+.hero-art-lure {
+  /* Starts with the fish (0.955s), fades in fast and slides left to right. */
+  animation:
+    hero-lure-slide 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.955s both,
+    hero-lure-fade 0.2s linear 0.955s both;
+}
+
+.hero-art-cover-fade {
+  animation: hero-cover-out 0.2s linear 1.65s both;
+}
+
 .hero-art-fish {
-  animation: hero-leap 0.45s ease-in-out 1.1s both;
+  /* Turn and scale about the fish's own middle. */
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: hero-leap 0.7s ease-in-out 0.955s both;
 }
 
 .hero-art-name {
@@ -447,9 +497,23 @@ body {
   animation-delay: 0.7s;
 }
 
-.hero-art-waves {
-  animation-duration: 0.8s;
-  animation-delay: 0.95s;
+/* The front wave comes in first. The fish starts to rise from behind it once
+ * half of the wave is revealed (0.955s: the wipe runs 0.8s to 1.2s, and the
+ * curve puts it half across 39% of the way through), then the middle
+ * and back waves come in quickly. */
+.hero-art-wave-3 {
+  animation-duration: 0.4s;
+  animation-delay: 0.8s;
+}
+
+.hero-art-wave-2 {
+  animation-duration: 0.2s;
+  animation-delay: 1.4s;
+}
+
+.hero-art-wave-1 {
+  animation-duration: 0.2s;
+  animation-delay: 1.55s;
 }
 
 /* The waves keep moving once they are in: each sways side to side, the top and
@@ -495,7 +559,7 @@ body {
 .hero-wave-1 {
   animation-name: wave-sway-right;
   animation-duration: 6.5s;
-  animation-delay: 1s;
+  animation-delay: 1.55s;
 }
 
 .hero-wave-2 {
@@ -507,7 +571,7 @@ body {
 .hero-wave-3 {
   animation-name: wave-sway-right;
   animation-duration: 6s;
-  animation-delay: 1.8s;
+  animation-delay: 0.8s;
 }
 
 .hero-wave > * {
@@ -527,6 +591,10 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .hero-art-cover-fade {
+    display: none;
+  }
+
   html {
     scroll-behavior: auto;
   }
@@ -541,7 +609,10 @@ body {
   .hero-art-name,
   .hero-art-title,
   .hero-art-tagline,
-  .hero-art-waves,
+  .hero-art-wave-1,
+  .hero-art-wave-2,
+  .hero-art-wave-3,
+  .hero-art-lure,
   .hero-art-fish,
   .hero-wave,
   .hero-wave > * {

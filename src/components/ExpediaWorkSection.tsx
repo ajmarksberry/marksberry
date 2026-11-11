@@ -36,14 +36,15 @@ export function ExpediaWorkSection({ item }: { item: ExpediaWorkItem }) {
           </p>
         ) : null}
         {item.points && item.points.length > 0 ? (
+          // No bullets: each point is a line of its own. list-none drops the
+          // list role in some screen readers, so it is put back.
           <ul
-            className="w-full list-disc text-base leading-7 text-ink"
+            role="list"
+            className="flex w-full list-none flex-col gap-2 text-base leading-7 text-ink"
             style={{ fontFeatureSettings: '"liga" 0' }}
           >
             {item.points.map((point) => (
-              <li key={point} className="ms-6">
-                {point}
-              </li>
+              <li key={point}>{point}</li>
             ))}
           </ul>
         ) : null}
