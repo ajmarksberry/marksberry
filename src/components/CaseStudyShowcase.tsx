@@ -139,7 +139,6 @@ const logoFor: Record<string, "taap" | "reach"> = {
   "/projects/taap": "taap",
   "/projects/taap-itinerary": "taap",
   "/projects/reach-ai": "reach",
-  "/projects/reach-booking": "reach",
 };
 
 /**
@@ -166,7 +165,6 @@ const cardBrandFor: Record<
   "/projects/taap": expediaCardBrand,
   "/projects/taap-itinerary": expediaCardBrand,
   "/projects/reach-ai": reachCardBrand,
-  "/projects/reach-booking": reachCardBrand,
 };
 
 /** The banner logos run a little smaller than on the case study pages. */

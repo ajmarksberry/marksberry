@@ -58,10 +58,9 @@ export const navLinks = [
  *
  * `platform`, `audience` and `summary` are only for the case study lists.
  * `platform` names what the work was built for, in words a recruiter would
- * search, instead of the company. The homepage card shows it as a badge, and the
- * other case study lists use it in their tag line (platform · audience · years).
- * `summary` is the sentence beneath the card title. The other places that list
- * the case studies keep using `description`.
+ * search, instead of the company. The homepage card lists it as its "Project"
+ * row; the other lists use it in their tag line (platform · audience · years). The other
+ * places that list the case studies keep using `description`.
  */
 export const caseStudies = [
   {
@@ -95,29 +94,16 @@ export const caseStudies = [
   {
     href: "/projects/reach-ai",
     client: "REACH.ai",
-    platform: "AI SaaS platform",
-    audience: "B2B",
+    platform: "AI booking platform",
+    audience: "B2C and B2B",
     years: "2020-2022",
-    title: "REACH.ai Booking Dashboard",
-    description: "Bringing an outdated experience back to life again",
+    title: "REACH.ai AI Booking Platform",
+    description:
+      "Designing both sides of a platform for beauty and wellness studios",
     summary:
-      "The business analytics side of a two-sided AI booking platform for beauty & wellness, designed from 0-to-1.",
+      "A booking experience built from scratch and a redesigned business dashboard, on one design language.",
     thumb: "/images/reach/hero-tray.webp",
     hero: "/images/reach/dashboard-hero.webp",
-  },
-  {
-    href: "/projects/reach-booking",
-    client: "REACH.ai",
-    platform: "AI booking platform",
-    audience: "B2C",
-    years: "2020-2022",
-    title: "REACH.ai booking experience",
-    description:
-      "Filling last-minute appointments to capture lost revenue for service providers, built from the ground up",
-    summary:
-      "The consumer booking side of a two-sided AI booking platform for beauty & wellness, designed from 0-to-1.",
-    thumb: "/images/booking/hero-tray.webp",
-    hero: "/images/booking/experience-hero.webp",
   },
 ] as const;
 

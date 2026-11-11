@@ -1,0 +1,354 @@
+{
+ "overview": {
+  "overline": "Overview",
+  "title": "Two sides, one platform",
+  "blocks": [
+   {
+    "type": "p",
+    "text": "REACH.ai scans a salon’s live appointment book for last-minute openings and cancellations, then contacts the customers most likely to fill them, using machine learning. It is a two-sided platform, and I designed both sides as lead product designer."
+   },
+   {
+    "type": "h",
+    "text": "What I owned"
+   },
+   {
+    "type": "ul",
+    "items": [
+     "Consumer side, 0-to-1: the AI booking flow, built from scratch",
+     "Business side: a redesign of the merchant dashboard, from discovery to wireframes and UI",
+     "Foundation: one visual language and atomic design system for both sides"
+    ]
+   },
+   {
+    "type": "stats",
+    "items": [
+     {
+      "value": "2x",
+      "label": "weekly engagement with the dashboard"
+     },
+     {
+      "value": "-40%",
+      "label": "support requests"
+     },
+     {
+      "value": "3",
+      "label": "steps to book a last-minute appointment"
+     },
+     {
+      "value": "1",
+      "label": "step to sign in with SSO"
+     }
+    ]
+   }
+  ]
+ },
+ "challenge": {
+  "overline": "Context",
+  "title": "Two connected problems",
+  "blocks": [
+   {
+    "type": "p",
+    "text": "Last-minute cancellations leave revenue-generating slots unfilled, and the usual response is slow and impersonal. Even when a platform promises AI-driven re-engagement, owners need to see what it earned."
+   },
+   {
+    "type": "groups",
+    "groups": [
+     {
+      "heading": "Consumer side",
+      "items": [
+       "Customers wanted booking to be easy, with the provider they already know",
+       "One flow had to handle every situation, from email or SMS",
+       "Keep it simple and cut drop-off"
+      ]
+     },
+     {
+      "heading": "Business side",
+      "items": [
+       "A noisy dashboard at peak hours",
+       "Several complex communication tools",
+       "Appointment details spread across systems"
+      ]
+     }
+    ]
+   },
+   {
+    "type": "persona",
+    "image": {
+     "src": "/images/reach/persona-emily.webp",
+     "alt": "Emily, merchant persona",
+     "width": 690,
+     "height": 690
+    },
+    "quote": "“I need an easy-to-use interface to gain quick, high-level insights into our client’s booking habits and how it affects our stylist’s schedule.”",
+    "groups": [
+     {
+      "heading": "Frustrations",
+      "items": [
+       "Several complex communication tools",
+       "A noisy dashboard at peak hours",
+       "Appointment details spread across systems"
+      ]
+     },
+     {
+      "heading": "Goals",
+      "items": [
+       "Surface information to the owner on request",
+       "Fewer inbound calls and emails about bookings",
+       "Fewer front-desk interruptions"
+      ]
+     }
+    ]
+   }
+  ]
+ },
+ "discovery": {
+  "overline": "Discovery",
+  "title": "What we learned",
+  "blocks": [
+   {
+    "type": "p",
+    "text": "We couldn’t afford formal user testing. For the business side, customer success ran a mixed-methods study with 52 customers, asking the same three questions during sales and support calls, and I reviewed the existing designs against usability heuristics. For the consumer side, I studied competitor booking flows and mapped sitemaps and navigation."
+   },
+   {
+    "type": "ul",
+    "items": [
+     "“There is a lot of information on the dashboard.”",
+     "“I can’t find what I’m looking for.”",
+     "“It’s difficult to change locations.”"
+    ]
+   },
+   {
+    "type": "h",
+    "text": "Heuristic findings"
+   },
+   {
+    "type": "split",
+    "bullets": true,
+    "image": {
+     "src": "/images/reach/evaluate-shot.webp",
+     "alt": "Annotated REACH.ai dashboard with heuristic findings",
+     "width": 848,
+     "height": 810
+    },
+    "items": [
+     "Simplify the color palette",
+     "Collapse redundant navigation into a calm primary rail",
+     "Optimize for mobile",
+     "Remove unnecessary and legacy features",
+     "Reduce the amount of content on the page",
+     "Establish consistent status color, type, and confirmation patterns"
+    ]
+   }
+  ]
+ },
+ "workshop": {
+  "overline": "Discovery",
+  "title": "Workshop and wireframes",
+  "blocks": [
+   {
+    "type": "p",
+    "text": "I planned and led a 3-day onsite workshop in Phoenix, Arizona to review the experience and find where to improve it. Activities included stakeholder alignment, research synthesis, dot voting, sketching, crazy-eights, critique, and a retro."
+   },
+   {
+    "type": "image",
+    "rounded": true,
+    "image": {
+     "src": "/images/reach/sprint-workshop.webp",
+     "alt": "Workshop participants reviewing sticky notes on a wall",
+     "width": 1296,
+     "height": 728
+    }
+   },
+   {
+    "type": "image",
+    "caption": "Wireframes: structure before polish.",
+    "image": {
+     "src": "/images/reach/wireframes-tray.webp",
+     "alt": "Overlapping dashboard wireframes showing revenue overview and location selector",
+     "width": 2000,
+     "height": 1466
+    }
+   }
+  ]
+ },
+ "system": {
+  "overline": "Design",
+  "title": "The design language first",
+  "blocks": [
+   {
+    "type": "p",
+    "text": "I set up the visual system from scratch, then built both products on top of it at the same time. High-fidelity UI brought breathing room, confident typography, and one set of components for charts, status, and AI moments."
+   },
+   {
+    "type": "image",
+    "rounded": true,
+    "caption": "The design system sheets for forms, buttons, elevations, and typography.",
+    "image": {
+     "src": "/images/reach/design-system.webp",
+     "alt": "REACH.ai design system sheets with colors, buttons, and typography",
+     "width": 2316,
+     "height": 1536
+    }
+   }
+  ]
+ },
+ "consumer": {
+  "overline": "Design",
+  "title": "Consumer side: 0-to-1",
+  "blocks": [
+   {
+    "type": "p",
+    "text": "A brand new booking experience, built from the ground up and tested as it grew."
+   },
+   {
+    "type": "h",
+    "text": "Welcome screen"
+   },
+   {
+    "type": "p",
+    "text": "Customers search by service or provider, so finding the right opening is quick."
+   },
+   {
+    "type": "image",
+    "rounded": true,
+    "image": {
+     "src": "/images/booking/design-welcome-tray.webp",
+     "alt": "Three mobile screens for searching by service or provider",
+     "width": 2560,
+     "height": 1861
+    }
+   },
+   {
+    "type": "h",
+    "text": "Book an appointment"
+   },
+   {
+    "type": "p",
+    "text": "A simple 3-step flow (find, review, confirm) keeps last-minute booking pleasant."
+   },
+   {
+    "type": "image",
+    "rounded": true,
+    "image": {
+     "src": "/images/booking/design-book-tray.webp",
+     "alt": "Find, review, and confirm appointment screens",
+     "width": 2560,
+     "height": 1648
+    }
+   },
+   {
+    "type": "h",
+    "text": "Join a waitlist"
+   },
+   {
+    "type": "p",
+    "text": "Users wanted to see a provider at a specific time, so we added a waitlist. After testing, it didn’t significantly impact bookings and was removed."
+   },
+   {
+    "type": "image",
+    "rounded": true,
+    "image": {
+     "src": "/images/booking/design-waitlist-tray.webp",
+     "alt": "Waitlist join, phone number, and confirmation screens",
+     "width": 2560,
+     "height": 1252
+    }
+   },
+   {
+    "type": "h",
+    "text": "1-step SSO sign in"
+   },
+   {
+    "type": "p",
+    "text": "Simplifying sign-in to a single SSO step significantly reduced drop-off."
+   },
+   {
+    "type": "image",
+    "rounded": true,
+    "image": {
+     "src": "/images/booking/design-sso-tray.webp",
+     "alt": "One-time email link sign-in, error, and success states",
+     "width": 2560,
+     "height": 1256
+    }
+   }
+  ]
+ },
+ "business": {
+  "overline": "Design",
+  "title": "Business side: the dashboard",
+  "blocks": [
+   {
+    "type": "p",
+    "text": "The redesigned Results Dashboard shows owners exactly how the AI performed, with revenue, bookings, and campaign results in one clear view."
+   },
+   {
+    "type": "image",
+    "caption": "The Results Dashboard: revenue, bookings, and email and SMS campaign results in one clear view.",
+    "image": {
+     "src": "/images/reach/design-desktops.webp",
+     "alt": "Overlapping REACH.ai desktop screens showing bookings and results dashboards",
+     "width": 2000,
+     "height": 1182
+    }
+   },
+   {
+    "type": "image",
+    "caption": "The dashboard, bookings detail, and My Account screens, adapted for mobile.",
+    "image": {
+     "src": "/images/reach/design-mobiles.webp",
+     "alt": "REACH.ai mobile screens showing results, account, and password",
+     "width": 1831,
+     "height": 2000
+    }
+   }
+  ]
+ },
+ "results": {
+  "overline": "Retrospective",
+  "title": "Results",
+  "blocks": [
+   {
+    "type": "p",
+    "text": "Both sides shipped to real users, on one coherent design language."
+   },
+   {
+    "type": "metrics",
+    "items": [
+     {
+      "value": "2x",
+      "label": "Engagement surge",
+      "description": "Customers spent twice as much time in the dashboard over a week, compared with the previous version."
+     },
+     {
+      "value": "-40%",
+      "label": "Support decline",
+      "description": "Fewer “where do I…?” tickets as hierarchy, labels, and empty states did the teaching."
+     },
+     {
+      "value": "3",
+      "label": "Steps to book",
+      "description": "Find, review, and confirm: a quick, pleasant last-minute booking."
+     },
+     {
+      "value": "1",
+      "label": "Step to sign in",
+      "description": "A single SSO step significantly reduced drop-off."
+     }
+    ]
+   },
+   {
+    "type": "h",
+    "text": "Other results"
+   },
+   {
+    "type": "ul",
+    "items": [
+     "Most clients on the previous dashboard chose to upgrade",
+     "Users confirmed the booking experience was a success",
+     "Waitlist tested, found not to move bookings significantly, and removed"
+    ]
+   }
+  ]
+ }
+}

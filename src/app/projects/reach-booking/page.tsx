@@ -11,6 +11,7 @@ import { CaseStudyExplorer } from "@/components/CaseStudyExplorer";
 import { Divider } from "@/components/Divider";
 import { Footer } from "@/components/Footer";
 import copy from "@/components/story/reach-booking.json";
+import { ReachCombinedVersion } from "@/components/ReachCombinedVersion";
 import { CaseStudyVersionSwitch } from "@/components/CaseStudyVersionSwitch";
 import {
   StorySections,
@@ -78,6 +79,7 @@ export default function ReachBookingCaseStudyPage() {
         <CaseStudyVersionSwitch
           original={INCLUDE_ORIGINAL ? <OriginalVersion /> : null}
           optimized={INCLUDE_OPTIMIZED ? <OptimizedVersion /> : null}
+          combined={SHOW_VERSION_TOGGLE ? <ReachCombinedVersion /> : null}
           defaultVersion={
             SHOW_VERSION_TOGGLE ? "optimized" : CASE_STUDY_LIVE_VERSION
           }

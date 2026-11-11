@@ -20,6 +20,10 @@ const idleColor = "text-chrome-fg";
 const currentColor = "text-accent";
 /** The hamburger menu's page links: bigger and heavier than the desktop nav's,
  * since they are the main way around on a phone. */
+/** The phone menu's page links, below the case studies: small, since the case
+ * studies are the main thing in the menu. */
+const smallMenuLinkClass =
+  "whitespace-nowrap text-xl font-extrabold leading-none tracking-[-0.3px]";
 const menuLinkClass =
   "whitespace-nowrap text-[28px] font-extrabold leading-none tracking-[-0.5px]";
 
@@ -306,13 +310,19 @@ export function TopBar() {
             <button
               ref={menuButtonRef}
               type="button"
-              className={`relative z-10 flex size-11 items-center justify-center text-chrome-fg pointer-events-auto md:hidden ${fade}`}
+              className={`relative z-10 flex h-11 items-center justify-center gap-2 pl-2 text-chrome-fg pointer-events-auto md:hidden ${fade}`}
               aria-expanded={open}
               aria-controls={menuId}
               aria-haspopup="dialog"
               aria-label={open ? "Close menu" : "Open menu"}
               onClick={() => setOpen((current) => !current)}
             >
+              <span
+                aria-hidden
+                className="font-extrabold text-xs uppercase leading-none tracking-[0.04em] text-accent"
+              >
+                {open ? "Close" : "Menu"}
+              </span>
               {open ? <CloseIcon /> : <MenuIcon />}
             </button>
           </div>
@@ -371,35 +381,6 @@ function WorkIndexPanel({
           className="flex min-h-[calc(100svh-72px)] w-full flex-col overflow-y-auto border-t border-chrome-line bg-chrome-solid pb-10 pt-4 sm:min-h-[calc(100svh-104px)] sm:pb-16 sm:pt-6"
         >
           <div className={`${contentWidth} flex flex-col`}>
-            <div className="mb-4 flex flex-col items-start md:hidden">
-              {phoneLinks.map((link, i) => {
-                const current = isCurrentPath(pathname, link.href);
-                const r = reveal(open, i);
-                // The desktop nav's own link treatment, so the two read as one
-                // control: same type, dimmed with a line under it when it is
-                // the current page, a plain fading link otherwise.
-                const button = `${menuLinkClass} inline-block py-4`;
-                return current ? (
-                  <span
-                    key={link.href}
-                    aria-current="page"
-                    className={`${button} ${currentColor} underline decoration-accent decoration-[3px] underline-offset-[10px] ${r.className}`}
-                    style={r.style}
-                  >
-                    {link.label}
-                  </span>
-                ) : (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    className={`${button} ${idleColor} ${fade} ${r.className}`}
-                    style={r.style}
-                  >
-                    {link.label}
-                  </Link>
-                );
-              })}
-            </div>
             <ul className="flex flex-col">
               {caseStudies.map((study, i) => (
                 <li
@@ -416,6 +397,35 @@ function WorkIndexPanel({
                 </li>
               ))}
             </ul>
+            <div className="mt-6 flex flex-col items-start md:hidden">
+              {phoneLinks.map((link, i) => {
+                const current = isCurrentPath(pathname, link.href);
+                const r = reveal(open, caseStudies.length + i, true);
+                // The desktop nav's own link treatment, so the two read as one
+                // control: same type, dimmed with a line under it when it is
+                // the current page, a plain fading link otherwise.
+                const button = `${smallMenuLinkClass} inline-block py-3`;
+                return current ? (
+                  <span
+                    key={link.href}
+                    aria-current="page"
+                    className={`${button} ${currentColor} underline decoration-accent decoration-2 underline-offset-[6px] ${r.className}`}
+                    style={r.style}
+                  >
+                    {link.label}
+                  </span>
+                ) : (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className={`${button} ${idleColor} ${fade} ${r.className}`}
+                    style={r.style}
+                  >
+                    {link.label}
+                  </Link>
+                );
+              })}
+            </div>
           </div>
         </nav>
       </div>

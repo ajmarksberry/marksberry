@@ -4,7 +4,7 @@ import { useSyncExternalStore, type ReactNode } from "react";
 
 /** "legacy" is the page before the hiring-manager rewrite. It has no button; it
  * is only reachable at ?version=legacy. */
-export type CaseStudyVersion = "optimized" | "original" | "legacy";
+export type CaseStudyVersion = "optimized" | "original" | "legacy" | "combined";
 
 const EVENT = "case-study-version-change";
 
@@ -19,7 +19,7 @@ function subscribe(onChange: () => void) {
 
 function readVersion(): CaseStudyVersion | null {
   const v = new URLSearchParams(window.location.search).get("version");
-  return v === "original" || v === "optimized" || v === "legacy" ? v : null;
+  return v === "original" || v === "optimized" || v === "legacy" || v === "combined" ? v : null;
 }
 
 const options: { value: CaseStudyVersion; label: string }[] = [
@@ -37,12 +37,15 @@ export function CaseStudyVersionSwitch({
   original,
   optimized,
   legacy,
+  combined,
   defaultVersion,
   showToggle,
 }: {
   original: ReactNode;
   optimized: ReactNode;
   legacy?: ReactNode;
+  /** A merged study (REACH). Adds a "Combined (v2)" button when given. */
+  combined?: ReactNode;
   defaultVersion: CaseStudyVersion;
   showToggle: boolean;
 }) {
@@ -60,6 +63,7 @@ export function CaseStudyVersionSwitch({
     <>
       <div hidden={version !== "optimized"}>{optimized}</div>
       <div hidden={version !== "original"}>{original}</div>
+      {combined ? <div hidden={version !== "combined"}>{combined}</div> : null}
       {legacy ? <div hidden={version !== "legacy"}>{legacy}</div> : null}
 
       {showToggle ? (
@@ -68,7 +72,7 @@ export function CaseStudyVersionSwitch({
           aria-label="Case study version"
           className="fixed bottom-5 left-1/2 z-40 flex -translate-x-1/2 items-center gap-1 rounded-full border border-rule bg-surface p-1 text-sm shadow-lg"
         >
-          {options.map((o) => (
+          {(combined ? [...options, { value: "combined" as const, label: "Combined (v2)" }] : options).map((o) => (
             <button
               key={o.value}
               type="button"

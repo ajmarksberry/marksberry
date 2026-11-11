@@ -13,21 +13,20 @@ import { ResultsBlock } from "@/components/ResultsBlock";
 import { SprintBlock } from "@/components/SprintBlock";
 import { WireframeBlock } from "@/components/WireframeBlock";
 import copy from "@/components/story/reach-ai.json";
+import { ReachCombinedVersion } from "@/components/ReachCombinedVersion";
 import { CaseStudyVersionSwitch } from "@/components/CaseStudyVersionSwitch";
 import {
   StorySections,
   type StorySectionData,
 } from "@/components/story/StorySection";
 import {
-  CASE_STUDY_LIVE_VERSION,
   SHOW_VERSION_TOGGLE,
   INCLUDE_ORIGINAL,
-  INCLUDE_OPTIMIZED,
 } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "REACH.ai Booking Dashboard | AJ Marksberry",
-  description: "Bringing an outdated experience back to life again",
+  title: "REACH.ai AI Booking Platform | AJ Marksberry",
+  description: "Designing both sides of a platform for beauty and wellness studios",
 };
 
 /** The page as it was before the six-section rewrite. Reachable from the
@@ -81,10 +80,9 @@ export default function ReachAiCaseStudyPage() {
       <div className="mx-auto w-full max-w-[1140px] px-5 sm:px-10 lg:px-20">
         <CaseStudyVersionSwitch
           original={INCLUDE_ORIGINAL ? <OriginalVersion /> : null}
-          optimized={INCLUDE_OPTIMIZED ? <OptimizedVersion /> : null}
-          defaultVersion={
-            SHOW_VERSION_TOGGLE ? "optimized" : CASE_STUDY_LIVE_VERSION
-          }
+          optimized={SHOW_VERSION_TOGGLE ? <OptimizedVersion /> : null}
+          combined={<ReachCombinedVersion />}
+          defaultVersion="combined"
           showToggle={SHOW_VERSION_TOGGLE}
         />
         <Divider padded />
