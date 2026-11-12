@@ -307,14 +307,21 @@ body {
 }
 
 /* The homepage's case studies (heading and cards) are not there at the start.
- * They fade in with the scroll, over the same stretch as the page's blue
- * (--hero-scroll 0.5 to 0.9, set by HeroScroll), and are not visible or clickable
- * before that. HeroScroll adds .hero-cases once the fade has begun. Without the
- * hero script (no JS, reduced motion) the .hero-blue class is never added, so
- * they show as normal. */
+ * They fade in with the scroll, just after the page's blue starts (--hero-cases,
+ * below), and rise from below as they do: the cards from further down than the
+ * heading. They are not visible or clickable before that. HeroScroll adds
+ * .hero-cases once the fade has begun. Without the hero script (no JS, reduced
+ * motion) the .hero-blue class is never added, so they show as normal. The rise
+ * is on wrappers, because the heading and cards carry the parallax transform. */
 html.hero-blue [data-showcase-body] {
-  opacity: clamp(0, calc((var(--hero-scroll, 0) - 0.5) / 0.4), 1);
+  opacity: var(--hero-cases, 0);
   visibility: hidden;
+}
+html.hero-blue [data-rise-head] {
+  transform: translateY(calc((1 - var(--hero-cases, 0)) * 50px));
+}
+html.hero-blue [data-rise-cards] {
+  transform: translateY(calc((1 - var(--hero-cases, 0)) * 120px));
 }
 html.hero-blue.hero-cases [data-showcase-body] {
   visibility: visible;
@@ -328,6 +335,10 @@ html.hero-replaying [data-showcase-body] {
 }
 html.hero-replaying.hero-cases [data-showcase-body] {
   transition: opacity 0.7s ease-out;
+}
+html.hero-replaying [data-rise-head],
+html.hero-replaying [data-rise-cards] {
+  transition: transform 0.7s ease-out;
 }
 
 /* The dropdown's contents rise in one after another when it opens. --i is the
@@ -679,11 +690,14 @@ html.hero-replaying.hero-cases [data-showcase-body] {
 /* As the fish goes under the front wave, the page below that wave fades to the
  * wave's blue: the drawing's cover fill, and a sheet from the bottom of the
  * drawing to the end of the page. HeroScroll adds .hero-blue while the hero is
- * on the page. --hero-blue runs 0 to 1 over the second half of the scroll.
+ * on the page. --hero-blue runs 0 to 1 early in the scroll (0.08 to 0.30), while
+ * the fish has only just started down; --hero-cases (the case studies) follows
+ * a beat behind (0.14 to 0.36).
  * The sheet sits behind the content, so the content's own backgrounds are
  * cleared. */
 html.hero-blue {
-  --hero-blue: clamp(0, calc((var(--hero-scroll, 0) - 0.5) / 0.5), 1);
+  --hero-blue: clamp(0, calc((var(--hero-scroll, 0) - 0.08) / 0.22), 1);
+  --hero-cases: clamp(0, calc((var(--hero-scroll, 0) - 0.14) / 0.22), 1);
 }
 
 html.hero-blue body {

@@ -579,7 +579,7 @@ function CardCarousel({ id }: { id: string }) {
   }, []);
 
   return (
-    <div className="@container flex flex-col">
+    <div data-rise-cards className="@container flex flex-col">
       {/* The row runs edge to edge so a card's shadow isn't cut off by the
        * scroll container. Its padding (50vw - 50cqw, the page gutter) puts the
        * first card back on the content column's left edge. */}
@@ -682,14 +682,16 @@ export function CaseStudyShowcase() {
        * No rule between the hero and the case studies, and the gap there is halved (the section's own gap is 48-64px), so the location line sits
        * close to the "Case studies" heading. */}
       <div data-showcase-body className="-mt-6 flex flex-col gap-4 lg:-mt-8">
-        <div
-          className="case-par"
-          style={{ "--par": 14, "--par-end": -6 } as CSSProperties}
-        >
-          <SectionHeader
-            title="Case studies"
-            className="w-full max-w-[640px]"
-          />
+        <div data-rise-head>
+          <div
+            className="case-par"
+            style={{ "--par": 14, "--par-end": -6 } as CSSProperties}
+          >
+            <SectionHeader
+              title="Case studies"
+              className="w-full max-w-[640px]"
+            />
+          </div>
         </div>
 
         {SHOW_LAYOUT_TOGGLE ? (

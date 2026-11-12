@@ -117,7 +117,7 @@ export function HeroScroll() {
       root.style.setProperty("--hero-scroll", progress.toFixed(4));
       // The case studies are only there (visible, clickable) once they have begun
       // to fade in; see [data-showcase-body] in globals.css.
-      root.classList.toggle("hero-cases", progress > 0.5);
+      root.classList.toggle("hero-cases", progress > 0.14);
     };
     const onScroll = () => {
       if (!frame) frame = requestAnimationFrame(update);

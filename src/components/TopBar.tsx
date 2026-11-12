@@ -334,12 +334,12 @@ export function TopBar() {
   );
 }
 
-/** The phone menu's page links. Home leads; on desktop the logo is the way back.
- * Case studies is the dropdown itself, so it is not listed: the rows below are
- * what that link opens on desktop. Contact is an ordinary page, last. */
+/** The phone menu's page links. Home comes last; on desktop the logo is the way
+ * back. Case studies is the dropdown itself, so it is not listed: the rows below
+ * are what that link opens on desktop. */
 const phoneLinks = [
-  { href: "/", label: "Home" },
   ...navLinks.filter((link) => link.href !== "/projects"),
+  { href: "/", label: "Home" },
 ];
 
 /** Staggered reveal for one item of the dropdown, played each time it opens. */
