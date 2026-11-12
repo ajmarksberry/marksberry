@@ -28,7 +28,7 @@ export type ExpediaWorkImage = {
   alt: string;
   width: number;
   height: number;
-  /** Optional; leave it out for an image that needs no caption. */
+  /** Optional. Under a `heading` it is the intro sentence above the image; otherwise a caption beneath it. */
   caption?: string;
   /** A small heading above the image. */
   heading?: string;
@@ -62,6 +62,7 @@ export const expediaWork: readonly ExpediaWorkItem[] = [
   {
     id: "checkout",
     title: "Checkout",
+    description: "Sprint explorations for a new checkout flow.",
     stacked: true,
     images: [
       {
@@ -70,35 +71,33 @@ export const expediaWork: readonly ExpediaWorkItem[] = [
         width: 1800,
         height: 2506,
         bare: true,
-        captionPull: 2,
-        caption: "Sprint explorations.",
       },
     ],
   },
   {
-    id: "placeholder-one",
-    title: "Expedia itinerary redesign",
+    id: "flight-itinerary",
+    title: "Flight itinerary",
     description:
-      "A redesign of the booked itinerary pages for flights and packages.",
-    points: [
-      "The original flight page was one long scroll of details and fine print.",
-      "Both layouts lead with the trip name, traveler, and itinerary number.",
-      "Flight actions sit beside the flight they apply to.",
-      "Packages get an overview of everything booked, with a tab for each part.",
-      "Policies and support move into tabs, and mobile follows the same structure.",
-    ],
+      "A redesign of the booked flight itinerary page. Actions sit beside the flight they apply to, and policies and support move into tabs.",
     stacked: true,
     images: [
       {
-        heading: "Flight itinerary",
         src: "/images/expedia-work/itinerary-redesign.webp",
         alt: "The Expedia TAAP itinerary page redesigned: the original page grayed out behind, the new desktop layout in front, and the new mobile screen at the lower right",
         width: 1800,
         height: 3150,
         bare: true,
       },
+    ],
+  },
+  {
+    id: "package-itinerary",
+    title: "Package itinerary",
+    description:
+      "A booked package gets an overview of everything in it, with a tab for each part. Mobile follows the same structure.",
+    stacked: true,
+    images: [
       {
-        heading: "Package itinerary",
         src: "/images/expedia-work/package-itinerary.webp",
         alt: "The package itinerary page for an NYC Getaway trip: a desktop overview of the hotel, flight, car, and golf lessons in the package, the flight tab with booking details, and the mobile version of the overview",
         width: 1800,
@@ -122,7 +121,6 @@ export const expediaWork: readonly ExpediaWorkItem[] = [
         width: 1800,
         height: 3494,
         bare: true,
-        captionPull: 1.9,
         caption: "Make changes to an itinerary.",
       },
       {
@@ -132,7 +130,6 @@ export const expediaWork: readonly ExpediaWorkItem[] = [
         width: 1800,
         height: 2567,
         bare: true,
-        captionPull: 2.5,
         caption:
           "Quote flights, hotels, cars, transfers, and activities together in one quote.",
       },

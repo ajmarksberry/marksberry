@@ -311,7 +311,7 @@ function CaseStudyCard({ study }: { study: Study }) {
     <Link
       href={study.href}
       draggable={false}
-      className="group relative flex h-full w-full flex-col overflow-clip rounded-2xl bg-white shadow-[0_1px_2px_rgba(16,24,40,0.06),0_8px_24px_rgba(16,24,40,0.08),0_24px_48px_-12px_rgba(16,24,40,0.14)] outline-none focus-visible:ring-2 focus-visible:ring-accent"
+      className="group relative flex h-full w-full flex-col overflow-clip rounded-2xl bg-white outline-none focus-visible:ring-2 focus-visible:ring-accent"
     >
       <span className="relative block aspect-[4/3] w-full shrink-0 overflow-clip">
         <Image

@@ -84,6 +84,14 @@ export function ExpediaWorkSection({ item }: { item: ExpediaWorkItem }) {
                     {image.heading}
                   </h4>
                 ) : null}
+                {image.heading && image.caption ? (
+                  <p
+                    className="mb-2 max-w-[640px] text-base leading-7 text-ink"
+                    style={{ fontFeatureSettings: '"liga" 0' }}
+                  >
+                    {image.caption}
+                  </p>
+                ) : null}
                 <div
                   className={
                     bare
@@ -110,7 +118,7 @@ export function ExpediaWorkSection({ item }: { item: ExpediaWorkItem }) {
                     unoptimized
                   />
                 </div>
-                {image.caption ? (
+                {image.caption && !image.heading ? (
                   <figcaption
                     className="text-sm leading-6 text-muted"
                     // A percentage margin is relative to the figure's width,

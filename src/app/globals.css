@@ -119,7 +119,7 @@
  * alone on purpose: it backs panels whose text is white.
  * ------------------------------------------------------------------------- */
 :root[data-theme="light"] {
-  --background: var(--figma-white);
+  --background: #faf9f5;
   --foreground: #374151;
   --ink: var(--foreground);
   --heading: var(--figma-neutral-900);
@@ -140,9 +140,9 @@
   --rule: #bcc3cd;
   --rule-strong: var(--figma-neutral-400);
   --mat: #f3f4f6;
-  --chrome-bg: rgb(255 255 255 / 0.9);
+  --chrome-bg: rgb(250 249 245 / 0.9);
   --chrome-fg: var(--figma-neutral-900);
-  --chrome-solid: #ffffff;
+  --chrome-solid: #faf9f5;
   --chrome-line: rgb(17 24 39 / 0.25);
   color-scheme: light;
 }

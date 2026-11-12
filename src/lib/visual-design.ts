@@ -3,7 +3,7 @@ import type { ExpediaWorkItem } from "@/lib/expedia-work";
 /**
  * Content for the "Visual design" page. Same shape, and the same renderer, as
  * the Expedia work page (see expedia-work.ts for what each field does). These
- * are single-image entries with a caption; `description` is left out.
+ * are single-image entries; the old caption is now the `description`.
  *
  * Images live in public/images/visual-design/, exported from the "other
  * designs" frame in the AJM Portfolio 2026 - 2027 Figma file (node 8110:3453).
@@ -12,6 +12,8 @@ export const visualDesign: readonly ExpediaWorkItem[] = [
   {
     id: "security-workbench",
     title: "Security analytics workbench",
+    description:
+      "A workbench for investigating the devices, domains, and activity on a network.",
     images: [
       {
         src: "/images/visual-design/workbench.webp",
@@ -19,15 +21,14 @@ export const visualDesign: readonly ExpediaWorkItem[] = [
         width: 2000,
         height: 1172,
         bare: true,
-        captionPull: 3.4,
-        caption:
-          "A workbench for investigating the devices, domains, and activity on a network.",
       },
     ],
   },
   {
     id: "rockin-refuel",
     title: "Rockin’ Refuel",
+    description:
+      "Homepage for a protein milk brand, built around its athletes, events, and a product locator.",
     images: [
       {
         src: "/images/visual-design/rockin-refuel.webp",
@@ -35,15 +36,14 @@ export const visualDesign: readonly ExpediaWorkItem[] = [
         width: 1380,
         height: 2000,
         bare: true,
-        captionPull: 4.2,
-        caption:
-          "Homepage for a protein milk brand, built around its athletes, events, and a product locator.",
       },
     ],
   },
   {
     id: "cowtown-skateboards",
     title: "Cowtown Skateboards",
+    description:
+      "Ecommerce homepage for a skate shop, with featured products, news and events, and store locations.",
     images: [
       {
         src: "/images/visual-design/cowtown.webp",
@@ -51,14 +51,14 @@ export const visualDesign: readonly ExpediaWorkItem[] = [
         width: 982,
         height: 2000,
         bare: true,
-        caption:
-          "Ecommerce homepage for a skate shop, with featured products, news and events, and store locations.",
       },
     ],
   },
   {
     id: "millennium-three",
     title: "Millennium Three snowboards",
+    description:
+      "The women’s snowboard line, with each board’s graphics and construction features side by side.",
     images: [
       {
         src: "/images/visual-design/m3-snowboards.webp",
@@ -66,15 +66,13 @@ export const visualDesign: readonly ExpediaWorkItem[] = [
         width: 790,
         height: 2000,
         bare: true,
-        captionPull: 2.1,
-        caption:
-          "The women’s snowboard line, with each board’s graphics and construction features side by side.",
       },
     ],
   },
   {
     id: "revolution-parts",
     title: "Revolution Parts",
+    description: "The Revolution Parts logo and its color variations.",
     stacked: true,
     images: [
       {
@@ -83,8 +81,6 @@ export const visualDesign: readonly ExpediaWorkItem[] = [
         width: 1478,
         height: 860,
         bare: true,
-        captionPull: 2.9,
-        caption: "The Revolution Parts logo and its color variations.",
       },
     ],
   },
