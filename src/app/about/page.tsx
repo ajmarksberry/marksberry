@@ -40,12 +40,12 @@ export default function AboutPage() {
       showFooter={false}
       afterTitle={
         <Image
-          src="/images/about/portrait.webp"
-          alt="Portrait of AJ Marksberry, in black and white, glancing off to the side"
-          width={800}
-          height={800}
-          className="block aspect-square w-full max-w-[320px] rounded-lg object-cover"
-          sizes="320px"
+          src="/images/about/walleye.jpg"
+          alt="Holding up a walleye with its mouth wide open, out on a cloudy lake"
+          width={1024}
+          height={768}
+          className="block aspect-[4/3] w-full max-w-[480px] rounded-lg object-cover"
+          sizes="(min-width: 640px) 480px, calc(100vw - 40px)"
           priority
           unoptimized
         />
