@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
+import { FishControls } from "@/components/FishControls";
 import { MarketingPage } from "@/components/MarketingPage";
-import { OpenToWorkCard } from "@/components/OpenToWorkCard";
 
 const title = "AJ Marksberry | Senior Product Designer";
 const description =
@@ -21,13 +21,14 @@ export const metadata: Metadata = {
 
 export default function HomePage() {
   return (
-    <MarketingPage
-      overline="Contact"
-      title="Let’s work together"
-      caseStudyLayout="stack"
-      caseStudiesFirst
-    >
-      <OpenToWorkCard />
-    </MarketingPage>
+    <>
+      <MarketingPage
+        title="AJ Marksberry"
+        caseStudyLayout="stack"
+        caseStudiesFirst
+        hideSection
+      />
+      <FishControls />
+    </>
   );
 }

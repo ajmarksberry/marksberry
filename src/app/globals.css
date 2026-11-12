@@ -306,27 +306,28 @@ body {
   transform: none;
 }
 
-/* The homepage cards fade in one after another, left to right. Each starts at
- * zero opacity and stays put; no movement. --i is the card's place in the row. */
-.card-fade-in {
-  opacity: 0;
-  transition: opacity 0.8s ease-out
-    calc(var(--fade-delay, 0ms) + var(--i, 0) * 150ms);
+/* The homepage's case studies (heading and cards) are not there at the start.
+ * They fade in with the scroll, over the same stretch as the page's blue
+ * (--hero-scroll 0.5 to 0.9, set by HeroScroll), and are not visible or clickable
+ * before that. HeroScroll adds .hero-cases once the fade has begun. Without the
+ * hero script (no JS, reduced motion) the .hero-blue class is never added, so
+ * they show as normal. */
+html.hero-blue [data-showcase-body] {
+  opacity: clamp(0, calc((var(--hero-scroll, 0) - 0.5) / 0.4), 1);
+  visibility: hidden;
 }
-
-[data-in="true"] > .card-fade-in {
-  opacity: 1;
+html.hero-blue.hero-cases [data-showcase-body] {
+  visibility: visible;
 }
-
-@media (scripting: none) {
-  .reveal {
-    opacity: 1;
-    transform: none;
-  }
-
-  .card-fade-in {
-    opacity: 1;
-  }
+/* Scrolling back up replays the hero: they fade out with the blue, and are only
+ * hidden once they have gone. */
+html.hero-replaying [data-showcase-body] {
+  transition:
+    opacity 0.7s ease-out,
+    visibility 0s linear 0.7s;
+}
+html.hero-replaying.hero-cases [data-showcase-body] {
+  transition: opacity 0.7s ease-out;
 }
 
 /* The dropdown's contents rise in one after another when it opens. --i is the
@@ -383,14 +384,6 @@ body {
  * roll in and the fish leaps. Handwriting is a left-to-right wipe; the title
  * rises in; the fish jumps up out of the water. Each piece waits at its starting
  * state (animation-fill-mode: both) until its turn. */
-/* The copy of the front wave that hides the lower part of the rising fish goes
- * away once the fish is up. */
-@keyframes hero-cover-out {
-  to {
-    opacity: 0;
-  }
-}
-
 @keyframes hero-write {
   from {
     clip-path: inset(-5% 102% -5% -2%) fill-box;
@@ -421,28 +414,28 @@ body {
    * size as it rises. */
   0% {
     opacity: 0;
-    transform: translateY(800px) rotate(-35deg) scale(0.55);
+    transform: translate(var(--fish-start-x, -24px), var(--fish-start-y, 485px))
+    rotate(var(--fish-start-rot, -44deg)) scale(var(--fish-start-scale, 0.97));
   }
   1% {
     opacity: 1;
   }
-  /* A little past its resting place, upright and full size, then back down. */
-  70% {
-    transform: translateY(-12px) rotate(0deg) scale(1);
-  }
   100% {
     opacity: 1;
-    transform: translateY(0) rotate(0deg) scale(1);
+    transform: translate(var(--fish-rest-x, -51px), var(--fish-rest-y, 0px))
+      rotate(var(--fish-rest-rot, 10deg)) scale(var(--fish-rest-scale, 1.16));
   }
 }
 
 /* The lure comes in from the left, sliding right into place, with a quick fade. */
 @keyframes hero-lure-slide {
   from {
-    transform: translateX(-90px);
+    transform: translate(var(--lure-start-x, -93px), var(--lure-start-y, 102px))
+      rotate(var(--lure-start-rot, 0deg)) scale(var(--lure-start-scale, 0.49));
   }
   to {
-    transform: translateX(0);
+    transform: translate(var(--lure-rest-x, 22px), var(--lure-rest-y, 32px))
+      rotate(var(--lure-rest-rot, 19deg)) scale(var(--lure-rest-scale, 1));
   }
 }
 
@@ -470,21 +463,22 @@ body {
 }
 
 .hero-art-lure {
-  /* Starts with the fish (0.955s), fades in fast and slides left to right. */
+  /* Turns and scales about its own middle. */
+  transform-box: fill-box;
+  transform-origin: center;
+  /* Starts with the fish (1.27s), fades in fast and slides left to right. */
   animation:
-    hero-lure-slide 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.955s both,
-    hero-lure-fade 0.2s linear 0.955s both;
-}
-
-.hero-art-cover-fade {
-  animation: hero-cover-out 0.2s linear 1.65s both;
+    hero-lure-slide 0.5s cubic-bezier(0.16, 1, 0.3, 1) 1.27s both,
+    hero-lure-fade 0.2s linear 1.27s both;
 }
 
 .hero-art-fish {
-  /* Turn and scale about the fish's own middle. */
-  transform-box: fill-box;
-  transform-origin: center;
-  animation: hero-leap 0.7s ease-in-out 0.955s both;
+  /* Turn and scale about one fixed point of the drawing, the middle of the
+   * fish's bounding box (--fish-pivot-x/y, in the drawing's units). A fixed
+   * point, not "center", so it does not move as the transform changes. */
+  transform-box: view-box;
+  transform-origin: var(--fish-pivot-x, 742.67px) var(--fish-pivot-y, 554.15px);
+  animation: hero-leap 0.45s ease-in-out 1.27s both;
 }
 
 .hero-art-name {
@@ -498,22 +492,23 @@ body {
 }
 
 /* The front wave comes in first. The fish starts to rise from behind it once
- * half of the wave is revealed (0.955s: the wipe runs 0.8s to 1.2s, and the
- * curve puts it half across 39% of the way through), then the middle
- * and back waves come in quickly. */
+ * half of the wave is revealed (1.27s: the wipe runs 0.8s to 2.0s, and the
+ * curve puts it half across 39% of the way through). The middle and back waves
+ * start before it has finished, one right after the other, so the three
+ * overlap. */
 .hero-art-wave-3 {
-  animation-duration: 0.4s;
+  animation-duration: 1.2s;
   animation-delay: 0.8s;
 }
 
 .hero-art-wave-2 {
-  animation-duration: 0.2s;
+  animation-duration: 0.45s;
   animation-delay: 1.4s;
 }
 
 .hero-art-wave-1 {
-  animation-duration: 0.2s;
-  animation-delay: 1.55s;
+  animation-duration: 0.45s;
+  animation-delay: 1.61s;
 }
 
 /* The waves keep moving once they are in: each sways side to side, the top and
@@ -591,10 +586,6 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero-art-cover-fade {
-    display: none;
-  }
-
   html {
     scroll-behavior: auto;
   }
@@ -625,13 +616,220 @@ body {
     transition: none;
   }
 
-  .card-fade-in {
-    opacity: 1;
-    transition: none;
-  }
-
   /* The forward/back states still apply; they just stop being animated. */
   .circle-item {
     transition: none;
   }
+}
+
+/* Scrolling the homepage: the fish keeps turning clockwise and sinks behind the
+ * front wave until the waves cover it, and the lure drifts right and fades.
+ * --hero-scroll (0 to 1) is set by HeroScroll. */
+.hero-scroll-fish {
+  /* The same point, where it ends up once the fish is at rest (the rest
+   * offset carries it). */
+  transform-box: view-box;
+  transform-origin: calc(var(--fish-pivot-x, 742.67px) + var(--fish-rest-x, -51px))
+    calc(var(--fish-pivot-y, 554.15px) + var(--fish-rest-y, 0px));
+  /* Shrinks to the size it starts at (0.55, see hero-leap) as it goes under,
+   * and fades a little over the last half, before the wave covers it. */
+  transform: translate(
+      calc(var(--hero-scroll, 0) * var(--fish-end-x, -72px)),
+      calc(var(--hero-scroll, 0) * var(--fish-end-y, 614px))
+    )
+    rotate(calc(var(--hero-scroll, 0) * var(--fish-end-rot, 138deg)))
+    scale(
+      calc(1 + var(--hero-scroll, 0) * (var(--fish-end-scale, 1.47) - 1))
+    );
+  opacity: clamp(0, calc(1 - (var(--hero-scroll, 0) - 0.5) * 1.2), 1);
+}
+
+.hero-scroll-cover {
+  opacity: min(1, calc(var(--hero-scroll, 0) * 100));
+}
+
+.hero-scroll-lure {
+  transform-box: fill-box;
+  transform-origin: center;
+  transform: translate(
+      calc(var(--hero-scroll, 0) * var(--lure-end-x, 240px)),
+      calc(var(--hero-scroll, 0) * var(--lure-end-y, 0px))
+    )
+    rotate(calc(var(--hero-scroll, 0) * var(--lure-end-rot, -22deg)))
+    scale(calc(1 + var(--hero-scroll, 0) * (var(--lure-end-scale, 0.43) - 1)));
+  opacity: max(0, calc(1 - var(--hero-scroll, 0) * 4));
+}
+
+/* The back and middle waves sink to the front wave (134 and 71 units below
+ * them, plus a margin) over the first 80% of the scroll, so by the time the fish
+ * is under, only the front wave shows. The scroll cover hides them behind it. */
+.hero-scroll-wave-1 {
+  transform: translateY(calc(min(1, var(--hero-scroll, 0) / 0.8) * 200px));
+}
+
+.hero-scroll-wave-2 {
+  transform: translateY(calc(min(1, var(--hero-scroll, 0) / 0.8) * 150px));
+}
+
+/* While the entrance replays, the waves settle back instead of jumping. */
+.hero-replaying .hero-scroll-wave {
+  transition: transform 0.7s ease-out;
+}
+
+/* As the fish goes under the front wave, the page below that wave fades to the
+ * wave's blue: the drawing's cover fill, and a sheet from the bottom of the
+ * drawing to the end of the page. HeroScroll adds .hero-blue while the hero is
+ * on the page. --hero-blue runs 0 to 1 over the second half of the scroll.
+ * The sheet sits behind the content, so the content's own backgrounds are
+ * cleared. */
+html.hero-blue {
+  --hero-blue: clamp(0, calc((var(--hero-scroll, 0) - 0.5) / 0.5), 1);
+}
+
+html.hero-blue body {
+  position: relative;
+  isolation: isolate;
+  /* Keeps the last section's bottom margin inside the body, so the blue sheet
+   * (which ends with the body) runs to the very end of the page. */
+  display: flow-root;
+}
+
+html.hero-blue body::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: var(--hero-blue-top, 0);
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: #afcee1;
+  opacity: var(--hero-blue);
+  pointer-events: none;
+}
+
+.hero-blue-fill {
+  opacity: var(--hero-blue, 0);
+}
+
+html.hero-replaying body::before,
+html.hero-replaying .hero-blue-fill {
+  transition: opacity 0.7s ease-out;
+}
+
+html.hero-blue .bg-background:not(body),
+html.hero-blue .bg-footer-bg {
+  background-color: transparent;
+}
+
+html.hero-blue {
+  overflow-x: clip;
+}
+
+/* The artwork may run past its own edges sideways, so the front wave can reach
+ * both sides of the page; the clip keeps it from spilling up or down. */
+html.hero-blue .hero-art {
+  /* Sideways it may run past its edges; up and down it is clipped (2px of
+   * slack below, for the lowest dip of the front wave), and what is clipped does not make the page
+   * any taller. */
+  overflow-x: visible;
+  overflow-y: clip;
+  overflow-clip-margin: 2px;
+  clip-path: inset(0 -100vw -2px -100vw);
+}
+
+/* Dev only: FishControls sets data-fish-preview on <html> to hold the fish still
+ * at one pose (start, rest or end) while its sliders are moved, with the entrance
+ * cover out of the way. Never set on the live site. */
+html[data-fish-preview] .hero-art-fish {
+  animation: none;
+  opacity: 1;
+}
+html[data-fish-preview="start"] .hero-art-cover-fade {
+  display: none;
+}
+html[data-fish-preview] .hero-scroll-fish {
+  transition: none;
+  transform: none;
+  opacity: 1;
+}
+html[data-fish-preview="start"] .hero-art-fish {
+  transform: translate(var(--fish-start-x, -24px), var(--fish-start-y, 485px))
+    rotate(var(--fish-start-rot, -44deg)) scale(var(--fish-start-scale, 0.97));
+}
+html[data-fish-preview="rest"] .hero-art-fish,
+html[data-fish-preview="end"] .hero-art-fish {
+  transform: translate(var(--fish-rest-x, -51px), var(--fish-rest-y, 0px))
+    rotate(var(--fish-rest-rot, 10deg)) scale(var(--fish-rest-scale, 1.16));
+}
+html[data-fish-preview="end"] .hero-scroll-fish {
+  transform: translate(var(--fish-end-x, -72px), var(--fish-end-y, 614px))
+    rotate(var(--fish-end-rot, 138deg)) scale(var(--fish-end-scale, 1.47));
+}
+
+html[data-lure-preview] .hero-art-lure {
+  animation: none;
+  opacity: 1;
+}
+html[data-lure-preview] .hero-scroll-lure {
+  transition: none;
+  transform: none;
+  opacity: 1;
+}
+html[data-lure-preview="start"] .hero-art-lure {
+  transform: translate(var(--lure-start-x, -93px), var(--lure-start-y, 102px))
+    rotate(var(--lure-start-rot, 0deg)) scale(var(--lure-start-scale, 0.49));
+}
+html[data-lure-preview="rest"] .hero-art-lure,
+html[data-lure-preview="end"] .hero-art-lure {
+  transform: translate(var(--lure-rest-x, 22px), var(--lure-rest-y, 32px))
+    rotate(var(--lure-rest-rot, 19deg)) scale(var(--lure-rest-scale, 1));
+}
+html[data-lure-preview="end"] .hero-scroll-lure {
+  transform: translate(var(--lure-end-x, 240px), var(--lure-end-y, 0px))
+    rotate(var(--lure-end-rot, -22deg)) scale(var(--lure-end-scale, 0.43));
+}
+
+/* Dev only: the fish's bounding circle, its center and the point it turns about
+ * (FishControls sets data-fish-debug on <html>). Drawn inside the fish, so it
+ * turns with it. */
+.fish-debug {
+  display: none;
+}
+html[data-fish-debug] .fish-debug {
+  display: inline;
+}
+.fish-debug .fish-pivot {
+  cx: var(--fish-pivot-x, 742.67px);
+  cy: var(--fish-pivot-y, 554.15px);
+}
+html[data-fish-preview="spin"] .hero-art-fish {
+  transform: rotate(var(--fish-spin, 0deg));
+}
+html[data-fish-preview="spin"] .hero-art-cover-fade {
+  display: none;
+}
+
+/* The "Minneapolis, MN" line under the hero hides quickly while the page scrolls
+ * down and comes back when it scrolls up (HeroScroll toggles the class). It is on
+ * a wrapper, because the line's own entrance animation holds its opacity. */
+[data-location] {
+  transition: opacity 0.12s linear;
+}
+html.hero-location-hidden [data-location] {
+  opacity: 0;
+}
+
+/* Parallax on the homepage's case studies: the heading and each card drift
+ * upward at their own rates while the section scrolls through the window, the
+ * cards faster than the heading and each a little faster than the one before.
+ * --par is where each starts (px down) and --par-end where it finishes (px up);
+ * --case-t (0 to 1, set by HeroScroll) is how far the section has travelled
+ * through the window. Kept small: the card row clips what overflows it. (Not a
+ * scroll-driven animation: a card's timeline would follow the row's own sideways
+ * scrolling, not the page.) Only while the hero script is running, so without it
+ * nothing moves. */
+html.hero-blue .case-par {
+  transform: translateY(
+    calc((var(--par, 0) + (var(--par-end, 0) - var(--par, 0)) * var(--case-t, 0)) * 1px)
+  );
 }

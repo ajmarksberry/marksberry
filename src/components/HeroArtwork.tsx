@@ -21,6 +21,8 @@
  * The mark follows the theme (dark ink on light, light on dark); the waves and
  * the title keep the Figma colors.
  */
+import { HeroScroll } from "@/components/HeroScroll";
+
 const NAME =
   "M357.1 240C341.8 236.9 332.4 228 329.5 213.9C328.4 208.3 329 197 331 188.3C331.6 185.7 331.9 183.2 333.2 172.1C333.4 169.6 333.8 166.2 334.1 164.4C334.3 162.6 334.7 158.8 335 156C335.4 153.2 335.7 150.9 335.8 151C335.9 151.1 336.5 154.2 337.1 158C338.4 165.8 340.3 175.6 341 178C341.6 180.2 343.1 185.4 343.5 186.3C343.8 187.1 343.5 187.2 341.1 187.2C339.1 187.2 338.3 187.3 338.1 187.8C337.9 188.2 337.6 191.8 337.2 195.8C336.6 203.9 337.1 211.5 338.5 216.6C341.3 226.5 348.7 232.2 360.8 233.8C365.4 234.4 370.1 233.6 377.1 231.2C400.5 223.3 416.5 204.2 423 176.5C424 172.2 424 172.2 424.2 109.2C424.2 66.3 424.2 45.2 423.8 43.3C423.6 41.8 423.2 36.7 423 32C422.7 22.5 423 21.1 425.6 19.5C428.3 18 431.9 20 432.9 23.6C434.4 28.6 434.5 38.5 433.2 45C432.5 48.2 432.4 55 431.6 130.3C431.1 174.6 431.1 175.4 428.8 183.2C422.1 206.4 409.7 222.8 391.6 232.3C380.3 238.3 365.2 241.6 357.1 240ZM468 183.7L466.9 182.1L467.9 178.2C469.1 173.6 470.3 168.2 471.5 162.8C472.1 160.6 472.6 156.8 472.7 154.4C473.1 149.2 472.9 149 469.7 151.2C465.4 154.2 457.5 157.7 455.3 157.7C452.5 157.7 447.7 154.8 446.6 152.4C445.7 150.6 446 148.1 447.1 147.7C447.4 147.6 448.6 148.3 449.8 149.4C453.6 153 456.4 153.3 461.3 151.1C465.7 149.1 469.3 144.7 472.8 137.3C474.1 134.5 475.4 132.5 476.5 131.6L478.1 130.1L479.8 131.2C482.3 132.8 482.5 134.3 480.8 138.1C478.4 143.4 479.3 146.5 482 142.4C485.3 137.5 492.6 128.1 495.2 125.3C498.7 121.8 499.8 121.5 501.9 123.8L503.4 125.3V132C503.4 135.7 503.5 138.8 503.7 138.9C504.1 139.4 506.4 138.5 506.8 137.7C510 131.6 515.4 124.1 519 120.8C522.3 117.8 524.1 116.8 526.4 116.8C527.8 116.8 528.2 117 528.7 118.1C529.1 118.7 529.6 119.4 529.8 119.6C530 119.8 530 120.9 529.7 122.1C529.4 123.3 529 125.5 528.8 126.9C528.5 128.3 528.1 130.7 527.8 132.2C526.9 136.8 524.2 152.6 523.4 157.8C522.6 162.4 522.6 162.8 523.4 163.9C524.8 166.2 526.8 167 530.2 166.8C532.8 166.7 533.6 166.4 535.7 164.9C538.7 162.9 539.5 162.8 540.2 164.6C540.9 166.2 540 168.2 537.8 169.8C535.6 171.4 533.1 172 528.4 172C523.7 172 521.7 171.4 519.9 169.3C517.6 166.9 517.2 164.9 518.1 160.8C518.3 159.7 518.7 157.7 519 156.3C519.3 154.9 519.7 152.6 520 151.3C520.2 149.9 520.6 147.6 520.9 146.2C521.2 144.8 521.6 142.6 521.8 141.4C522.1 140.1 522.5 138 522.7 136.8C523 135.5 523.5 132.9 523.9 130.9C524.8 126.2 524.8 123.4 523.8 123C522.7 122.6 522.1 123.1 518.5 127.6C511.3 136.7 504.5 148.3 500.9 158.2C499.5 161.8 498.9 163.8 497.7 168.2C497 170.6 496.4 172.6 496.4 172.7C496.3 172.7 495.6 173.2 494.8 173.7L493.4 174.7L491.7 173.7C490.1 172.7 489.6 171.3 490.5 170.4C491.1 169.5 494.4 160.8 495.7 156.3C497.5 149.6 498.3 144 498.3 137.6C498.3 129.4 497.6 129.1 493 135.3C487.4 142.8 482.4 151.8 479 160.5C478.2 162.6 477.3 164.8 477.2 165.3C476.8 166.1 475.5 170 474.4 173.6C474 175 472.4 180.9 471.9 183.1C471.7 184 470.1 185.4 469.2 185.3C469.2 185.3 468.6 184.6 468 183.7ZM871.2 178C866.3 174.5 863.6 168.8 862 158.9C861.2 153.9 861.3 152.2 862.8 147.9C863.7 145.2 868.8 134.6 869.7 133.5C870.6 132.4 871 128.1 870.3 125.6C869.6 122.8 868.3 120.4 867.5 120.4C867.2 120.4 866.2 121.7 865.3 123.2C862.2 128.2 857.8 131.1 852.8 131.2C850.2 131.3 849.8 131.1 848.6 130L847.3 128.7L845.1 130.8C842.9 132.8 838.9 134.7 836.8 134.7C834.1 134.7 827.1 127.5 826.1 123.6C825.6 121.6 825.5 121.6 828.3 112.3C829 109.8 829.3 107.7 829 106.9C828.8 106.4 828.3 106.4 826.8 106.7C823.6 107.4 820.6 110.8 817 118.2C815.3 121.6 814 124.6 814 124.9C814 125.2 813.4 126.1 812.7 127C812 127.8 810.9 129.4 810.3 130.6C807.7 135.5 804.3 138.8 802.1 138.8C799.7 138.8 793.8 133.4 791.9 129.4C790.6 126.7 790.7 125.9 792.8 118.8C793.9 115 794.3 113.6 794.5 112.3C794.7 110.8 794.7 110.8 793.1 110.8C789.3 110.8 786.6 113.5 782.8 121.4C781.3 124.3 779.8 127.5 779.3 128.5C778.5 130.5 776.7 132.5 771.8 137.1C769.6 139.1 768.6 139.8 767.5 139.8C766.8 139.8 765.5 140.1 764.6 140.6C760.2 143 753.7 144.8 752 144C751.4 143.7 750.5 143.3 749.9 143C747.8 142.2 745.1 141 742.8 139.9L740.5 138.8L739 133.8C737.8 129.6 737.6 128 737.6 124.1C737.6 119.5 737.6 119.4 736.6 119.7C735.1 120 724.1 124.6 723.5 125.1C723.1 125.4 722.8 126.3 722.6 127.3C722.2 129.6 720.7 134 719.4 136.6C718.1 139.1 714.6 143.6 712.4 145.5C710.5 147.1 705 148.4 703.5 147.6C702.6 147.1 700.9 144.9 699.9 142.8C698.9 141 698.4 140.9 696.2 142.3C695.2 142.9 694.1 143.4 693.7 143.4C693.3 143.4 692.9 143.6 692.8 143.9C692.6 144.1 691.9 144.4 691.3 144.5C686 145.6 685.5 145.8 683.2 147.9C679.8 150.9 677.9 151.6 672.7 151.9C667.8 152.1 667.2 152 663 148.7C661.5 147.6 660.2 146.7 660.1 146.7C660 146.7 659.8 147.3 659.8 148C659.8 149.4 658.6 150.7 656.3 151.9C647.3 156.5 639.6 153.2 634.5 142.8C632.6 138.8 632.2 136.3 633.2 134C633.7 133 634 132.9 637.1 132.9C640 132.9 640.6 132.7 641.8 131.7C643.6 130.2 644.6 127.9 644.6 125.4C644.6 122.4 644.2 121.5 642.6 120.7C641.2 119.9 641.1 119.9 639.3 120.8C636.1 122.5 632.4 125.8 630.2 129C626.6 134.5 625.4 139.4 625.3 148.2V154.5L623.8 156.8C621.8 159.8 619.6 160.4 617.4 158.6L616.1 157.7L614.4 159.1C612.6 160.5 608.5 162.3 607 162.3C605.9 162.3 601 158.5 599 156.1C598.1 154.9 597 153 596.6 151.8C595.9 149.7 595.9 149.3 596.6 146.8C597.5 143.5 598 141.7 598.7 139.4C599 138.5 599.2 136.9 599.3 135.9C599.3 134 599.3 134 597.7 134.2C593.4 134.6 590.1 139 584.4 152C583.8 153.2 583.1 154.6 582.8 154.9C582.4 155.3 582.1 156.4 581.9 157.3C581.7 158.3 581.1 159.5 580.7 160.1C579.4 161.7 575 163.4 573 163C569.4 162.5 563.2 158.6 563.2 157C563.2 156.4 562.2 155.9 561.3 155.9C561 155.9 558.7 157.9 556.1 160.5C550.8 165.5 549 166.5 546.9 165.9C543.3 164.7 541.2 161.4 540.2 155.9C538.9 148.5 543.8 137.1 549.6 133.9C551.7 132.7 554.5 131.9 556.4 131.9C559.4 131.9 562.5 134.6 565 139.4C566.3 141.7 566.4 142.3 566.4 146.5C566.4 150.1 566.7 151.5 567.4 153.1C569.1 156.8 570.5 157.6 573.3 156.1C576.1 154.7 582.8 146.3 585.1 141.2C586.5 138.1 587.1 132.9 586.2 131.2C585.7 130.2 585.7 129.8 586.4 128.5C586.9 127.6 587.7 126.5 588.3 126L589.3 125L593.1 126.7C595.2 127.5 597.2 128.3 597.6 128.3C598 128.3 600 126.7 601.9 124.7L605.5 121.2L607 121.8C611.5 123.8 612.1 126.1 609.2 130.7C608.2 132.3 606.3 135.5 605.2 137.9C603 142.3 603 142.3 603 146.9C603.1 152.3 603.8 154.5 606 155.6C607.8 156.6 609.5 156.2 611.9 154.5C612.8 153.8 614.1 153.1 614.5 153C615 152.9 615.7 152.3 616 151.5C616.9 149.9 617 142.5 616.3 139.8C614.8 134.1 614.5 131.4 614.5 121.4C614.5 111.2 614.6 110.1 616.2 106.8C616.5 106.2 616.9 105.7 617.3 105.5C618 105.3 620.6 106.2 622.3 107.3C623.8 108.3 623.9 107.2 621.5 125.4C620.7 131.2 620.8 132.1 622.3 131.7C623.5 131.3 624.2 130.5 626.9 125.7C629.7 120.8 633.9 116.5 637.3 115.1C638.7 114.4 640.3 113.7 640.8 113.5C641.6 113.1 642.3 113.2 644.3 114.1C647.4 115.5 648.9 117.8 649.7 122.3C650.7 127.7 648.8 132.3 643.3 137.7C641.7 139.2 640.5 140.8 640.5 141.3C640.5 143.7 646 148 649 148C651.6 148 655.9 144.7 654.6 143.7C654.3 143.4 653.8 142.6 653.4 141.7C652.9 140.5 653 140.1 654.1 138.4C655.5 136.4 656.3 136.1 658.5 137.3C661.4 138.8 663.5 137.2 670.2 128.2C675.5 121.3 678.2 115.5 678.2 111.4C678.2 110.2 678.4 109.9 679.4 109.7C680.2 109.6 681.1 109.9 682 110.5L683.4 111.5L683.3 125.6C683.3 136.6 683.4 139.7 683.8 139.9C684.2 140 686.2 140 688.4 139.8C692.2 139.5 692.4 139.5 693.7 138C694.4 137.1 695.6 136 696.4 135.6L697.8 134.7L697.6 127.5C697.5 122.4 697.3 120 696.8 119.3C696.4 118.6 696.3 117.4 696.6 113.5C697.7 101.4 699.7 95 703.5 91.8C705.9 89.8 708.2 89.4 709.5 90.7C710.9 92.3 711.4 94.2 711.7 99.3C711.9 104.2 711.3 108.7 709.2 116.3C708.8 117.7 708.1 120.4 707.6 122.3C706.3 127.1 706 128.2 705.2 130.8C704 134.4 704.2 136.6 705.8 138.3C707.7 140.4 709.4 140.3 711.5 137.9C713.9 135.3 715.5 131.9 715.5 129.6C715.5 126.9 714.6 121.7 714.1 121.1C713.4 120.2 715.4 115.4 716.7 114.8C717.6 114.4 718.2 114.5 720.1 115.5C723.4 117.3 725.3 117.2 732.1 114.5C735.3 113.2 738.1 112.2 738.4 112.2C738.6 112.2 739.3 110.8 740.1 109.2C742.6 103.5 750.3 97.9 753.8 99.3C756.7 100.5 757.5 103.3 756.4 108.6C756.2 109.9 755.8 112.2 755.5 113.5C754.3 119.5 751.9 125.8 749.4 129.1C748.6 130.2 748.2 131.3 748.2 132.5C748.2 134 748.5 134.6 750.2 136.3C752.5 138.6 753.2 138.8 757.5 137.9C760.8 137.2 764.5 135.7 766.9 134.2C770.8 131.5 777.4 123.4 779.8 118.1C781.2 115.3 781.4 114.1 781.5 111.4C781.5 109.4 781.3 107.9 780.9 107.4C780.2 106.6 780.7 105.3 782.8 103.1C784.3 101.5 784 101.5 789.4 103.9C792.6 105.4 793.2 105.1 796.9 101.4L800.3 97.9L802 98.6C804 99.5 806.1 101.7 806.1 103C806.1 103.6 804.9 106 803.5 108.4C800.9 112.7 800.2 114 798.5 117.9C796.9 121.8 798.1 131.5 800.2 131.5C800.9 131.5 808 124 810.5 120.6C815.6 114 817.9 106.3 815.7 103.6C815 102.7 815.6 101.1 817.4 99.1L818.9 97.4L822.6 99.1C824.6 99.9 826.8 100.7 827.3 100.7C828 100.7 829.5 99.5 831.7 97.1L835 93.6L836.5 94.2C837.3 94.5 838.6 95.3 839.3 96C841.3 97.6 841.1 99.5 838.5 103.7C837.3 105.7 835.5 109 834.5 111.2C832.7 115 832.6 115.3 832.6 119.3C832.7 124.5 833.8 127.3 836 128.2C837.7 129 839 128.7 841.4 127.1C842.4 126.4 843.8 125.7 844.6 125.6C845.8 125.3 845.9 125.1 846 123C846.4 115.1 849.9 98.3 851.6 96.4C852.5 95.4 853.1 95.4 855.1 96.6C856.9 97.6 857.1 98.5 856.3 101.5C855.7 103.7 854.2 110.3 853.5 113.5C853.2 114.9 852.8 116.6 852.6 117.2C852.3 117.7 852 119.4 851.8 120.9C851.6 123.2 851.7 123.7 852.6 124.5C853.1 125.1 854.1 125.5 854.9 125.5C859.1 125.5 863.4 117.4 869.2 99.1C870.7 94 871.8 93.3 874.2 95.5L875.7 96.8L875 102.5C873.3 116.8 873.3 117.6 874.2 121.5C875.3 126.1 875.8 126.6 877.1 125C885.8 114.6 891.7 108.6 894.4 107.3C896 106.6 896 106.6 896.7 107.4C897.1 107.9 897.6 108.9 897.9 109.6L898.5 110.9L893.8 113.8C891.3 115.3 888.7 116.9 888.1 117.3C886.9 118 879.8 128.3 877.7 132.4C876.3 135 876.3 134.8 877.9 144.8C878.5 148.2 879.3 153.2 879.8 156.6C880 158.1 880.2 161 880.2 163C880.2 165 880.4 167 880.6 167.3C881.6 168.9 879 176.5 876.9 178C874.8 179.5 873.2 179.5 871.2 178ZM874.5 170.8C876.1 169 876.2 164 874.7 152.2C874.5 150 874.1 146.9 874 145.2C873.7 143.1 873.4 141.9 873 141.7C872 141.3 869.4 144.2 867.8 147.4C866.6 150 866.4 150.7 866.5 154.6C866.5 162.4 868.2 168.4 871.2 170.9C872.8 172.2 873.1 172.2 874.5 170.8ZM552.2 156.9C556.4 152.6 558.1 148.3 558.1 142C558.1 137.6 556.5 136.9 552.4 139.5C547.9 142.6 545.5 146 545.3 149.7C544.9 154.4 545.3 157.1 546.2 158.4C547.8 160.3 549.3 160 552.2 156.9ZM675.4 145.5C677.8 143.4 678.7 140.2 678.7 133.1C678.7 124.1 678.5 124.1 670.7 134.2C666.9 139.3 665.5 141.9 666.1 142.9C666.6 143.8 672.2 146.7 673.2 146.7C673.7 146.7 674.6 146.2 675.4 145.5ZM748.1 122.2C749.5 118.4 750 116.3 750 113C750 109.7 749.6 109.1 748.2 109.9C745.9 111.1 743.3 119.8 744.2 123.4C744.4 124.3 744.8 124.6 745.8 124.6C747 124.6 747.2 124.3 748.1 122.2ZM331.2 118C328.9 117.1 328.2 116.5 327.1 114.4C324 108.3 325.4 94.7 330.8 78.2C333.4 70.4 339.8 55.1 344.2 46.3C347.1 40.5 354.3 34.1 361.5 30.6C366.3 28.4 367.2 28.4 368.9 30.6C371.5 33.9 372.9 37.5 373.6 42.4C374 45.3 373.5 47.6 371.2 52.1C367.8 58.8 364.8 71.5 361.9 91C361 97.1 361 98 362.1 100.2C363.6 103 365 103.7 369.3 103.6C374 103.6 379.6 101.5 382.4 98.8C384.6 96.7 384.7 96.7 385.8 97.9C386.5 98.6 386.5 98.9 385.8 100.9C384.6 104.6 383.4 105.8 379.4 107.3L375.9 108.6L367.7 108.3C363.3 108.1 358.4 107.7 357 107.5L354.4 107L351.8 109.3C348.1 112.7 343 115.9 339.4 117.1C338.2 117.5 333.3 118.7 333 118.6C333 118.6 332.1 118.3 331.2 118ZM705.1 112.9C706 110.8 706.9 102.5 706.5 101.1C706.3 100.6 706 100.2 705.7 100.2C704.3 100.2 703.6 101.5 703.1 105C702.8 107.1 702.3 109.8 702.1 111.2C701.7 113.2 701.7 113.7 702.4 114.5C703.4 115.7 704.2 115.2 705.1 112.9ZM339.5 110.5C348.3 107.7 355.8 91.7 359.8 67.3C360.2 65.6 360.6 63.2 360.8 62.2C361 61.1 361.2 59.7 361.2 59.1C361.2 58.5 361.6 57.3 362 56.5C362.8 54.7 363.6 43 363 41.3C362.5 39.9 360 40.1 357.5 41.7C355.2 43.2 352 46.7 349.5 50.6C345.3 57.3 339.2 71.9 334.6 86.4L332.7 92L332.6 100.8C332.5 109.4 332.5 109.5 333.6 110.4C334.8 111.4 336.5 111.5 339.5 110.5ZM399 110C397.6 109.7 397 107.9 397.3 105.1C397.6 102.5 398.4 101.4 400.4 100.7C401.7 100.2 401.9 100.4 403.5 102C406.7 105.1 406.6 107.8 403.3 109.4C401.2 110.3 401 110.4 399 110ZM459.2 102.5C458.3 102.3 458 101.8 457.7 100.1C457.1 97.3 458.5 94.2 460.6 93.4C462.1 92.9 462.2 92.9 464.1 94.9C465.8 96.6 466.1 97.2 466.1 98.8C466.1 100.2 465.9 100.8 464.8 101.5C463.4 102.6 460.9 103.1 459.2 102.5Z";
 
@@ -129,6 +131,13 @@ function Sprite() {
           clipRule="evenodd"
           d={WAVE_2}
         />
+        <path id="hero-def-wave-3-fill" d={WAVE_3_FILL} />
+        <clipPath id="hero-clip-wave-3-keep">
+          <rect x="439.4" y="0" width="461.2" height="2000" />
+        </clipPath>
+        <clipPath id="hero-clip-wave-3-tile">
+          <rect x="599.4" y="0" width="161.2" height="2000" />
+        </clipPath>
         <path
           id="hero-def-wave-3"
           fillRule="evenodd"
@@ -169,6 +178,47 @@ function Tagline({ shift }: { shift: number }) {
   );
 }
 
+/* The front wave runs the full width of the page, whatever the screen. The
+ * drawing is 1,180 units wide; the part of it from x 440 to 900 (four crests)
+ * is kept as drawn, and out from both ends of that, one period of it (x 600 to
+ * 760, one crest and one valley) is repeated, each copy nudged up or down so its
+ * line meets the last. Draws one piece of the wave (its line, or the fill under
+ * it), so the same run can be made for each of them. */
+const WAVE_TILES = 14;
+/* How far the front wave is moved down from where it was drawn (units). */
+const WAVE_3_DROP = 8;
+function WaveRun({
+  href,
+  className,
+  fill,
+}: {
+  href: string;
+  className?: string;
+  fill?: string;
+}) {
+  const use = <use href={href} className={className} fill={fill} />;
+  const tile = (key: string, dx: number, dy: number) => (
+    <g key={key} transform={`translate(${dx} ${dy})`}>
+      <g clipPath="url(#hero-clip-wave-3-tile)">{use}</g>
+    </g>
+  );
+  const tiles = [];
+  for (let k = 0; k < WAVE_TILES; k++) {
+    tiles.push(tile(`r${k}`, 300 + 160 * k, -3.5 + 2.5 * k));
+    tiles.push(tile(`l${k}`, -320 - 160 * k, 4 + 2.5 * k));
+  }
+  /* One wrapper: the waves' bob animation moves each direct child of
+   * .hero-wave, and would replace the tiles' own transforms. */
+  return (
+    <g>
+      <g transform={`translate(0 ${WAVE_3_DROP})`}>
+        <g clipPath="url(#hero-clip-wave-3-keep)">{use}</g>
+        {tiles}
+      </g>
+    </g>
+  );
+}
+
 /** The fish standing in the waves. Waves first, so the fish is in front. */
 function Scene() {
   const bridge = (d: string) => (
@@ -181,46 +231,104 @@ function Scene() {
   );
   return (
     <>
-      <g className="hero-art-wave-1">
-        <g className="hero-wave hero-wave-1">
-          {/* The back wave is the front wave's shape, whole, moved to the back
-           * wave's place (25 left, 129.3 up). The Figma drawing cut the back wave
-           * in two where the fish stands, which left part of its line missing.
-           * The extra <g> keeps that offset off the element the bob animation
-           * moves. */}
-          <g>
-            <g transform="translate(-25 -129.3)">
-              <use href="#hero-def-wave-3" className="fill-[#579DC8]" />
+      {/* The back two waves sink toward the front one as the page scrolls, and
+       * end up behind it (see hero-scroll-wave in globals.css). */}
+      <g className="hero-scroll-wave hero-scroll-wave-1">
+        <g className="hero-art-wave-1">
+          <g className="hero-wave hero-wave-1">
+            {/* The back wave is the front wave's shape, whole, moved to the back
+             * wave's place (25 left, 129.3 up). The Figma drawing cut the back wave
+             * in two where the fish stands, which left part of its line missing.
+             * The extra <g> keeps that offset off the element the bob animation
+             * moves. */}
+            <g>
+              <g transform="translate(-25 -129.3)">
+                <use href="#hero-def-wave-3" className="fill-[#579DC8]" />
+              </g>
             </g>
           </g>
         </g>
       </g>
-      <g className="hero-art-wave-2">
-        <g className="hero-wave hero-wave-2">
-          {bridge(BRIDGE_2)}
-          <use href="#hero-def-wave-2" className="fill-[#579DC8]" />
+      <g className="hero-scroll-wave hero-scroll-wave-2">
+        <g className="hero-art-wave-2">
+          <g className="hero-wave hero-wave-2">
+            {bridge(BRIDGE_2)}
+            <use href="#hero-def-wave-2" className="fill-[#579DC8]" />
+          </g>
         </g>
       </g>
-      <g className="hero-art-wave-3">
-        <g className="hero-wave hero-wave-3">
-          <use href="#hero-def-wave-3" className="fill-[#579DC8]" />
+      {/* The front wave runs the full width of the page (see WaveRun). */}
+      <g className="hero-scroll-wave hero-scroll-wave-3">
+        <g className="hero-art-wave-3">
+          <g className="hero-wave hero-wave-3">
+            <WaveRun href="#hero-def-wave-3" className="fill-[#589EC9]" />
+          </g>
         </g>
       </g>
-      <g className="hero-art-fish">
-        <use href="#hero-def-fish-body" className="fill-background" />
-        <use href="#hero-def-fish-fin" className="fill-background" />
-        <use href="#hero-def-fish" className="fill-heading" />
+      {/* Scrolling turns the fish clockwise and lowers it (--hero-scroll, 0 to
+       * 1, set by HeroScroll). The wrapper keeps that off the element the
+       * leap animation moves. */}
+      <g className="hero-scroll-fish">
+        <g className="hero-art-fish">
+          <use href="#hero-def-fish-body" className="fill-background" />
+          <use href="#hero-def-fish-fin" className="fill-background" />
+          <use href="#hero-def-fish" className="fill-heading" />
+          {/* Dev only (see FishControls): the fish's bounding box, the circle
+           * around it, its center (cross) and the point it turns about (dot). */}
+          <g className="fish-debug" aria-hidden>
+            <rect
+              x="575.14"
+              y="332.8"
+              width="335.07"
+              height="442.7"
+              fill="none"
+              stroke="#e11d48"
+              strokeDasharray="6 6"
+              strokeWidth="1.5"
+            />
+            <circle
+              cx="742.67"
+              cy="554.15"
+              r="277.6"
+              fill="none"
+              stroke="#e11d48"
+              strokeWidth="2"
+            />
+            <path
+              d="M722.67 554.15H762.67M742.67 534.15V574.15"
+              stroke="#e11d48"
+              strokeWidth="2"
+            />
+            <circle
+              className="fish-pivot"
+              cx="742.67"
+              cy="554.15"
+              r="9"
+              fill="#e11d48"
+              stroke="#fff"
+              strokeWidth="2"
+            />
+          </g>
+        </g>
       </g>
-      {/* While the fish rises it comes up from behind the front wave: a second
-       * copy of that wave, filled with the page color below its line and drawn
-       * over the fish, rolls in and sways in step with
-       * the real one, then fades out once the fish is up. At rest the fish is in
-       * front of every wave, never behind one. */}
+      {/* The fish is always behind the front wave: a second copy of that wave,
+       * filled with the page color below its line and drawn over the fish, sways
+       * in step with the real one. The fish comes up from behind it on the way in
+       * and stands in it at rest, so whatever is below the line is hidden. */}
       <g className="hero-art-cover-fade">
         <g className="hero-art-wave-3">
           <g className="hero-wave hero-wave-3">
-            <path d={WAVE_3_FILL} className="fill-background" />
-            <use href="#hero-def-wave-3" className="fill-[#579DC8]" />
+            <WaveRun
+              href="#hero-def-wave-3-fill"
+              className="fill-background"
+            />
+            {/* The page's blue, in step with the sheet behind the page (see
+             * .hero-blue-fill), so scrolling back up never shows a patch of the
+             * page color under the wave while the blue is still fading out. */}
+            <g className="hero-blue-fill">
+              <WaveRun href="#hero-def-wave-3-fill" fill="#AFCEE1" />
+            </g>
+            <WaveRun href="#hero-def-wave-3" className="fill-[#589EC9]" />
           </g>
         </g>
       </g>
@@ -231,90 +339,122 @@ function Scene() {
        * tapering away at the far end.
        * Black and white and filled, like the fish. The reference points the
        * other way, so it is mirrored (scale(-1 1)) to face this fish. */}
-      <g className="hero-art-lure">
-        <g
-          transform="translate(1125 246) scale(-1 1)"
-          fill="none"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          className="stroke-heading"
-        >
-          <g>
+      {/* Another copy of the front wave, shown once the page scrolls, so the
+       * lowering fish goes behind that wave. */}
+      <g className="hero-scroll-cover">
+        <rect
+          x="-4000"
+          y="845"
+          width="9000"
+          height="600"
+          className="fill-background"
+        />
+        {/* The same fill in the wave's blue, faded in over the page color as the
+         * page scrolls (see .hero-blue-fill). */}
+        <g className="hero-blue-fill">
+          <rect x="-4000" y="845" width="9000" height="600" fill="#AFCEE1" />
+        </g>
+        <g className="hero-scroll-wave hero-scroll-wave-3">
+          <g className="hero-art-wave-3">
+            <g className="hero-wave hero-wave-3">
+              <WaveRun
+                href="#hero-def-wave-3-fill"
+                className="fill-background"
+              />
+              <g className="hero-blue-fill">
+                <WaveRun href="#hero-def-wave-3-fill" fill="#AFCEE1" />
+              </g>
+              <WaveRun href="#hero-def-wave-3" className="fill-[#589EC9]" />
+            </g>
+          </g>
+        </g>
+      </g>
+      <g className="hero-scroll-lure">
+        <g className="hero-art-lure">
+          <g
+            transform="translate(1125 246) scale(-1 1)"
+            fill="none"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="stroke-heading"
+          >
+            <g>
+              <path
+                d="M107.3 107.5C105.4 107.3 100.5 106.4 96.0 106.5C91.5 106.6 85.0 107.0 80.0 108.3C75.0 109.5 69.9 112.0 66.0 114.0C62.1 116.0 59.9 118.4 56.7 120.5C53.5 122.6 50.1 125.9 47.0 126.5"
+                strokeWidth={1.1}
+              />
+              <path
+                d="M47.0 126.5C43.9 127.1 40.8 125.4 38.0 124.0C35.2 122.6 32.2 120.7 30.0 118.0C27.8 115.3 25.6 111.3 24.5 108.0C23.4 104.7 23.1 102.0 23.3 98.0C23.6 94.0 24.6 88.3 26.0 84.0C27.4 79.7 28.7 75.9 31.7 72.0C34.7 68.1 38.2 63.6 44.0 60.5C49.8 57.4 59.4 55.1 66.7 53.3C74.0 51.5 80.8 50.6 88.0 49.8"
+                strokeWidth={1.5}
+              />
+              <path
+                d="M88.0 49.8C95.2 49.0 102.2 48.2 110.0 48.3C117.8 48.4 126.7 49.1 135.0 50.5C143.3 51.9 150.0 53.6 160.0 56.7"
+                strokeWidth={1.6}
+              />
+              <path
+                d="M160.0 56.7C170.0 59.8 181.7 64.1 195.0 69.0"
+                strokeWidth={1.2}
+              />
+              <path
+                d="M195.0 69.0C208.3 73.9 232.5 83.2 240.0 86.0"
+                strokeWidth={0.8}
+              />
+            </g>
+            {/* Two treble hooks, heavy like the fish */}
+            <g strokeWidth={3.8}>
+              <path d="M124.6 130.5L124.2 158M124.2 158C123.5 168.5 111 170.5 107.6 160.5C106.2 156 107.8 151.4 112.2 148.2M124.2 158C125 168 138 170.5 142 162C144 157 142.2 152 138 149.5" />
+              <path d="M170.4 145.5L174 163.5L173.4 177M174 163.5C171.5 174.5 160 176.5 158.8 165C158.4 161.2 160 158 163.4 156M174 163.5C176.5 172.5 191 170 193 158C193.4 154.6 191.2 151.6 187.6 150" />
+            </g>
+            {/* The lure: a white body, heavy black outline */}
             <path
-              d="M107.3 107.5C105.4 107.3 100.5 106.4 96.0 106.5C91.5 106.6 85.0 107.0 80.0 108.3C75.0 109.5 69.9 112.0 66.0 114.0C62.1 116.0 59.9 118.4 56.7 120.5C53.5 122.6 50.1 125.9 47.0 126.5"
-              strokeWidth={1.1}
+              d="M117.8 100.2C140 102.4 166 118 194 142C195 145.5 193 149.4 188.4 149.6C165 148.6 134 138 117.4 126.4Z"
+              strokeWidth={3.8}
+              className="fill-background"
             />
+            {/* A big black back, with a bold zigzag along the bottom of it */}
             <path
-              d="M47.0 126.5C43.9 127.1 40.8 125.4 38.0 124.0C35.2 122.6 32.2 120.7 30.0 118.0C27.8 115.3 25.6 111.3 24.5 108.0C23.4 104.7 23.1 102.0 23.3 98.0C23.6 94.0 24.6 88.3 26.0 84.0C27.4 79.7 28.7 75.9 31.7 72.0C34.7 68.1 38.2 63.6 44.0 60.5C49.8 57.4 59.4 55.1 66.7 53.3C74.0 51.5 80.8 50.6 88.0 49.8"
-              strokeWidth={1.5}
+              d="M120 101.2L153 112L191.5 141.5L188.6 145.4L181 142L173.6 131.5L168.4 138L161.8 127.5L156.4 135.5L150 124.5L145.4 131.5L139.6 122L127 115L120.5 109Z"
+              strokeWidth={2.4}
+              className="fill-heading"
             />
+            {/* A thin white highlight along the top of the back */}
             <path
-              d="M88.0 49.8C95.2 49.0 102.2 48.2 110.0 48.3C117.8 48.4 126.7 49.1 135.0 50.5C143.3 51.9 150.0 53.6 160.0 56.7"
-              strokeWidth={1.6}
+              d="M127.4 105.2C145 109 164 119.6 184 136.4"
+              strokeWidth={1.8}
+              className="stroke-background"
             />
-            <path
-              d="M160.0 56.7C170.0 59.8 181.7 64.1 195.0 69.0"
-              strokeWidth={1.2}
+            {/* The flat face, and the eye */}
+            <ellipse
+              cx="113.3"
+              cy="112.4"
+              rx="7"
+              ry="13.2"
+              transform="rotate(-8 113.3 112.4)"
+              strokeWidth={3.6}
+              className="fill-background"
             />
-            <path
-              d="M195.0 69.0C208.3 73.9 232.5 83.2 240.0 86.0"
-              strokeWidth={0.8}
+            <circle
+              cx="131"
+              cy="117.2"
+              r="8.4"
+              strokeWidth={3}
+              className="fill-background"
+            />
+            <circle
+              cx="131"
+              cy="118"
+              r="4.8"
+              stroke="none"
+              className="fill-heading"
+            />
+            <circle
+              cx="129.4"
+              cy="116.2"
+              r="1.5"
+              stroke="none"
+              className="fill-background"
             />
           </g>
-          {/* Two treble hooks, heavy like the fish */}
-          <g strokeWidth={3.8}>
-            <path d="M124.6 130.5L124.2 158M124.2 158C123.5 168.5 111 170.5 107.6 160.5C106.2 156 107.8 151.4 112.2 148.2M124.2 158C125 168 138 170.5 142 162C144 157 142.2 152 138 149.5" />
-            <path d="M170.4 145.5L174 163.5L173.4 177M174 163.5C171.5 174.5 160 176.5 158.8 165C158.4 161.2 160 158 163.4 156M174 163.5C176.5 172.5 191 170 193 158C193.4 154.6 191.2 151.6 187.6 150" />
-          </g>
-          {/* The lure: a white body, heavy black outline */}
-          <path
-            d="M117.8 100.2C140 102.4 166 118 194 142C195 145.5 193 149.4 188.4 149.6C165 148.6 134 138 117.4 126.4Z"
-            strokeWidth={3.8}
-            className="fill-background"
-          />
-          {/* A big black back, with a bold zigzag along the bottom of it */}
-          <path
-            d="M120 101.2L153 112L191.5 141.5L188.6 145.4L181 142L173.6 131.5L168.4 138L161.8 127.5L156.4 135.5L150 124.5L145.4 131.5L139.6 122L127 115L120.5 109Z"
-            strokeWidth={2.4}
-            className="fill-heading"
-          />
-          {/* A thin white highlight along the top of the back */}
-          <path
-            d="M127.4 105.2C145 109 164 119.6 184 136.4"
-            strokeWidth={1.8}
-            className="stroke-background"
-          />
-          {/* The flat face, and the eye */}
-          <ellipse
-            cx="113.3"
-            cy="112.4"
-            rx="7"
-            ry="13.2"
-            transform="rotate(-8 113.3 112.4)"
-            strokeWidth={3.6}
-            className="fill-background"
-          />
-          <circle
-            cx="131"
-            cy="117.2"
-            r="8.4"
-            strokeWidth={3}
-            className="fill-background"
-          />
-          <circle
-            cx="131"
-            cy="118"
-            r="4.8"
-            stroke="none"
-            className="fill-heading"
-          />
-          <circle
-            cx="129.4"
-            cy="116.2"
-            r="1.5"
-            stroke="none"
-            className="fill-background"
-          />
         </g>
       </g>
     </>
@@ -324,6 +464,7 @@ function Scene() {
 export function HeroArtwork({ className = "" }: { className?: string }) {
   return (
     <>
+      <HeroScroll />
       <Sprite />
 
       {/* 640px and up: the Figma frame as designed. */}

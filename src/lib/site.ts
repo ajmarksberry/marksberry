@@ -78,20 +78,6 @@ export const caseStudies = [
     hero: "/images/taap/trips-hero.webp",
   },
   {
-    href: "/projects/taap-itinerary",
-    client: "Expedia",
-    platform: "Enterprise travel platform",
-    audience: "B2B",
-    years: "2025-2026",
-    title: "Expedia TAAP Itinerary Builder",
-    description:
-      "Designed and validated a new itinerary workflow that gives travel advisors a simpler, more flexible way to curate client-ready itineraries and share them with travelers.",
-    summary:
-      "Designed and validated a new itinerary workflow that gives travel advisors a simpler, more flexible way to curate client-ready itineraries and share them with travelers.",
-    thumb: "/images/itinerary/hero-tray.webp",
-    hero: null,
-  },
-  {
     href: "/projects/reach-ai",
     client: "REACH.ai",
     platform: "AI booking platform",
@@ -104,6 +90,20 @@ export const caseStudies = [
       "A booking experience built from scratch and a redesigned business dashboard, on one design language.",
     thumb: "/images/reach/hero-tray.webp",
     hero: "/images/reach/dashboard-hero.webp",
+  },
+  {
+    href: "/projects/taap-itinerary",
+    client: "Expedia",
+    platform: "Enterprise travel platform",
+    audience: "B2B",
+    years: "2025-2026",
+    title: "Expedia TAAP Itinerary Builder",
+    description:
+      "Designed and validated a new itinerary workflow that gives travel advisors a simpler, more flexible way to curate client-ready itineraries and share them with travelers.",
+    summary:
+      "Designed and validated a new itinerary workflow that gives travel advisors a simpler, more flexible way to curate client-ready itineraries and share them with travelers.",
+    thumb: "/images/itinerary/hero-tray.webp",
+    hero: null,
   },
 ] as const;
 

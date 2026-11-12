@@ -3,17 +3,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import {
-  useEffect,
-  useId,
-  useRef,
-  useState,
-  type CSSProperties,
-  type ReactNode,
-} from "react";
+import { useEffect, useId, useRef, useState, type CSSProperties } from "react";
 import { HeroArtwork } from "@/components/HeroArtwork";
 import { ArrowRightIcon, MinnesotaIcon } from "@/components/Icons";
-import { Divider } from "@/components/Divider";
 import { ReachLogo } from "@/components/ReachLogo";
 import { SectionHeader } from "@/components/SectionHeader";
 import { TaapLogo } from "@/components/TaapLogo";
@@ -311,7 +303,7 @@ function CaseStudyCard({ study }: { study: Study }) {
     <Link
       href={study.href}
       draggable={false}
-      className="group relative flex h-full w-full flex-col overflow-clip rounded-2xl bg-white outline-none focus-visible:ring-2 focus-visible:ring-accent"
+      className="group relative flex h-full w-full flex-col overflow-clip border-[6px] border-white bg-white outline-none focus-visible:ring-2 focus-visible:ring-accent"
     >
       <span className="relative block aspect-[4/3] w-full shrink-0 overflow-clip">
         <Image
@@ -366,7 +358,7 @@ function CaseStudyCard({ study }: { study: Study }) {
       {/* Drawn over the photograph, inside the card, so the card keeps its size. */}
       <span
         aria-hidden
-        className="pointer-events-none absolute inset-0 rounded-2xl border-[3px] border-transparent group-hover:border-black"
+        className="pointer-events-none absolute inset-0 border-[3px] border-transparent group-hover:border-[#589EC9]"
       />
     </Link>
   );
@@ -586,17 +578,6 @@ function CardCarousel({ id }: { id: string }) {
     };
   }, []);
 
-  // The cards fade in from left to right, one after another, as soon as the hero
-  // artwork has finished. They do not wait to be scrolled to: they are part of
-  // the page from the start, so they are there (and have already played) by the
-  // time anyone scrolls down to them.
-  useEffect(() => {
-    const row = rowRef.current;
-    if (!row) return;
-    row.style.setProperty("--fade-delay", `${120 + holdForHero()}ms`);
-    row.dataset.in = "true";
-  }, []);
-
   return (
     <div className="@container flex flex-col">
       {/* The row runs edge to edge so a card's shadow isn't cut off by the
@@ -611,8 +592,13 @@ function CardCarousel({ id }: { id: string }) {
           <li
             key={study.href}
             data-card
-            className="card-fade-in w-[82%] max-w-[340px] shrink-0 snap-start sm:w-[340px]"
-            style={{ "--i": index } as CSSProperties}
+            className="case-par w-[82%] max-w-[340px] shrink-0 snap-start sm:w-[340px]"
+            style={
+              {
+                "--par": 20 + index * 8,
+                "--par-end": -(8 + index * 2),
+              } as CSSProperties
+            }
           >
             <CaseStudyCard study={study} />
           </li>
@@ -644,7 +630,7 @@ function CardCarousel({ id }: { id: string }) {
               className={`size-2.5 rounded-full transition-[background-color,transform] duration-200 ease-out group-focus-visible/dot:ring-2 group-focus-visible/dot:ring-accent group-focus-visible/dot:ring-offset-2 group-focus-visible/dot:ring-offset-background motion-reduce:transition-none ${
                 index === active
                   ? "scale-110 bg-heading"
-                  : "bg-border group-hover/dot:bg-muted"
+                  : "bg-[#5b6b7f] group-hover/dot:bg-heading"
               }`}
             />
           </button>
@@ -654,73 +640,8 @@ function CardCarousel({ id }: { id: string }) {
   );
 }
 
-/**
- * When the hero has finished playing, in ms from the page load. The artwork's
- * last pieces land by about 1.9s (the back wave 1.75s, the fish 1.66s, the lure
- * 1.9s), and the "Minneapolis, MN" line, which comes in last, starts at 1.9s
- * (LOCATION_DELAY_MS) and takes 0.75s to fade up: 2.65s. The case studies, which
- * are already on screen at load, wait until then. The hold is measured from the
- * page load, so a reveal that fires late (a slow start, or a page that was
- * scrolled down) waits less, or not at all.
- */
+/** When the "Minneapolis, MN" line, the last piece of the hero, starts to fade up (ms). */
 const LOCATION_DELAY_MS = 1900;
-const LOCATION_FADE_MS = 750;
-const HERO_INTRO_MS = LOCATION_DELAY_MS + LOCATION_FADE_MS;
-
-/** Milliseconds still to wait, from now, for the hero artwork to finish. */
-function holdForHero() {
-  return Math.max(0, HERO_INTRO_MS - performance.now());
-}
-
-/**
- * Fades and rises its children in the first time they scroll into view. What's
- * already on screen at load holds back until the hero artwork has played;
- * anything further down reveals as soon as you reach it. `eager` ones do not
- * wait to be scrolled to: they play when the hero artwork has finished. `delay` staggers neighbours.
- */
-function Reveal({
-  children,
-  delay = 0,
-  className = "",
-  eager = false,
-}: {
-  children: ReactNode;
-  delay?: number;
-  className?: string;
-  /** Play as soon as the hero has finished, without waiting to be scrolled to. */
-  eager?: boolean;
-}) {
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const node = ref.current;
-    if (!node) return;
-
-    if (eager) {
-      node.style.setProperty("--reveal-delay", `${delay + holdForHero()}ms`);
-      node.dataset.visible = "true";
-      return;
-    }
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (!entry.isIntersecting) return;
-        node.style.setProperty("--reveal-delay", `${delay + holdForHero()}ms`);
-        node.dataset.visible = "true";
-        observer.disconnect();
-      },
-      { rootMargin: "0px 0px -8% 0px" },
-    );
-    observer.observe(node);
-    return () => observer.disconnect();
-  }, [delay, eager]);
-
-  return (
-    <div ref={ref} className={`reveal ${className}`}>
-      {children}
-    </div>
-  );
-}
 
 export function CaseStudyShowcase() {
   const pathname = usePathname();
@@ -732,7 +653,7 @@ export function CaseStudyShowcase() {
   return (
     <section
       aria-label="Case studies"
-      className="flex w-full flex-col gap-12 pt-12 lg:gap-16 lg:pt-16"
+      className="flex w-full flex-col gap-12 pb-8 pt-12 lg:gap-16 lg:pb-12 lg:pt-16"
     >
       {SHOW_WELCOME ? (
         <div className="flex w-full flex-col items-center gap-6">
@@ -742,26 +663,34 @@ export function CaseStudyShowcase() {
             {welcomeOverline}, {welcomeHeadline}
           </h1>
           <HeroArtwork className="h-auto w-full max-w-[960px]" />
-          <p
-            className="hero-reveal flex items-center gap-2 font-extrabold text-xs uppercase leading-none text-accent"
-            style={{ animationDelay: `${LOCATION_DELAY_MS}ms` }}
-          >
-            <MinnesotaIcon className="size-4 shrink-0" />
-            {welcomeLocation}
-          </p>
+          <div data-location>
+            {/* A darker red than the accent: the accent is only about 3:1 on the
+             * page's blue, and this line sits on it. #9b2226 is 4.8:1 on the blue and
+             * more on the page color. */}
+            <p
+              className="hero-reveal flex items-center gap-2 font-extrabold text-xs uppercase leading-none text-[#9b2226]"
+              style={{ animationDelay: `${LOCATION_DELAY_MS}ms` }}
+            >
+              <MinnesotaIcon className="size-4 shrink-0" />
+              {welcomeLocation}
+            </p>
+          </div>
         </div>
       ) : null}
 
-      {/* No rule between the hero and the case studies, and the gap there is
-       * halved (the section's own gap is 48-64px), so the location line sits
+      {/* Hidden until the page is scrolled (see data-showcase-body in globals.css).
+       * No rule between the hero and the case studies, and the gap there is halved (the section's own gap is 48-64px), so the location line sits
        * close to the "Case studies" heading. */}
-      <div className="-mt-6 flex flex-col gap-4 lg:-mt-8">
-        <Reveal eager>
+      <div data-showcase-body className="-mt-6 flex flex-col gap-4 lg:-mt-8">
+        <div
+          className="case-par"
+          style={{ "--par": 14, "--par-end": -6 } as CSSProperties}
+        >
           <SectionHeader
             title="Case studies"
             className="w-full max-w-[640px]"
           />
-        </Reveal>
+        </div>
 
         {SHOW_LAYOUT_TOGGLE ? (
           <div className="flex items-center justify-between gap-4">
@@ -826,10 +755,6 @@ export function CaseStudyShowcase() {
           </ul>
         )}
       </div>
-
-      <Reveal>
-        <Divider />
-      </Reveal>
     </section>
   );
 }
